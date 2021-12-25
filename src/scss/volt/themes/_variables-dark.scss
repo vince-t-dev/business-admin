@@ -1,0 +1,20 @@
+.dark {
+    /* TODO: redefine theme colors for dark theme */
+    $primary: #3A2557;
+    $secondary: #050827;
+    $success: green;
+    $dark: #000;
+
+    $theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "danger": $danger,
+        "info": $indigo,
+        "dark": $dark,
+        "light": #aaa
+    );
+      
+    // Bootstrap
+    @import "../../../../node_modules/bootstrap/scss/bootstrap";
+}
