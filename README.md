@@ -24,4 +24,4 @@ npm run build
 
 ## Documentation
 
-Every component, plugin and getting started is thoroughly documented on our [online documentation](https://demo.themesberg.com/volt-react-dashboard/#/documentation/quick-start).
+Coming soon.
