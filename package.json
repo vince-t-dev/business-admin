@@ -12,13 +12,13 @@
     "react ui library"
   ],
   "license": "MIT",
-  "homepage": "https://www.expresia.com/__xpr__/pub_engine/react-admin/web/",
+  "homepage": "https://www.expresia.com/__xpr__/pub_engine/business-admin/web/",
   "bugs": {
     "url": "https://github.com/vince-t-dev/"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vince-t-dev/react-admin"
+    "url": "https://github.com/vince-t-dev/business-admin"
   },
   "version": "1.0.0",
   "dependencies": {

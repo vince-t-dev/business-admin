@@ -82,7 +82,7 @@ export default (props = {}) => {
         <Navbar className={`collapse ${showClass} sidebar d-md-block bg-white text-white`}>
           <Navbar.Brand sticky="top" href="/dev/" className="d-flex w-100 align-items-center justify-content-center">
             {/* TODO: update path when svg is fixed */}
-            <img src="/__xpr__/pub_engine/react-admin/web/xprs-logo-dark.svg" className="d-inline-block" alt="Expresia" height="1.25rem"/>
+            <img src="/__xpr__/pub_engine/business-admin/web/xprs-logo-dark.svg" className="d-inline-block" alt="Expresia" height="1.25rem"/>
           </Navbar.Brand>
           <div className="sidebar-inner">
             <div className="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">

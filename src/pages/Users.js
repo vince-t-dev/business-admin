@@ -24,7 +24,7 @@ function Users() {
     // fetch results when query changes
     useEffect(() => {
         setIsLoaded(false);
-        fetch(`/__xpr__/pub_engine/react-admin/element/users_json?q=${query}`)
+        fetch(`/__xpr__/pub_engine/business-admin/element/users_json?q=${query}`)
             .then(res => res.json())
             .then(
             (result) => {

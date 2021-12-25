@@ -1,16 +1,9 @@
 {
     "templates" : [
         { 
-            "name" : "React Admin 1.0",
+            "name" : "My Business Admin",
             "element" : "index",
             "options" : {}
         }  
-    ],
-    "skins" : [
-        {
-            "name" : "Bundles 2.0 Sample Skin",
-            "element" : "skin",
-            "options" : {} 
-        }
     ]
 }

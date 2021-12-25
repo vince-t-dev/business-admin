@@ -24,7 +24,7 @@ function Articles() {
     // fetch results when query changes
     useEffect(() => {
         setIsLoaded(false);
-        fetch(`/__xpr__/pub_engine/react-admin/element/articles_json?q=${query}`)
+        fetch(`/__xpr__/pub_engine/business-admin/element/articles_json?q=${query}`)
             .then(res => res.json())
             .then(
             (result) => {
