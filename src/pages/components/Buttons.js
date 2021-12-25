@@ -13,7 +13,7 @@ export default () => {
       <Container className="px-0">
         <Row className="d-flex flex-wrap flex-md-nowrap align-items-center py-4">
           <Col className="d-block mb-4 mb-md-0">
-            <h1 className="h2">Buttons TEST</h1>
+            <h1 className="h2">Buttons</h1>
             <p className="mb-0">
               Use custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.
             </p>
