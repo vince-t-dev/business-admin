@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/__xpr__/pub_engine/business-admin/web/static/css/main.d9156482.chunk.css",
-    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.a67b616b.chunk.js",
-    "main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.a67b616b.chunk.js.map",
-    "runtime-main.js": "/__xpr__/pub_engine/business-admin/web/static/js/runtime-main.4a0e9409.js",
-    "runtime-main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/runtime-main.4a0e9409.js.map",
-    "static/css/2.29b2f728.chunk.css": "/__xpr__/pub_engine/business-admin/web/static/css/2.29b2f728.chunk.css",
-    "static/js/2.6a2d90c5.chunk.js": "/__xpr__/pub_engine/business-admin/web/static/js/2.6a2d90c5.chunk.js",
-    "static/js/2.6a2d90c5.chunk.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/2.6a2d90c5.chunk.js.map",
+    "main.css": "/__xpr__/pub_engine/business-admin/web/static/css/main.a56636a5.chunk.css",
+    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.0cf83978.chunk.js",
+    "main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.0cf83978.chunk.js.map",
+    "runtime-main.js": "/__xpr__/pub_engine/business-admin/web/static/js/runtime-main.ca502569.js",
+    "runtime-main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/runtime-main.ca502569.js.map",
+    "static/css/2.ca5bcfcd.chunk.css": "/__xpr__/pub_engine/business-admin/web/static/css/2.ca5bcfcd.chunk.css",
+    "static/js/2.b406b08f.chunk.js": "/__xpr__/pub_engine/business-admin/web/static/js/2.b406b08f.chunk.js",
+    "static/js/2.b406b08f.chunk.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/2.b406b08f.chunk.js.map",
     "index.html": "/__xpr__/pub_engine/business-admin/web/index.html",
-    "static/css/2.29b2f728.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/2.29b2f728.chunk.css.map",
-    "static/css/main.d9156482.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/main.d9156482.chunk.css.map",
-    "static/js/2.6a2d90c5.chunk.js.LICENSE.txt": "/__xpr__/pub_engine/business-admin/web/static/js/2.6a2d90c5.chunk.js.LICENSE.txt",
+    "static/css/2.ca5bcfcd.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/2.ca5bcfcd.chunk.css.map",
+    "static/css/main.a56636a5.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/main.a56636a5.chunk.css.map",
+    "static/js/2.b406b08f.chunk.js.LICENSE.txt": "/__xpr__/pub_engine/business-admin/web/static/js/2.b406b08f.chunk.js.LICENSE.txt",
     "static/media/404.59d1f9fd.svg": "/__xpr__/pub_engine/business-admin/web/static/media/404.59d1f9fd.svg",
     "static/media/500.d508258f.svg": "/__xpr__/pub_engine/business-admin/web/static/media/500.d508258f.svg",
     "static/media/volt.scss": "/__xpr__/pub_engine/business-admin/web/static/media/dinnextltpro-regular.070e0f7a.otf",
@@ -42,10 +42,10 @@
     "static/media/xprs-logo.5a5060a4.svg": "/__xpr__/pub_engine/business-admin/web/static/media/xprs-logo.5a5060a4.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.4a0e9409.js",
-    "static/css/2.29b2f728.chunk.css",
-    "static/js/2.6a2d90c5.chunk.js",
-    "static/css/main.d9156482.chunk.css",
-    "static/js/main.a67b616b.chunk.js"
+    "static/js/runtime-main.ca502569.js",
+    "static/css/2.ca5bcfcd.chunk.css",
+    "static/js/2.b406b08f.chunk.js",
+    "static/css/main.a56636a5.chunk.css",
+    "static/js/main.0cf83978.chunk.js"
   ]
 }
