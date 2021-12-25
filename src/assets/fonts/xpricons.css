@@ -1,0 +1,183 @@
+/* 
+    XPR21 Icons
+*/
+
+@font-face {
+    font-family: 'XPRIcons';
+    font-weight: normal;
+    src: url('./XPRIcons.ttf');
+    font-display: swap;
+}
+
+[class^="xpri-"], [class*=" xpri-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'XPRIcons' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none; 
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .xpri-pencil:before {
+    content: "\e900";
+  }
+  .xpri-clock:before {
+    content: "\e901";
+  }
+  .xpri-arrow-down:before {
+    content: "\e902";
+  }
+  .xpri-members:before {
+    content: "\e903";
+  }
+  .xpri-filter:before {
+    content: "\e904";
+  }
+  .xpri-list-square:before {
+    content: "\e905";
+  }
+  .xpri-instance:before {
+    content: "\e906";
+  }
+  .xpri-external-link:before {
+    content: "\e907";
+  }
+  .xpri-save:before {
+    content: "\e908";
+  }
+  .xpri-instance-view:before {
+    content: "\e909";
+  }
+  .xpri-list:before {
+    content: "\e90a";
+  }
+  .xpri-tile:before {
+    content: "\e90b";
+  }
+  .xpri-instance-circle:before {
+    content: "\e90c";
+  }
+  .xpri-xpr-circle:before {
+    content: "\e90d";
+  }
+  .xpri-check-square:before {
+    content: "\e90e";
+  }
+  .xpri-close:before {
+    content: "\e90f";
+  }
+  .xpri-customize:before {
+    content: "\e910";
+  }
+  .xpri-image:before {
+    content: "\e911";
+  }
+  .xpri-alert:before {
+    content: "\e912";
+  }
+  .xpri-check:before {
+    content: "\e913";
+  }
+  .xpri-plus:before {
+    content: "\e914";
+  }
+  .xpri-arrow-right:before {
+    content: "\e915";
+  }
+  .xpri-download:before {
+    content: "\e916";
+  }
+  .xpri-preview:before {
+    content: "\e917";
+  }
+  .xpri-calendar-alt .path1:before {
+    content: "\e918";
+    color: rgb(124, 124, 124);
+  }
+  .xpri-calendar-alt .path2:before {
+    content: "\e919";
+    margin-left: -1em;
+    color: rgb(255, 255, 255);
+  }
+  .xpri-trash .path1:before {
+    content: "\e91a";
+    color: rgb(128, 128, 128);
+  }
+  .xpri-trash .path2:before {
+    content: "\e91b";
+    margin-left: -1em;
+    color: rgb(124, 124, 124);
+  }
+  .xpri-delete:before {
+    content: "\e91c";
+  }
+  .xpri-edit:before {
+    content: "\e91d";
+  }
+  .xpri-credit-card:before {
+    content: "\e91e";
+  }
+  .xpri-badges:before {
+    content: "\e91f";
+  }
+  .xpri-documentation:before {
+    content: "\e920";
+  }
+  .xpri-bell:before {
+    content: "\e921";
+  }
+  .xpri-business:before {
+    content: "\e922";
+  }
+  .xpri-marketplace:before {
+    content: "\e923";
+  }
+  .xpri-xpr-2:before {
+    content: "\e924";
+  }
+  .xpri-caret:before {
+    content: "\e925";
+  }
+  .xpri-search:before {
+    content: "\e926";
+  }
+  .xpri-calendar:before {
+    content: "\e927";
+  }
+  .xpri-control-panel:before {
+    content: "\e928";
+  }
+  .xpri-backend:before {
+    content: "\e929";
+  }
+  .xpri-logout:before {
+    content: "\e92a";
+  }
+  .xpri-xpr:before {
+    content: "\e92b";
+  }
+  .xpri-applications:before {
+    content: "\e92c";
+  }
+  .xpri-dashboard:before {
+    content: "\e92d";
+  }
+  .xpri-badge:before {
+    content: "\e92e";
+  }
+  .xpri-details:before {
+    content: "\e92f";
+  }
+  .xpri-user:before {
+    content: "\e930";
+  }
+  .xpri-instances:before {
+    content: "\e931";
+  }
+  
