@@ -2,6 +2,10 @@
  * = Accordions
  */
 
+ .accordion-item {
+    background-color: transparent;
+ }
+
  .accordion-button {
     text-align: left;
     box-shadow: none;
@@ -10,8 +14,17 @@
         box-shadow: none;
     }
     
-    &:hover{
+    &:hover {
         background-color: $gray-200;
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    &:not(.collapsed) {
+        background: $gray-200;
+        box-shadow: none;
     }
 }
 

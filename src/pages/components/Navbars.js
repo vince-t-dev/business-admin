@@ -29,8 +29,8 @@ export default () => {
 import ReactLogo from "src/assets/img/technologies/react-logo-transparent.svg";`}
           example={`<Navbar variant="dark" expand="lg" bg="dark" className="navbar-transparent navbar-theme-primary my-2">
   <Container className="position-relative">
-    <Navbar.Brand href="#home" className="me-lg-3">
-      <Image src={ReactLogo} />
+    <Navbar.Brand href="#home" className="d-flex align-items-center me-lg-3">
+      <i class="xpri-xpr-2 text-white me-3"></i>
     </Navbar.Brand>
 
     <Navbar.Collapse id="navbar-default-primary" className="w-100">
@@ -51,18 +51,16 @@ import ReactLogo from "src/assets/img/technologies/react-logo-transparent.svg";`
           description=""
           scope={{ useEffect, useState, Nav, Card, Navbar, Image, Container, ReactLogoPrimary, ReactLogo: ReactLogoTransparent }}
           imports={`import React, { useEffect, useState } from "react";
-import { Nav, Card, Navbar, Container } from 'react-bootstrap';
-import ReactLogo from "src/assets/img/technologies/react-logo-transparent.svg";
-import ReactLogoPrimary from "src/assets/img/technologies/react-logo-primary.svg";`}
+import { Nav, Card, Navbar, Container } from 'react-bootstrap';`}
           example={`const NavbarThemes = [
-  { themeVariant: 'primary', navbarColor: 'dark', brandIcon: ReactLogo },
-  { themeVariant: 'secondary', navbarColor: 'light', brandIcon: ReactLogoPrimary },
-  { themeVariant: 'soft', navbarColor: 'light', brandIcon: ReactLogo }
+            { themeVariant: 'primary', navbarColor: 'dark' },
+            { themeVariant: 'secondary', navbarColor: 'dark' },
+            { themeVariant: 'dark', navbarColor: 'dark' }
 ];
 
 function NavbarChangingColors() {
   const [themeIndex, setThemeIndex] = React.useState(0);
-  const { themeVariant, navbarColor, brandIcon } = NavbarThemes[themeIndex];
+  const { themeVariant, navbarColor } = NavbarThemes[themeIndex];
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -76,8 +74,8 @@ function NavbarChangingColors() {
   return (
     <Navbar variant={navbarColor} expand="lg" className={\`navbar-transparent navbar-theme-\${themeVariant} my-2\`}>
       <Container className="position-relative">
-        <Navbar.Brand href="#home" className="me-lg-3">
-          <Image src={brandIcon} />
+        <Navbar.Brand href="#home" className="d-flex align-items-center me-lg-3">
+          <i class="xpri-xpr-2 text-white me-3"></i>
         </Navbar.Brand>
 
         <Navbar.Collapse id="navbar-default-primary" className="w-100">

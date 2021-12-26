@@ -36,9 +36,9 @@ export default () => (
         imports={`import Progress from "src/components/Progress";`}
         example={`<React.Fragment>
   <Progress variant="secondary" label="Secondary color" />
-  <Progress variant="tertiary" label="Tertiary color" />
+  <Progress variant="success" label="Tertiary color" />
   <Progress variant="dark" label="Dark color" />
-  <Progress variant="success" label="Success color" />
+  <Progress variant="warning" label="Success color" />
   <Progress variant="info" label="Info color" />
   <Progress variant="danger" label="Danger color" />
 </React.Fragment>`}
@@ -54,7 +54,7 @@ export default () => (
         example={`<React.Fragment>
   <Progress variant="primary" label="XL Progress Bar" size="xl" />
   <Progress variant="secondary" label="LG Progress Bar" size="lg" />
-  <Progress variant="tertiary" label="MD Progress Bar" size="md" />
+  <Progress variant="success" label="MD Progress Bar" size="md"/>
   <Progress variant="info" label="SM Progress Bar" size="sm" />
 </React.Fragment>`}
       />

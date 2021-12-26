@@ -64,3 +64,14 @@
     }
   }
 }
+
+
+// 
+// Breadcrumb Tertiary 
+//
+
+.breadcrumb-tertiary {  
+  .breadcrumb-item {
+    &.active { color: $dark;}
+  }
+}

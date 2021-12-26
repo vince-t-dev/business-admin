@@ -1,6 +1,13 @@
 /**
  * = Paginations
  */
+
+ .page-link {
+    &:active,&:focus {
+        box-shadow: none;
+    }
+ }
+
  .circle-pagination{
     .page-link,
     span{

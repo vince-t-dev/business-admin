@@ -38,7 +38,7 @@ export default () => {
         <Breadcrumb.Item active>Data</Breadcrumb.Item>
     </Breadcrumb>
 
-    <Breadcrumb listProps={{ className: "breadcrumb-tertiary breadcrumb-text-light text-white" }}>
+    <Breadcrumb listProps={{ className: "breadcrumb-tertiary" }}>
         <Breadcrumb.Item href="#home">Home</Breadcrumb.Item>
         <Breadcrumb.Item href="#library">Library</Breadcrumb.Item>
         <Breadcrumb.Item active>Data</Breadcrumb.Item>
