@@ -70,35 +70,35 @@ export default (props = {}) => {
 
   return (
     <>
-      <Navbar expand={false} collapseOnSelect variant="light" className="navbar-theme-primary px-4 d-md-none">
+      <Navbar expand={false} collapseOnSelect variant="light" className="navbar-theme-white position-sticky top-0 px-4 d-md-none">
         <Navbar.Brand className="me-lg-5" as={Link} to={Routes.DashboardOverview.path}>
           <Image src={LogoDark} className="navbar-brand-light" />
         </Navbar.Brand>
-        <Navbar.Toggle as={Button} aria-controls="main-navbar" onClick={onCollapse}>
+        <Navbar.Toggle aria-controls="main-navbar" onClick={onCollapse}>
           <span className="navbar-toggler-icon" />
         </Navbar.Toggle>
       </Navbar>
       <CSSTransition timeout={300} in={show} classNames="sidebar-transition">
         <Navbar className={`collapse ${showClass} sidebar d-md-block bg-white text-white`}>
-          <Navbar.Brand sticky="top" href="/dev/" className="d-flex w-100 align-items-center justify-content-center">
+          <Navbar.Brand sticky="top" href="/dev/" className="d-none d-sm-flex w-100 align-items-center justify-content-center">
             {/* TODO: update path when svg is fixed */}
             <img src="/__xpr__/pub_engine/business-admin/web/xprs-logo-dark.svg" className="d-inline-block" alt="Expresia" height="1.25rem"/>
           </Navbar.Brand>
           <div className="sidebar-inner">
-            <div className="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
-              <div className="d-flex align-items-center">
-                <div className="user-avatar lg-avatar me-4">
+            <div className="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center py-3">
+              <div className="d-flex align-items-center ">
+                <div className="user-avatar lg-avatar mx-4">
                   <Image src={ProfilePicture} className="card-img-top rounded-circle border-white" />
                 </div>
-                <div className="d-block">
-                  <h6>Hi, Jane</h6>
-                  <Button as={Link} variant="secondary" size="xs" to={Routes.Signin.path} className="text-dark">
+                <div className="d-flex text-dark align-items-center">
+                  <h6 className="m-0">Hi, Jane</h6>
+                  <Button as={Link} variant="secondary" size="xs" to={Routes.Signin.path} className="text-dark mx-3">
                     <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Sign Out
                   </Button>
                 </div>
               </div>
-              <Nav.Link className="collapse-close d-md-none" onClick={onCollapse}>
-                <FontAwesomeIcon icon={faTimes} />
+              <Nav.Link className="collapse-close d-md-none text-dark" onClick={onCollapse}>
+                <i class="xpri-close"></i>
               </Nav.Link>
             </div>
             <Nav className="flex-column pt-3 pt-md-0">

@@ -101,7 +101,7 @@ function Articles() {
 
                         {isLoaded && articles.map(a => (
                             <tr key={a.Id}>
-                                <td><span>{a.ArticleLink ? <FontAwesomeIcon icon={faLink}/> : <FontAwesomeIcon icon={faList}/> }</span></td>
+                                <td><span className="justify-content-center">{a.ArticleLink ? <FontAwesomeIcon icon={faLink}/> : <FontAwesomeIcon icon={faList}/> }</span></td>
                                 <td><span><div className="text-truncate">{a.Title}</div></span></td>
                                 <td><span>
                                     {a._embedded.Categories && a._embedded.Categories.map(category => ( 

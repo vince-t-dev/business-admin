@@ -46,10 +46,10 @@ export default (props) => {
   };
 
   return (
-    <Navbar sticky="top" variant="light" className="navbar-top bg-white" expanded>
+    <Navbar sticky="top" variant="light" className="navbar-top bg-white d-none d-sm-flex" expanded>
       <Container fluid className="px-0">
         <div className="d-flex justify-content-between w-100">
-          <div className="navbar-brand d-flex align-items-center">
+          <div className="navbar-brand d-flex align-items-center ps-3 ps-sm-0">
             <i className="xpri-xpr-2 text-eggplant me-3"></i>
             <h4 className="text-eggplant">MY BUSINESS</h4>
           </div>

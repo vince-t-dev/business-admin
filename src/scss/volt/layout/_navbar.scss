@@ -46,6 +46,10 @@
             background: $gray-400;
         }
     }
+
+    @include media-breakpoint-down(sm) {
+        margin-left: 0;
+    }
 }
 
 .navbar .navbar-nav {
@@ -184,6 +188,10 @@
     img {
         height: 1.25rem;
     }
+
+    @include media-breakpoint-down(sm) {
+        height: auto;
+    }
 }
 
 // Navbar text and logo dark & light
@@ -220,15 +228,12 @@
         background-image: $navbar-light-toggler-icon-bg;
     }
 
-    .navbar-brand-light {
-        display: none;
-    }
-
     .navbar-brand {
         color: $gray-800;
     }
 
 }
+
 
 // Theme color variants
 // eg. navbar-theme-primary, navbar-theme-secondary
@@ -301,6 +306,12 @@
 
     }
 
+}
+
+.navbar-theme-white {
+    box-shadow: 0 0.125rem 0.625rem rgb(0 0 0 / 14%);
+    z-index: 100; 
+    min-height: 4.688rem;
 }
 
 .dropdown-menu {
