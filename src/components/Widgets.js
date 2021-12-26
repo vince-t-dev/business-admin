@@ -22,10 +22,9 @@ export const ProfileCardWidget = () => {
         <Card.Subtitle className="fw-normal">Senior Software Engineer</Card.Subtitle>
         <Card.Text className="text-gray mb-4">New York, USA</Card.Text>
 
-        <Button variant="primary" size="sm" className="me-2">
+        <Button variant="primary" size="sm" className="m-auto">
           <FontAwesomeIcon icon={faUserPlus} className="me-1" /> Connect
         </Button>
-        <Button variant="secondary" size="sm">Send Message</Button>
       </Card.Body>
     </Card>
   );

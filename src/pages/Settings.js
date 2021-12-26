@@ -16,6 +16,7 @@ export default () => {
           <Dropdown.Toggle as={Button} variant="secondary" className="me-2">
             <FontAwesomeIcon icon={faPlus} className="me-2" />
             <span>New</span>
+            <span className="icon icon-small ms-1"><FontAwesomeIcon icon={faChevronDown} /></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="dashboard-dropdown dropdown-menu-left mt-2">
             <Dropdown.Item>
