@@ -7,9 +7,7 @@
         },
         { 
             "name" : "My Business Admin Web",
-            "element" : [{
-                "path" : "web/index.hbs"
-            }],
+            "path" : "web/index.hbs",
             "options" : {}
         }  
     ]

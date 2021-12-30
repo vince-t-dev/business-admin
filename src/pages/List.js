@@ -153,8 +153,8 @@ function List() {
 
                             {isLoaded && items.map(a => (
                                 <tr key={"list-"+a.Id} className={selectedItems.find(item => item.Id == a.Id) ? "selected" : undefined}>
-                                    <td><span className="justify-content-center"><Form.Check inline onChange={getSelectedItems} name="list-check" value={a.Id}/></span></td>
-                                    <td><span className="justify-content-center">{a.ArticleLink ? <FontAwesomeIcon icon={faLink}/> : <FontAwesomeIcon icon={faList}/> }</span></td>
+                                    <td><span className="justify-content-start"><Form.Check inline onChange={getSelectedItems} name="list-check" value={a.Id}/></span></td>
+                                    <td><span className="justify-content-start">{a.ArticleLink ? <FontAwesomeIcon icon={faLink}/> : <FontAwesomeIcon icon={faList}/> }</span></td>
                                     <td><span><div className="text-truncate">{a.Title}</div></span></td>
                                     <td><span>
                                         {a._embedded.Categories && a._embedded.Categories.map(category => ( 
