@@ -2,7 +2,7 @@
     "templates" : [
         { 
             "name" : "My Business Admin",
-            "element" : "index",
+            "element" : "web/index",
             "options" : {}
         }  
     ]
