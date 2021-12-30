@@ -1,8 +1,8 @@
 {
     "templates" : [
         { 
-            "name" : "My Business Admin Web",
-            "element" : "/web/index.hbs",
+            "name" : "My Business Admin Webb",
+            "element" : "xpr/web/index.hbs",
             "options" : {}
         }  
     ]
