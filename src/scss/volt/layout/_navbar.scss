@@ -232,6 +232,10 @@
         color: $gray-800;
     }
 
+    .navbar-toggler {
+        border: 0;
+        padding: 0;
+    }
 }
 
 
@@ -308,10 +312,12 @@
 
 }
 
-.navbar-theme-white {
+.navbar-theme-primary:not(.headroom) {
+    background: $white;
     box-shadow: 0 0.125rem 0.625rem rgb(0 0 0 / 14%);
     z-index: 100; 
-    min-height: 4.688rem;
+    height: $navbar-height;
+    padding: 0;
 }
 
 .dropdown-menu {
@@ -482,6 +488,7 @@
             width: 20px;
             height: 20px;
             padding: 0;
+            border: 0;
 
             span {
                 display: block;
@@ -506,6 +513,7 @@
 
         .collapse-close { 
             text-align: right;
+            line-height: 1;
         }
     }
 

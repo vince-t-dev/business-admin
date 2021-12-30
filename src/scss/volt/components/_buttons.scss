@@ -3,7 +3,8 @@
 */
 
 .btn {
-    &:focus,&:active {
+    line-height: 1;
+    &:focus:active,&:focus,&:active {
         box-shadow: none;
     }
     &.btn-circle {
@@ -56,7 +57,7 @@
     font-weight: 600;
     font-size: 0.875rem;
     line-height: 1rem;
-    color: #fff;
+    color: $white;
     text-align: center;
     letter-spacing: 0.031rem;
     transition: all .5s ease;
@@ -82,6 +83,7 @@
     color: $dark;
     
     &:hover,
+    &:active, 
     &:active:focus {
         background: transparent;
         border-color: $dark;

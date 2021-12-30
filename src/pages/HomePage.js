@@ -4,8 +4,7 @@ import { Routes } from "../routes";
 
 // pages
 import Users from "./Users";
-import Articles from "./Articles";
-//import Presentation from "./Presentation";
+import List from "./List";
 import Upgrade from "./Upgrade";
 import DashboardOverview from "./dashboard/DashboardOverview";
 import Transactions from "./Transactions";
@@ -91,7 +90,7 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
         <Navbar />
         <main className="content">
           <Component {...props} />
-          <Footer toggleSettings={toggleSettings} showSettings={showSettings} />
+          {/*<Footer toggleSettings={toggleSettings} showSettings={showSettings} />*/}
         </main>
       </>
     )}
@@ -115,7 +114,7 @@ export default () => (
     <RouteWithSidebar exact path={Routes.Transactions.path} component={Transactions} />
     <RouteWithSidebar exact path={Routes.Settings.path} component={Settings} />
     <RouteWithSidebar exact path={Routes.Users.path} component={Users} />
-    <RouteWithSidebar exact path={Routes.Articles.path} component={Articles} />
+    <RouteWithSidebar exact path={Routes.List.path} component={List} />
     <RouteWithSidebar exact path={Routes.BootstrapTables.path} component={BootstrapTables} />
 
     {/* components */}

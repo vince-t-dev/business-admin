@@ -176,6 +176,9 @@
             height: 3.438rem;
             box-shadow: 0.063rem 0.063rem 0.25rem rgb(0 0 0 / 25%);
         }
+        .selected td:first-child:before {
+            background-color: $tertiary;
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-.form-control{
+.form-control {
     line-height: 1;
     &, &:focus {
         box-shadow:none;
@@ -13,14 +13,20 @@
     }
 }
 
+.form-check-inline {
+    display: inline-flex;
+    margin: 0;
+}
 .form-check-input {
+    width: 0.75rem;
+    height: 0.75rem;
     &:focus {
         box-shadow: none;
     }
     &.round-check{
         &[type="checkbox"] {
             @include border-radius($form-check-radio-border-radius);
-          }
+        }
     }
 }
 
@@ -76,9 +82,22 @@
 
 .form-select {
     color: $dark;
-    .form-select-lg{
+    background-position: right 0.4rem center;
+    padding-right: 1.8rem;
+    border-color: $tertiary;
+    &:focus,&:active {
+        box-shadow: none;
+    }
+    .form-select-lg {
         padding: $form-select-padding-y ($form-select-padding-x + $form-select-indicator-padding) $form-select-padding-y $form-select-padding-x;
     }
+}
+
+// divider
+
+.vr { 
+    height: 1.188rem;
+    align-self:center;
 }
 
 //Add File Alternative Style

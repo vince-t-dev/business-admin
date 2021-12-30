@@ -32,8 +32,8 @@
 //Label color Fix for pie chart
 
 .ct-chart-pie .ct-label, .ct-chart-donut .ct-label {
-    color: #ffffff;
-    fill: #ffffff;
+    color: $white;
+    fill: $white;
     font-size: $font-size-base;
     font-weight: $font-weight-bold;
 }

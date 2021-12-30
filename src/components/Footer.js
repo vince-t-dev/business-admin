@@ -1,67 +1,81 @@
-
-import React from "react";
-//import moment from "moment-timezone";
-import { Row, Col, Card, OverlayTrigger, Tooltip, Image, Button } from 'react-bootstrap';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCogs, faDownload, faRocket } from "@fortawesome/free-solid-svg-icons";
-import BS5Logo from "../assets/img/technologies/bootstrap-5-logo.svg";
-import ReactLogo from "../assets/img/technologies/react-logo.svg";
-import LaravelLogo from "../assets/img/technologies/laravel-logo.svg";
-import GitHubButton from 'react-github-btn';
+import React, {useState} from "react";
+import { Row, Col, Stack, Form, Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Routes } from "../routes";
 
 export default (props) => {
-  //const currentYear = moment().get("year");
-  const showSettings = props.showSettings;
+  	const showSettings = props.showSettings;
+  	const toggleSettings = (toggle) => {
+    	props.toggleSettings(toggle);
+  	}
 
-  const toggleSettings = (toggle) => {
-    props.toggleSettings(toggle);
-  }
+    // modal
+    const [modalDeleteItems, setModalDeleteItems] = useState(false);
+    const handleClose = () => setModalDeleteItems(false);
 
-  return (
-    <div>
-      {/*showSettings ? (
-        <Card className="theme-settings">
-          <Card.Body className="pt-4">
-            <Button className="theme-settings-close" variant="close" size="sm" aria-label="Close" onClick={() => { toggleSettings(false) }} />
-          </Card.Body>
-        </Card>
-      ) : (
-        <Card className="theme-settings theme-settings-expand" onClick={() => { toggleSettings(true) }}>
-          <Card.Body className="p-3 py-2">
-            <span className="fw-bold h6"><FontAwesomeIcon icon={faCogs} className="me-1 fs-7" /> Settings</span>
-          </Card.Body>
-        </Card>
-      )*/}
-      {<footer className="footer section py-5">
-        <Row>
-          <Col xs={12} lg={6} className="mb-4 mb-lg-0">
-            {/*<p className="mb-0 text-center text-xl-left">
-              Copyright © 2019-{`${currentYear} `}
-            </p>*/}
-          </Col>
-          <Col xs={12} lg={6}>
-            <ul className="list-inline list-group-flush list-group-borderless text-center text-xl-right mb-0">
-              <li className="list-inline-item px-0 px-sm-2">
-                <Card.Link href="/about" target="_blank">
-                  About
-                </Card.Link>
-              </li>
-              <li className="list-inline-item px-0 px-sm-2">
-                <Card.Link href="/blog" target="_blank">
-                  Blog
-                </Card.Link>
-              </li>
-              <li className="list-inline-item px-0 px-sm-2">
-                <Card.Link href="/contact" target="_blank">
-                  Contact
-                </Card.Link>
-              </li>
-            </ul>
-          </Col>
-        </Row>
-    </footer>}
-    </div>
+    // delete items 
+    const openModalDeleteItems = e => {
+        setModalDeleteItems(true);
+    }
+
+    // toggle status
+    const toggleStatus = e => {
+        if (e.target.value == "Published") {
+            props.selectedItems.map(a => {
+                document.getElementById("switch-status-"+a.Id).checked = true;
+            });
+        }
+        if (e.target.value == "Unpublished") {
+            props.selectedItems.map(a => {
+                document.getElementById("switch-status-"+a.Id).checked = false;
+            });
+        }
+    }  
+
+  	return (
+    	<>
+        {<footer id="nav-footer" className="footer py-3 px-4">
+            <Stack direction="horizontal" gap={3}>
+                <p className="text-sm-left text-danger">
+                    <button type="button" className="btn btn-link p-0 text-danger" onClick={openModalDeleteItems}>
+                        <i className="xpri-delete me-2"></i>
+                    </button>
+                    Delete Selected ({props.selectedItems.length})
+                </p>
+                <div className="vr"/>
+                <Form.Group className="d-flex align-items-center">
+                    <Form.Label className="text-nowrap m-0 me-3">Set Status:</Form.Label>
+                    <Form.Select onChange={toggleStatus}>
+                        <option>Select</option>
+                        <option value="Published">Published</option>
+                        <option value="Unpublished">Unpublished</option>
+                    </Form.Select>
+                </Form.Group>
+            </Stack>
+            {/* modal: confirm delete items */}
+            <Modal centered show={modalDeleteItems} onHide={handleClose}>
+                <Modal.Header closeButton closeVariant="white"> 
+                    <Modal.Title>Confirm Delete</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Are you sure you want to delete the Article:</p>
+                    <ul> {                        
+                        props.selectedItems.map((a,index) => (
+                            <li key={"li-"+a.Id}>{a.Title}</li>
+                        ))
+                    }
+                    </ul>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Cancel
+                    </Button>
+                    <Button variant="primary" onClick={handleClose}>
+                        Confirm
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </footer>}
+        </>
   );
 };

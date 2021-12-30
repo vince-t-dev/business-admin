@@ -135,7 +135,7 @@ function Users() {
                                 <td>
                                     <span>
                                         <Card.Link className="d-flex align-items-center">
-                                            <i class="xpri-members me-2"></i>
+                                            <i className="xpri-members me-2"></i>
                                             <div className="d-block">
                                                 <span className="fw-bold">{u.FirstName && u.LastName ? u.FirstName+" "+u.LastName : "Anonymous"}</span>
 

@@ -2,7 +2,7 @@
  * = Modals
  */
 
-.modal{
+.modal {
     &.static-example{
         position: relative;
         display: block;
@@ -11,11 +11,39 @@
 
 .modal-content {
     border: 0;
-    @if $enable-rounded {
-        border-radius: $modal-content-border-radius;
-    } @else {
-        border-radius: 0;
+    border-radius: 0;
+}
+
+.modal-header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: $primary;
+    color: $white;
+    border-radius: 0;
+    button i {
+        color: $white;
     }
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    color: $white;
+}
+
+.modal-body {
+    padding: 2rem 2rem 1rem;
+    p { 
+        margin-bottom: 0;
+    }
+    p + p {
+        margin-top: 1rem;
+    }
+}
+
+.modal-footer {
+    border: 0;
+    padding: 2rem;
+    justify-content: center;
 }
 
 .modal-fluid {

@@ -1,15 +1,13 @@
 {
-  "name": "react-dashboard",
-  "description": "Dashboard powered by React.js and Bootstrap 5",
-  "author": "Backbone",
+  "name": "business-admin",
+  "description": "My Business Admin Dashboard 1.0",
+  "author": "Vince T - Backbone",
   "private": true,
   "proxy": "https://www.expresia.com",
   "keywords": [
-    "bootstrap 5",
-    "react",
-    "react dashboard",
-    "react admin template",
-    "react ui library"
+    "my business admin",
+    "admin dashboard",
+    "expresia"
   ],
   "license": "MIT",
   "homepage": "https://www.expresia.com/__xpr__/pub_engine/business-admin/web/",
@@ -55,7 +53,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "stop": "react-scripts stop",
     "build": "react-scripts build",
     "build-local": "PUBLIC_URL=./ react-scripts build",
     "test": "react-scripts test",

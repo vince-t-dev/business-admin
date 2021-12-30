@@ -8,7 +8,7 @@ import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from 'react-bo
 import { Link } from 'react-router-dom';
 
 import { Routes } from "../routes";
-import ProfilePicture from "../assets/img/team/profile-picture-3.jpg"; 
+import ProfilePicture from "../assets/img/team/profile-picture-5.jpg"; 
 import LogoLight from "../assets/media/xprs-logo.svg";
 import LogoDark from "../assets/media/xprs-logo-dark.svg";
 import LogoSmallLight from "../assets/media/xprs-logo-with-red-white.svg";
@@ -70,9 +70,9 @@ export default (props = {}) => {
 
   return (
     <>
-      <Navbar expand={false} collapseOnSelect variant="light" className="navbar-theme-white position-sticky top-0 px-4 d-md-none">
+      <Navbar expand={false} collapseOnSelect variant="light" className="navbar-theme-primary position-sticky top-0 px-4 d-md-none">
         <Navbar.Brand className="me-lg-5" as={Link} to={Routes.DashboardOverview.path}>
-          <Image src={LogoDark} className="navbar-brand-light" />
+          <Image src="/__xpr__/pub_engine/business-admin/web/xprs-logo-dark.svg" className="navbar-brand-light" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" onClick={onCollapse}>
           <span className="navbar-toggler-icon" />
@@ -85,24 +85,24 @@ export default (props = {}) => {
             <img src="/__xpr__/pub_engine/business-admin/web/xprs-logo-dark.svg" className="d-inline-block" alt="Expresia" height="1.25rem"/>
           </Navbar.Brand>
           <div className="sidebar-inner">
-            <div className="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center py-3">
+            <div className="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center">
               <div className="d-flex align-items-center ">
                 <div className="user-avatar lg-avatar mx-4">
                   <Image src={ProfilePicture} className="card-img-top rounded-circle border-white" />
                 </div>
                 <div className="d-flex text-dark align-items-center">
-                  <h6 className="m-0">Hi, Jane</h6>
+                  <h6 className="m-0">Hi, Bonnie</h6>
                   <Button as={Link} variant="secondary" size="xs" to={Routes.Signin.path} className="text-dark mx-3">
                     <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Sign Out
                   </Button>
                 </div>
               </div>
-              <Nav.Link className="collapse-close d-md-none text-dark" onClick={onCollapse}>
-                <i class="xpri-close"></i>
+              <Nav.Link className="collapse-close d-md-none text-dark p-0 pe-3" onClick={onCollapse}>
+                <i className="xpri-close"></i>
               </Nav.Link>
             </div>
-            <Nav className="flex-column pt-3 pt-md-0">
-              <NavItem title="Lists" link={Routes.Articles.path} icon={faList} />
+            <Nav className="flex-column">
+              <NavItem title="Lists" link={Routes.List.path} icon={faList} />
               <NavItem title="Users" link={Routes.Users.path} icon={faUsers} />
               <NavItem title="Charts" link={Routes.DashboardOverview.path} icon={faChartPie} />
               <NavItem title="Transactions" icon={faHandHoldingUsd} link={Routes.Transactions.path} />
