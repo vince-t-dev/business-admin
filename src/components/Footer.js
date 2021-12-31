@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Row, Col, Stack, Form, Modal, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Routes } from "../routes";
+import { AllRoutes } from "../routes";
 
 export default (props) => {
   	const showSettings = props.showSettings;

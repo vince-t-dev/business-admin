@@ -7,7 +7,7 @@ import { faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSi
 import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import { Routes } from "../routes";
+import { AllRoutes } from "../routes";
 import ProfilePicture from "../assets/img/team/profile-picture-5.jpg"; 
 import LogoLight from "../assets/media/xprs-logo.svg";
 import LogoDark from "../assets/media/xprs-logo-dark.svg";
@@ -71,7 +71,7 @@ export default (props = {}) => {
   return (
     <>
       <Navbar expand={false} collapseOnSelect variant="light" className="navbar-theme-primary position-sticky top-0 px-4 d-md-none">
-        <Navbar.Brand className="me-lg-5" as={Link} to={Routes.DashboardOverview.path}>
+        <Navbar.Brand className="me-lg-5" as={Link} to={AllRoutes.DashboardOverview.path}>
           <Image src="/__xpr__/pub_engine/business-admin/web/xprs-logo-dark.svg" className="navbar-brand-light" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" onClick={onCollapse}>
@@ -92,7 +92,7 @@ export default (props = {}) => {
                 </div>
                 <div className="d-flex text-dark align-items-center">
                   <h6 className="m-0">Hi, Bonnie</h6>
-                  <Button as={Link} variant="secondary" size="xs" to={Routes.Signin.path} className="text-dark mx-3">
+                  <Button as={Link} variant="secondary" size="xs" to={AllRoutes.Signin.path} className="text-dark mx-3">
                     <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Sign Out
                   </Button>
                 </div>
@@ -102,45 +102,45 @@ export default (props = {}) => {
               </Nav.Link>
             </div>
             <Nav className="flex-column">
-              <NavItem title="Lists" link={Routes.List.path} icon={faList} />
-              <NavItem title="Users" link={Routes.Users.path} icon={faUsers} />
-              <NavItem title="Charts" link={Routes.DashboardOverview.path} icon={faChartPie} />
-              <NavItem title="Transactions" icon={faHandHoldingUsd} link={Routes.Transactions.path} />
-              <NavItem title="Settings" icon={faCog} link={Routes.Settings.path} />
+              <NavItem title="Lists" link={AllRoutes.List.path} icon={faList} />
+              <NavItem title="Users" link={AllRoutes.Users.path} icon={faUsers} />
+              <NavItem title="Charts" link={AllRoutes.DashboardOverview.path} icon={faChartPie} />
+              <NavItem title="Transactions" icon={faHandHoldingUsd} link={AllRoutes.Transactions.path} />
+              <NavItem title="Settings" icon={faCog} link={AllRoutes.Settings.path} />
 
               <CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>
-                <NavItem title="Bootstrap Table" link={Routes.BootstrapTables.path} />
+                <NavItem title="Bootstrap Table" link={AllRoutes.BootstrapTables.path} />
               </CollapsableNavItem>
 
               <CollapsableNavItem eventKey="examples/" title="Page Examples" icon={faFileAlt}>
-                <NavItem title="Sign In" link={Routes.Signin.path} />
-                <NavItem title="Sign Up" link={Routes.Signup.path} />
-                <NavItem title="Forgot password" link={Routes.ForgotPassword.path} />
-                <NavItem title="Reset password" link={Routes.ResetPassword.path} />
-                <NavItem title="Lock" link={Routes.Lock.path} />
-                <NavItem title="404 Not Found" link={Routes.NotFound.path} />
-                <NavItem title="500 Server Error" link={Routes.ServerError.path} />
+                <NavItem title="Sign In" link={AllRoutes.Signin.path} />
+                <NavItem title="Sign Up" link={AllRoutes.Signup.path} />
+                <NavItem title="Forgot password" link={AllRoutes.ForgotPassword.path} />
+                <NavItem title="Reset password" link={AllRoutes.ResetPassword.path} />
+                <NavItem title="Lock" link={AllRoutes.Lock.path} />
+                <NavItem title="404 Not Found" link={AllRoutes.NotFound.path} />
+                <NavItem title="500 Server Error" link={AllRoutes.ServerError.path} />
               </CollapsableNavItem>
 
               {/*<Dropdown.Divider className="my-3 border-indigo" />*/}
 
               <CollapsableNavItem eventKey="components/" title="Components" icon={faBoxOpen}>
-                <NavItem title="Accordion" link={Routes.Accordions.path} />
-                <NavItem title="Alerts" link={Routes.Alerts.path} />
-                <NavItem title="Badges" link={Routes.Badges.path} />
-                <NavItem title="Breadcrumbs" link={Routes.Breadcrumbs.path} />
-                <NavItem title="Buttons" link={Routes.Buttons.path} />
-                <NavItem title="Forms" link={Routes.Forms.path} />
-                <NavItem title="Modals" link={Routes.Modals.path} />
-                <NavItem title="Navbars" link={Routes.Navbars.path} />
-                <NavItem title="Navs" link={Routes.Navs.path} />
-                <NavItem title="Pagination" link={Routes.Pagination.path} />
-                <NavItem title="Popovers" link={Routes.Popovers.path} />
-                <NavItem title="Progress" link={Routes.Progress.path} />
-                <NavItem title="Tables" link={Routes.Tables.path} />
-                <NavItem title="Tabs" link={Routes.Tabs.path} />
-                <NavItem title="Toasts" link={Routes.Toasts.path} />
-                <NavItem title="Tooltips" link={Routes.Tooltips.path} />
+                <NavItem title="Accordion" link={AllRoutes.Accordions.path} />
+                <NavItem title="Alerts" link={AllRoutes.Alerts.path} />
+                <NavItem title="Badges" link={AllRoutes.Badges.path} />
+                <NavItem title="Breadcrumbs" link={AllRoutes.Breadcrumbs.path} />
+                <NavItem title="Buttons" link={AllRoutes.Buttons.path} />
+                <NavItem title="Forms" link={AllRoutes.Forms.path} />
+                <NavItem title="Modals" link={AllRoutes.Modals.path} />
+                <NavItem title="Navbars" link={AllRoutes.Navbars.path} />
+                <NavItem title="Navs" link={AllRoutes.Navs.path} />
+                <NavItem title="Pagination" link={AllRoutes.Pagination.path} />
+                <NavItem title="Popovers" link={AllRoutes.Popovers.path} />
+                <NavItem title="Progress" link={AllRoutes.Progress.path} />
+                <NavItem title="Tables" link={AllRoutes.Tables.path} />
+                <NavItem title="Tabs" link={AllRoutes.Tabs.path} />
+                <NavItem title="Toasts" link={AllRoutes.Toasts.path} />
+                <NavItem title="Tooltips" link={AllRoutes.Tooltips.path} />
               </CollapsableNavItem>
             </Nav>
           </div>

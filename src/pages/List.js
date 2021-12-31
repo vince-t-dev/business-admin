@@ -1,4 +1,5 @@
 import React,{useEffect,useState} from "react";
+import { Link } from "react-router-dom";
 import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Table, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faList } from '@fortawesome/free-solid-svg-icons';
@@ -108,9 +109,9 @@ function List() {
             </div>
 
             <div className="table-settings mb-4">
-                <Row className="justify-content-between">
+                <Row className="align-items-center justify-content-between">
                     <Col sm="auto">
-                        <h1 className="heading-1">Articles</h1>
+                        <h1 className="heading-1 mb-0">Articles</h1>
                     </Col>
                     <Col sm="auto">
                         <div className="btn-toolbar mb-2 mb-md-0">
@@ -170,9 +171,9 @@ function List() {
                                     <td>
                                         <span>
                                             <div className="btn-group">
-                                                <button type="button" className="btn btn-link"><i data-toggle="tooltip" title="Preview" className="xpri-edit"></i></button>
-                                                <a href="/dev/" className="btn btn-link" target="_blank"><i data-toggle="tooltip" title="Preview" className="xpri-preview"></i></a>
-                                                <button type="button" className="btn btn-link"><i data-toggle="tooltip" title="Download" className="xpri-delete"></i></button>
+                                                <Link to={"/list/"+a.Id} state={{item: a}} className="btn btn-link"><i data-toggle="tooltip" title="Edit" className="xpri-edit"></i></Link>
+                                                <a href="" className="btn btn-link" target="_blank"><i data-toggle="tooltip" title="Preview" className="xpri-preview"></i></a>
+                                                <button type="button" className="btn btn-link"><i data-toggle="tooltip" title="Delete" className="xpri-delete"></i></button>
                                             </div>
                                         </span>
                                     </td>

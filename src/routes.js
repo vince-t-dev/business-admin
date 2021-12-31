@@ -1,7 +1,8 @@
 
-export const Routes = {
+export const AllRoutes = {
     // pages
     List: { path: "/" },
+    ListItem: { path: "/list/:id" },
     Users: { path: "/users" },
     DashboardOverview: { path: "/dashboard/overview" },
     Transactions: { path: "/transactions" },

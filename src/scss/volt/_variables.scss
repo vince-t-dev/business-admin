@@ -555,12 +555,12 @@ $line-height-base:            1.5;
 $line-height-sm:              1.25;
 $line-height-lg:              2;
 
-$h1-font-size:                $font-size-base * 2.5;
-$h2-font-size:                $font-size-base * 2;
-$h3-font-size:                $font-size-base * 1.75;
-$h4-font-size:                $font-size-base * 1.5;
-$h5-font-size:                $font-size-base * 1.25;
-$h6-font-size:                $font-size-base;
+$h1-font-size:                1.625rem; // 26px
+$h2-font-size:                1.25rem; // 20px
+$h3-font-size:                1.125rem; // 18px
+$h4-font-size:                1rem; // 16px
+$h5-font-size:                0.875rem; // 14px
+$h6-font-size:                0.75rem; // 12px
 
 $headings-margin-bottom:      $spacer / 2;
 $headings-font-family:        null;

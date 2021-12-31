@@ -5,7 +5,7 @@ import { faAngleDown, faAngleUp, faArrowDown, faArrowUp, faEdit, faEllipsisH, fa
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, Pagination, ButtonGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import { Routes } from "../routes";
+import { AllRoutes } from "../routes";
 import { pageVisits, pageTraffic, pageRanking } from "../data/tables";
 import transactions from "../data/transactions";
 import commands from "../data/commands";
@@ -222,7 +222,7 @@ export const TransactionsTable = () => {
       <tr>
         <td>
           <span>
-          <Card.Link as={Link} to={Routes.Invoice.path} className="fw-normal">
+          <Card.Link as={Link} to={AllRoutes.Invoice.path} className="fw-normal">
             {invoiceNumber}
           </Card.Link>
           </span>

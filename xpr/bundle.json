@@ -7,7 +7,7 @@
         },
         { 
             "name" : "My Business Admin Web",
-            "path" : "web/index.hbs",
+            "path" : "xpr/web/index.hbs",
             "options" : {}
         }  
     ]

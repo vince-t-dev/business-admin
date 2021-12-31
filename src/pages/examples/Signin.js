@@ -6,7 +6,7 @@ import { faFacebookF, faGithub, faTwitter } from "@fortawesome/free-brands-svg-i
 import { Col, Row, Form, Card, Button, FormCheck, Container, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import { Routes } from "../../routes";
+import { AllRoutes } from "../../routes";
 import BgImage from "../../assets/img/illustrations/signin.svg";
 
 
@@ -16,7 +16,7 @@ export default () => {
       <section className="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
         <Container>
           <p className="text-center">
-            <Card.Link as={Link} to={Routes.DashboardOverview.path} className="text-gray-700">
+            <Card.Link as={Link} to={AllRoutes.DashboardOverview.path} className="text-gray-700">
               <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Back to homepage
             </Card.Link>
           </p>
@@ -76,7 +76,7 @@ export default () => {
                 <div className="d-flex justify-content-center align-items-center mt-4">
                   <span className="fw-normal">
                     Not registered?
-                    <Card.Link as={Link} to={Routes.Signup.path} className="fw-bold">
+                    <Card.Link as={Link} to={AllRoutes.Signup.path} className="fw-bold">
                       {` Create account `}
                     </Card.Link>
                   </span>

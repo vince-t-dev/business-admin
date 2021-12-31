@@ -10,7 +10,7 @@ import ResetPasswordImg from "../assets/img/pages/reset-password.jpg";
 import NotFoundImg from "../assets/img/pages/404.jpg";
 import ServerErrorImg from "../assets/img/pages/500.jpg";
 
-import { Routes } from "../routes";
+import { AllRoutes } from "../routes";
 
 
 export default [
@@ -18,60 +18,60 @@ export default [
         "id": 1,
         "name": "Overview",
         "image": OverviewImg,
-        "link": Routes.DashboardOverview.path
+        "link": AllRoutes.DashboardOverview.path
     },
     {
         "id": 2,
         "name": "Transactions",
         "image": TransactionsImg,
-        "link": Routes.Transactions.path
+        "link": AllRoutes.Transactions.path
     },
     {
         "id": 3,
         "name": "Settings",
         "image": SettingsImg,
-        "link": Routes.Settings.path
+        "link": AllRoutes.Settings.path
     },
     {
         "id": 4,
         "name": "Sign In",
         "image": SignInImg,
-        "link": Routes.Signin
+        "link": AllRoutes.Signin
     },
     {
         "id": 5,
         "name": "Sign Up",
         "image": SignUpImg,
-        "link": Routes.Signup.path
+        "link": AllRoutes.Signup.path
     },
     {
         "id": 6,
         "name": "Lock",
         "image": LockImg,
-        "link": Routes.Lock.path
+        "link": AllRoutes.Lock.path
     },
     {
         "id": 7,
         "name": "Forgot password",
         "image": ForgotPasswordImg,
-        "link": Routes.ForgotPassword.path
+        "link": AllRoutes.ForgotPassword.path
     },
     {
         "id": 8,
         "name": "Reset password",
         "image": ResetPasswordImg,
-        "link": Routes.ResetPassword.path
+        "link": AllRoutes.ResetPassword.path
     },
     {
         "id": 9,
         "name": "404",
         "image": NotFoundImg,
-        "link": Routes.NotFound.path
+        "link": AllRoutes.NotFound.path
     },
     {
         "id": 10,
         "name": "500",
         "image": ServerErrorImg,
-        "link": Routes.ServerError.path
+        "link": AllRoutes.ServerError.path
     }
 ];

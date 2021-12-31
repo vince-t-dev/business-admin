@@ -5,7 +5,7 @@ import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { Col, Row, Form, Card, Button, Container, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import { Routes } from "../../routes";
+import { AllRoutes } from "../../routes";
 
 
 export default () => {
@@ -15,7 +15,7 @@ export default () => {
         <Container>
           <Row className="justify-content-center">
             <p className="text-center">
-              <Card.Link as={Link} to={Routes.Signin.path} className="text-gray-700">
+              <Card.Link as={Link} to={AllRoutes.Signin.path} className="text-gray-700">
                 <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Back to sign in
             </Card.Link>
             </p>

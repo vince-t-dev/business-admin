@@ -6,7 +6,7 @@ import { Col, Row, Card, Image, Button, Container } from 'react-bootstrap';
 
 import { Link } from 'react-router-dom';
 
-import { Routes } from "../../routes";
+import { AllRoutes } from "../../routes";
 import NotFoundImage from "../../assets/img/illustrations/404.svg";
 
 
@@ -18,7 +18,7 @@ export default () => {
           <Row>
             <Col xs={12} className="text-center d-flex align-items-center justify-content-center">
               <div>
-                <Card.Link as={Link} to={Routes.DashboardOverview.path}>
+                <Card.Link as={Link} to={AllRoutes.DashboardOverview.path}>
                   <Image src={NotFoundImage} className="img-fluid w-75" />
                 </Card.Link>
                 <h1 className="text-primary mt-5">
@@ -28,7 +28,7 @@ export default () => {
                   Oops! Looks like you followed a bad link. If you think this is a
                   problem with us, please tell us.
             </p>
-                <Button as={Link} variant="primary" className="animate-hover" to={Routes.DashboardOverview.path}>
+                <Button as={Link} variant="primary" className="animate-hover" to={AllRoutes.DashboardOverview.path}>
                   <FontAwesomeIcon icon={faChevronLeft} className="animate-left-3 me-3 ms-2" />
                   Go back home
                 </Button>

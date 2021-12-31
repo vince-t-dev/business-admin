@@ -5,7 +5,7 @@ import { faAngleLeft, faEye, faUnlockAlt } from "@fortawesome/free-solid-svg-ico
 import { Col, Row, Form, Card, Image, Button, Container, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import { Routes } from "../../routes";
+import { AllRoutes } from "../../routes";
 import BgImage from "../../assets/img/illustrations/signin.svg";
 import Profile3 from "../../assets/img/team/profile-picture-3.jpg";
 
@@ -23,7 +23,7 @@ export default () => {
       <section className="vh-lg-100 bg-soft d-flex align-items-center my-4">
         <Container>
           <p className="text-center">
-            <Card.Link as={Link} to={Routes.DashboardOverview.path} className="text-gray-700">
+            <Card.Link as={Link} to={AllRoutes.DashboardOverview.path} className="text-gray-700">
               <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Back to homepage
             </Card.Link>
           </p>
