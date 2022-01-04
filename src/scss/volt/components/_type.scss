@@ -21,6 +21,7 @@ p, ol li, ul li, .p {
 	font-size: $paragraph-font-size;
 	font-weight: $font-weight-normal;
 	line-height: $paragraph-line-height;
+	color: $dark;
 }
 
 a, .text-action {
@@ -61,11 +62,15 @@ a, .text-action {
 	font-weight: $font-weight-bold;
 }
 
-.heading-1 {
+.heading-1,.heading-2 {
 	font-size: $h1-font-size; 
 	font-weight: 600;
     color: $eggplant;
     letter-spacing: 0.031rem;
+}
+
+.heading-2 {
+	font-size: $h2-font-size;
 }
 
 .subheading-1 {

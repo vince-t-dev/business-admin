@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AllRoutes } from "../routes";
 
 // pages
@@ -104,53 +104,54 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
 };
 
 export default () => (
-  <Routes>
-    <Route path={AllRoutes.Signin.path} element={<RouteWithLoader component={Signin}/>}/>
-    <Route path={AllRoutes.Signup.path} element={<RouteWithLoader component={Signup}/>}/>
-    <Route path={AllRoutes.ForgotPassword.path} element={<RouteWithLoader component={ForgotPassword}/>}/>
-    <Route path={AllRoutes.ResetPassword.path} element={<RouteWithLoader component={ResetPassword}/>}/>
-    <Route path={AllRoutes.Lock.path} element={<RouteWithLoader component={Lock}/>}/>
-    <Route path={AllRoutes.NotFound.path} element={<RouteWithLoader component={NotFoundPage}/>}/>
-    <Route path={AllRoutes.ServerError.path} element={<RouteWithLoader component={ServerError}/>}/>
+    <Routes>
+      <Route path={AllRoutes.Signin.path} element={<RouteWithLoader component={Signin}/>}/>
+      <Route path={AllRoutes.Signup.path} element={<RouteWithLoader component={Signup}/>}/>
+      <Route path={AllRoutes.ForgotPassword.path} element={<RouteWithLoader component={ForgotPassword}/>}/>
+      <Route path={AllRoutes.ResetPassword.path} element={<RouteWithLoader component={ResetPassword}/>}/>
+      <Route path={AllRoutes.Lock.path} element={<RouteWithLoader component={Lock}/>}/>
+      <Route path={AllRoutes.NotFound.path} element={<RouteWithLoader component={NotFoundPage}/>}/>
+      <Route path={AllRoutes.ServerError.path} element={<RouteWithLoader component={ServerError}/>}/>
 
-    {/* pages */}
-    <Route path={AllRoutes.List.path} element={<RouteWithSidebar component={List}/>}/>
-    <Route path={AllRoutes.ListItem.path} element={<RouteWithSidebar component={ListItem}/>}/>
-    <Route path={AllRoutes.Users.path} element={<RouteWithSidebar component={Users}/>}/>
-    <Route path={AllRoutes.DashboardOverview.path} element={<RouteWithSidebar component={DashboardOverview}/>}/>
-    <Route path={AllRoutes.Upgrade.path} element={<RouteWithSidebar component={Upgrade}/>}/>
-    <Route path={AllRoutes.Transactions.path} element={<RouteWithSidebar component={Transactions}/>}/>
-    <Route path={AllRoutes.Settings.path} element={<RouteWithSidebar component={Settings}/>}/>
-    <Route path={AllRoutes.BootstrapTables.path} element={<RouteWithSidebar component={BootstrapTables}/>}/>
+      {/* pages */}
+      <Route index element={<RouteWithSidebar component={List}/>} />
+      <Route path={AllRoutes.List.path} element={<RouteWithSidebar component={List}/>}/>
+      <Route path={AllRoutes.ListItem.path} element={<RouteWithSidebar component={ListItem}/>}/>
+      <Route path={AllRoutes.Users.path} element={<RouteWithSidebar component={Users}/>}/>
+      <Route path={AllRoutes.DashboardOverview.path} element={<RouteWithSidebar component={DashboardOverview}/>}/>
+      <Route path={AllRoutes.Upgrade.path} element={<RouteWithSidebar component={Upgrade}/>}/>
+      <Route path={AllRoutes.Transactions.path} element={<RouteWithSidebar component={Transactions}/>}/>
+      <Route path={AllRoutes.Settings.path} element={<RouteWithSidebar component={Settings}/>}/>
+      <Route path={AllRoutes.BootstrapTables.path} element={<RouteWithSidebar component={BootstrapTables}/>}/>
 
-    {/* components */}
-    <Route path={AllRoutes.Accordions.path} element={<RouteWithSidebar component={Accordion}/>}/>
-    <Route path={AllRoutes.Alerts.path} element={<RouteWithSidebar component={Alerts}/>}/>
-    <Route path={AllRoutes.Badges.path} element={<RouteWithSidebar component={Badges}/>}/>
-    <Route path={AllRoutes.Breadcrumbs.path} element={<RouteWithSidebar component={Breadcrumbs}/>}/>
-    <Route path={AllRoutes.Buttons.path} element={<RouteWithSidebar component={Buttons}/>}/>
-    <Route path={AllRoutes.Forms.path} element={<RouteWithSidebar component={Forms}/>}/>
-    <Route path={AllRoutes.Modals.path} element={<RouteWithSidebar component={Modals}/>}/>
-    <Route path={AllRoutes.Navs.path} element={<RouteWithSidebar component={Navs}/>}/>
-    <Route path={AllRoutes.Navbars.path} element={<RouteWithSidebar component={Navbars}/>}/>
-    <Route path={AllRoutes.Pagination.path} element={<RouteWithSidebar component={Pagination}/>}/>
-    <Route path={AllRoutes.Popovers.path} element={<RouteWithSidebar component={Popovers}/>}/>
-    <Route path={AllRoutes.Progress.path} element={<RouteWithSidebar component={Progress}/>}/>
-    <Route path={AllRoutes.Tables.path} element={<RouteWithSidebar component={Tables}/>}/>
-    <Route path={AllRoutes.Tabs.path} element={<RouteWithSidebar component={Tabs}/>}/>
-    <Route path={AllRoutes.Tooltips.path} element={<RouteWithSidebar component={Tooltips}/>}/>
-    <Route path={AllRoutes.Toasts.path} element={<RouteWithSidebar component={Toasts}/>}/>
+      {/* components */}
+      <Route path={AllRoutes.Accordions.path} element={<RouteWithSidebar component={Accordion}/>}/>
+      <Route path={AllRoutes.Alerts.path} element={<RouteWithSidebar component={Alerts}/>}/>
+      <Route path={AllRoutes.Badges.path} element={<RouteWithSidebar component={Badges}/>}/>
+      <Route path={AllRoutes.Breadcrumbs.path} element={<RouteWithSidebar component={Breadcrumbs}/>}/>
+      <Route path={AllRoutes.Buttons.path} element={<RouteWithSidebar component={Buttons}/>}/>
+      <Route path={AllRoutes.Forms.path} element={<RouteWithSidebar component={Forms}/>}/>
+      <Route path={AllRoutes.Modals.path} element={<RouteWithSidebar component={Modals}/>}/>
+      <Route path={AllRoutes.Navs.path} element={<RouteWithSidebar component={Navs}/>}/>
+      <Route path={AllRoutes.Navbars.path} element={<RouteWithSidebar component={Navbars}/>}/>
+      <Route path={AllRoutes.Pagination.path} element={<RouteWithSidebar component={Pagination}/>}/>
+      <Route path={AllRoutes.Popovers.path} element={<RouteWithSidebar component={Popovers}/>}/>
+      <Route path={AllRoutes.Progress.path} element={<RouteWithSidebar component={Progress}/>}/>
+      <Route path={AllRoutes.Tables.path} element={<RouteWithSidebar component={Tables}/>}/>
+      <Route path={AllRoutes.Tabs.path} element={<RouteWithSidebar component={Tabs}/>}/>
+      <Route path={AllRoutes.Tooltips.path} element={<RouteWithSidebar component={Tooltips}/>}/>
+      <Route path={AllRoutes.Toasts.path} element={<RouteWithSidebar component={Toasts}/>}/>
 
-    {/* documentation */}
-    <Route path={AllRoutes.DocsOverview.path} element={<RouteWithSidebar component={DocsOverview}/>}/>
-    <Route path={AllRoutes.DocsDownload.path} element={<RouteWithSidebar component={DocsDownload}/>}/>
-    <Route path={AllRoutes.DocsQuickStart.path} element={<RouteWithSidebar component={DocsQuickStart}/>}/>
-    <Route path={AllRoutes.DocsLicense.path} element={<RouteWithSidebar component={DocsLicense}/>}/>
-    <Route path={AllRoutes.DocsFolderStructure.path} element={<RouteWithSidebar component={DocsFolderStructure}/>}/>
-    <Route path={AllRoutes.DocsBuild.path} element={<RouteWithSidebar component={DocsBuild}/>}/>
-    <Route path={AllRoutes.DocsChangelog.path}element={<RouteWithSidebar component={DocsChangelog} />}/>
+      {/* documentation */}
+      <Route path={AllRoutes.DocsOverview.path} element={<RouteWithSidebar component={DocsOverview}/>}/>
+      <Route path={AllRoutes.DocsDownload.path} element={<RouteWithSidebar component={DocsDownload}/>}/>
+      <Route path={AllRoutes.DocsQuickStart.path} element={<RouteWithSidebar component={DocsQuickStart}/>}/>
+      <Route path={AllRoutes.DocsLicense.path} element={<RouteWithSidebar component={DocsLicense}/>}/>
+      <Route path={AllRoutes.DocsFolderStructure.path} element={<RouteWithSidebar component={DocsFolderStructure}/>}/>
+      <Route path={AllRoutes.DocsBuild.path} element={<RouteWithSidebar component={DocsBuild}/>}/>
+      <Route path={AllRoutes.DocsChangelog.path}element={<RouteWithSidebar component={DocsChangelog} />}/>
 
-    {/*<Redirect to={`AllRoutes.NotFound.path`} />*/}
-    <Route path='*' element={<NotFoundPage />} />
-  </Routes>
+      {/*<Redirect to={`AllRoutes.NotFound.path`} />*/}
+      <Route path='*' element={<NotFoundPage />} />
+    </Routes>
 );

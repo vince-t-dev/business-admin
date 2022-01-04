@@ -1,11 +1,11 @@
 
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes, faCalendarAlt, faMapPin, faInbox, faRocket, faUsers, faList } from "@fortawesome/free-solid-svg-icons";
 import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { AllRoutes } from "../routes";
 import ProfilePicture from "../assets/img/team/profile-picture-5.jpg"; 
@@ -16,6 +16,7 @@ import LogoSmallDark from "../assets/media/xprs-logo-with-red.svg";
 
 export default (props = {}) => {
   const location = useLocation();
+  const params = useParams();
   const { pathname } = location;
   const [show, setShow] = useState(false);
   const showClass = show ? "show" : "";
@@ -48,12 +49,14 @@ export default (props = {}) => {
   const NavItem = (props) => {
     const { title, link, external, target, icon, image, badgeText, badgeBg = "secondary", badgeColor = "primary" } = props;
     const classNames = badgeText ? "d-flex justify-content-start align-items-center justify-content-between" : "";
-    const navItemClassName = link === pathname ? "active" : "";
+    //const navItemClassName = link === pathname ? "active" : "";
+    const setHome = (pathname == "/" && link == "/list");
     const linkProps = external ? { href: link } : { as: Link, to: link };
-
+    
     return (
-      <Nav.Item className={navItemClassName} onClick={() => setShow(false)}>
-        <Nav.Link {...linkProps} target={target} className={classNames}>
+      <Nav.Item onClick={() => setShow(false)}>
+        {/*<Nav.Link {...linkProps} target={target} className={classNames}>*/}
+        <NavLink to={link} className={({ isActive }) => ((isActive || setHome) ? 'nav-link active' : 'nav-link')}>
           <span>
             {icon ? <span className="sidebar-icon"><FontAwesomeIcon icon={icon} /> </span> : null}
             {image ? <Image src={image} width={20} height={20} className="sidebar-icon svg-icon" /> : null}
@@ -63,7 +66,8 @@ export default (props = {}) => {
           {badgeText ? (
             <Badge pill bg={badgeBg} text={badgeColor} className="badge-md notification-count ms-2">{badgeText}</Badge>
           ) : null}
-        </Nav.Link>
+        </NavLink>
+        {/*</Nav.Link>*/}
       </Nav.Item>
     );
   };

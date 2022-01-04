@@ -3,11 +3,34 @@ import { useLocation } from "react-router-dom";
 import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Table, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faList } from '@fortawesome/free-solid-svg-icons';
+//import '../scss/volt/components/_ckeditor.scss';
+
+// ckeditor 5
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+// integrated from online builder
+import InlineEditor from 'ckeditor5-custom-build/build/ckeditor';
+const editorTextConfig = {
+    toolbar: ["bold","italic","underline","undo","redo"]
+};
+const editorRTEConfig = {
+    toolbar: ["bold","italic","underline","link","|","fontSize","alignment","bulletedList","numberedList","blockQuote","|","imageUpload","mediaEmbed","insertTable","undo","redo"],
+    image: {
+        resizeUnit:"px",
+        toolbar: ["imageTextAlternative","imageStyle:alignLeft","imageStyle:full","imageStyle:alignRight"],
+        styles: ["full","alignLeft","alignRight"]
+    },
+    ckfinder: {
+        uploadUrl: "/elementAjax/FEE/File Uploader",
+        options: {
+            resourceType: 'Images'
+        }
+    }
+};
 
 function ListItem(props) {
     const location = useLocation();
     const item = location.state.item;
-console.log('item:',item);
+
     return (
         <>
             <div className="d-lg-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4">
@@ -23,26 +46,62 @@ console.log('item:',item);
                 <Col sm={8}>
                     <Card border="light" className="shadow-sm">
                         <Card.Body>
-                            <Form>
+                            <Form className="form-content-update">
                                 <Row className="justify-content-end align-items-center mb-3">
-                                    <Col sm={12} className="d-flex">
+                                    <Col sm={12}>
                                         <div className="mb-4">
                                             <Row className="justify-content-between">
                                                 <Col sm={8} className="mb-3">
-                                                    <h2 className="heading-1">Details</h2>
+                                                    <h2 className="heading-2">Details</h2>
                                                     <p className="subheading-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-                                                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col sm={12}>
+                                                    <Form.Group className="ck-heading mb-4" controlId="title">
                                                         <Form.Label>Title</Form.Label>
-                                                        <Form.Control type="text" placeholder="Enter title" value={item.Title}/>
+                                                        <CKEditor
+                                                            editor={ InlineEditor }
+                                                            config={ editorTextConfig }
+                                                            data={item.Title}
+                                                            onReady={ editor => {
+                                                                editor.model.schema.extend("paragraph", {isLimit: true});
+                                                            } }
+                                                            onBlur={ ( event, editor ) => {
+                                                                const data = editor.getData();
+                                                                console.log( 'Blur.', data );
+                                                            } }
+                                                        />
                                                     </Form.Group>
-                                                    <Form.Group className="mb-3" controlId="formBasicEmail">
+
+                                                    <Form.Group className="mb-4" controlId="description">
                                                         <Form.Label>Description</Form.Label>
-                                                        <Form.Control type="text" placeholder="Enter title" value={item.Description}/>
+                                                        <CKEditor
+                                                            editor={ InlineEditor }
+                                                            config={ editorRTEConfig }
+                                                            data={item.Description}
+                                                            onReady={ editor => {
+                                                            } }
+                                                            onBlur={ ( event, editor ) => {
+                                                                const data = editor.getData();
+                                                                console.log( 'Blur.', data );
+                                                            } }
+                                                        />
                                                     </Form.Group>
-                                                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                                                        <Form.Label>Body</Form.Label>
-                                                        <Form.Control type="text" placeholder="Enter title" value={item.Body}/>
+
+                                                    <Form.Group className="mb-4" controlId="html">
+                                                        <Form.Label>Html</Form.Label>
+                                                        <CKEditor
+                                                            editor={ InlineEditor }
+                                                            config={ editorRTEConfig }
+                                                            data={item.Html}
+                                                            onReady={ editor => {
+                                                            } }
+                                                            onBlur={ ( event, editor ) => {
+                                                                const data = editor.getData();
+                                                                console.log( 'Blur.', data );
+                                                            } }
+                                                        />
                                                     </Form.Group>
                                                 </Col>
                                             </Row>
@@ -56,6 +115,19 @@ console.log('item:',item);
                 <Col sm={4}>
                     <Card border="light" className="shadow-sm">
                         <Card.Body>
+                            <h2 className="heading-2">SEO</h2>
+                            <Form.Group className="mb-3" controlId="DefaultPageTitle">
+                                <Form.Label>Page Title</Form.Label>
+                                <Form.Control type="text" name="DefaultPageTitle"></Form.Control>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="MetaTagDescription">
+                                <Form.Label>Meta Tag Description</Form.Label>
+                                <Form.Control type="text" name="MetaTagDescription"></Form.Control>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="MetaTagKeywords">
+                                <Form.Label>Keywords</Form.Label>
+                                <Form.Control type="text" name="MetaTagKeywords"></Form.Control>
+                            </Form.Group>
                         </Card.Body>
                     </Card>
                 </Col>

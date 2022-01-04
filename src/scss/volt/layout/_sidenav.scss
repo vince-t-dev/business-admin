@@ -28,34 +28,33 @@
 	}
 
 	.nav-item {
-		&.active {
-			& > .nav-link:before {
+		& > .nav-link.active:before {
+			content: "";
+			width: 0.313rem;
+			height: 100%;
+			background: $cherry;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		.nav-link.active {
+			color: $eggplant;
+			font-weight: 600;
+			position: relative;
+		}
+		.nav-link.active span {
+			color: $eggplant;
+			.sidebar-text:after {
 				content: "";
-				width: 0.313rem;
-				height: 100%;
+				width: 1.375rem;
+				height: 0.063rem;
 				background: $cherry;
 				position: absolute;
-				left: 0;
-				top: 0;
-			}
-			.nav-link {
-				color: $eggplant;
-				font-weight: 600;
-    			position: relative;
-			}
-			.nav-link span {
-				color: $eggplant;
-				.sidebar-text:after {
-					content: "";
-					width: 1.375rem;
-					height: 0.063rem;
-					background: $cherry;
-					position: absolute;
-					bottom: -0.063rem;
-					left: 0.063rem;
-				}
+				bottom: -0.063rem;
+				left: 0.063rem;
 			}
 		}
+
 		.accordion-item .nav-link,.nav-link {
 			position: relative;
 			color: $dark;
@@ -158,10 +157,8 @@
 			.nav-item {
 				position: relative;
 				width: 47px;
-				&.active {
-					& > .nav-link {
-						background-color: $primary;
-					}
+				& > .nav-link.active {
+					background-color: $primary;
 				}
 				.nav-link {
 					&:hover {

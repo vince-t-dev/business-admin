@@ -117,3 +117,27 @@
 .datepicker-dropdown {
     z-index: 9999;
 }
+
+
+//
+// Form Labels
+//
+
+.form-label {
+    font-size: $h6-font-size;
+    font-weight: $font-weight-normal;
+    text-transform: uppercase;
+    letter-spacing: 0.01rem;
+}
+
+
+//
+// Content Update Form
+//
+
+.form-content-update {
+    .form-label {
+        color: $eggplant;
+        margin:.5rem 0rem;
+    }
+}

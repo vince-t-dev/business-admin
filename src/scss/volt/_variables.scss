@@ -37,6 +37,7 @@ $grays: (
 $cherry:  #F15254;
 $eggplant:#3A2557;
 $blue:    #4E83EB;
+$blue-alt:#AFC9E9;
 $indigo:  #4c5680;
 $purple:  #8965e0;
 $pink:    #C96480;
@@ -74,7 +75,7 @@ $colors: (
 $default:       #0b1539;
 $primary:       #4E83EB;
 $secondary:     $eggplant;
-$tertiary:      rgba(78, 131, 235, 0.1);
+$tertiary:      rgba(31, 45, 71, 0.1);
 $quaternary:    $cherry;
 
 // Series names and colors. This can be extended or customized as desired. Just add more series and colors.
