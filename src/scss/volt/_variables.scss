@@ -16,8 +16,8 @@ $gray-600: #afafaf;
 $gray-700: #808080;   
 $gray-800: #7c7c7c;
 $gray-900: #525252;
-$dark    : #515253; 
-$black   : #000000;
+$dark:     #515253; 
+$black:    #000000;
 
 // fusv-disable
 $grays: (
@@ -42,6 +42,7 @@ $indigo:  #4c5680;
 $purple:  #8965e0;
 $pink:    #C96480;
 $red:     #F15254;
+$red-alt: #FF0000;
 $orange:  #FF9F89;
 $brown:   #b9a084;
 $yellow:  #FFAB46;
@@ -75,7 +76,7 @@ $colors: (
 $default:       #0b1539;
 $primary:       #4E83EB;
 $secondary:     $eggplant;
-$tertiary:      rgba(31, 45, 71, 0.1);
+$tertiary:      rgba(78, 131, 235, 0.1);
 $quaternary:    $cherry;
 
 // Series names and colors. This can be extended or customized as desired. Just add more series and colors.
@@ -787,7 +788,7 @@ $input-padding-y:                       $input-btn-padding-y;
 $input-padding-x:                       $input-btn-padding-x;
 $input-font-family:                     $input-btn-font-family;
 $input-font-size:                       $input-btn-font-size;
-$input-font-weight:                     $font-weight-base;
+$input-font-weight:                     $font-weight-normal;
 $input-line-height:                     $input-btn-line-height;
 
 $input-padding-y-sm:                    $input-btn-padding-y-sm;

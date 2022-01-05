@@ -25,7 +25,7 @@
 }
 
 .ck.ck-editor__editable_inline>:last-child {
-    margin-bottom: 0.625rem !important;
+    margin-bottom: 0.875rem !important;
 }
 
 .ck-body-wrapper {
@@ -33,7 +33,8 @@
     .ck.ck-balloon-panel { 
         background: $primary;
         border: 0;
-        box-shadow: none;
+        box-shadow: 0 0.125rem 0.625rem rgb(0 0 0 / 14%);
+        margin-top: -5px;
     }
 
     .ck.ck-toolbar,
@@ -73,7 +74,7 @@
     }
 
     .ck.ck-toolbar .ck.ck-toolbar__separator {
-        background-color: $white;
+        background-color: $blue-alt;
     }
 
     .ck.ck-dropdown__panel,.ck-rounded-corners .ck.ck-editor__editable:not(.ck-editor__nested-editable), 

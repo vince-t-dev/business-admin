@@ -4,7 +4,16 @@
 
 // Wrapper for the tooltip content
 .tooltip-inner {
+    padding: 0.188rem 0.625rem;
+    border-radius: 0;
+    font-size: $h6-font-size;
+    background-color: $black;
     @include box-shadow($box-shadow);
+}
+
+.bs-tooltip-top .tooltip-arrow::before, 
+.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before {
+    border-top-color: $black;
 }
 
 .chartist-tooltip {

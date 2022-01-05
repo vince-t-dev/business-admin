@@ -1,9 +1,8 @@
-import React,{useEffect,useState} from "react";
-import { useLocation } from "react-router-dom";
+import React,{useEffect, useState} from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Table, Badge } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink, faList } from '@fortawesome/free-solid-svg-icons';
-//import '../scss/volt/components/_ckeditor.scss';
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
 // ckeditor 5
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -30,23 +29,34 @@ const editorRTEConfig = {
 function ListItem(props) {
     const location = useLocation();
     const item = location.state.item;
+    
+    // cropper media zoom
+    const [cropper, setCropper] = useState();
+    const zoomMedia = e => {
+        let target = e.target;
+        const min = target.min;
+        const max = target.max;
+        const val = target.value;
+        target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
+        cropper.zoomTo(val);
+    }
 
     return (
         <>
             <div className="d-lg-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4">
                 <div className="mb-4 mb-lg-0">
                     <Breadcrumb className="d-none d-md-inline-block" listProps={{ className: "breadcrumb-dark breadcrumb-transparent" }}>
-                        <Breadcrumb.Item active>Dashboard</Breadcrumb.Item>
-                        <Breadcrumb.Item>Details</Breadcrumb.Item>
+                        <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/list" }}>Dashboard</Breadcrumb.Item>
+                        <Breadcrumb.Item active>Details</Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
             </div>
 
-            <Row>
-                <Col sm={8}>
-                    <Card border="light" className="shadow-sm">
-                        <Card.Body>
-                            <Form className="form-content-update">
+            <Form className="form-content-update">
+                <Row>
+                    <Col sm={8}>
+                        <Card border="light" className="shadow-sm">
+                            <Card.Body>
                                 <Row className="justify-content-end align-items-center mb-3">
                                     <Col sm={12}>
                                         <div className="mb-4">
@@ -89,6 +99,28 @@ function ListItem(props) {
                                                         />
                                                     </Form.Group>
 
+                                                     { item._embedded.Picture && 
+                                                     <Form.Group className="mb-4" controlId="picture">
+                                                        <Form.Label>Picture</Form.Label>
+                                                        <section className="media-wrapper">
+                                                            <Cropper
+                                                                src={item._embedded.Picture.SourcePath}
+                                                                style={{ height: 300, width: "100%" }}
+                                                                initialAspectRatio={16 / 9}
+                                                                guides={false}
+                                                                background={false}
+                                                                dragMode={"crop"}
+                                                                viewMode={2}
+                                                                onInitialized={(instance) => {
+                                                                    setCropper(instance);
+                                                                }}
+                                                            />
+                                                            <footer>
+                                                                <Form.Range defaultValue="0.5" min="0" max="1" step="0.0001" onChange={zoomMedia}/>
+                                                            </footer>
+                                                        </section>
+                                                    </Form.Group>}
+
                                                     <Form.Group className="mb-4" controlId="html">
                                                         <Form.Label>Html</Form.Label>
                                                         <CKEditor
@@ -108,30 +140,34 @@ function ListItem(props) {
                                         </div>
                                     </Col>
                                 </Row>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                <Col sm={4}>
-                    <Card border="light" className="shadow-sm">
-                        <Card.Body>
-                            <h2 className="heading-2">SEO</h2>
-                            <Form.Group className="mb-3" controlId="DefaultPageTitle">
-                                <Form.Label>Page Title</Form.Label>
-                                <Form.Control type="text" name="DefaultPageTitle"></Form.Control>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="MetaTagDescription">
-                                <Form.Label>Meta Tag Description</Form.Label>
-                                <Form.Control type="text" name="MetaTagDescription"></Form.Control>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="MetaTagKeywords">
-                                <Form.Label>Keywords</Form.Label>
-                                <Form.Control type="text" name="MetaTagKeywords"></Form.Control>
-                            </Form.Group>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col sm={4}>
+                        <Card border="light" className="shadow-sm">
+                            <Card.Body>
+                                <h2 className="heading-2">SEO</h2>
+                                <Form.Group className="mb-3" controlId="DefaultPageTitle">
+                                    <Form.Label>Page Title</Form.Label>
+                                    <Form.Control type="text" name="PageTitle" defaultValue={item.PageTitle}></Form.Control>
+                                </Form.Group>
+                                
+                                <Form.Group className="mb-3" controlId="MetaTagKeywords">
+                                    <Form.Label>Keywords</Form.Label>
+                                    <Form.Control type="text" name="MetaTagKeywords" defaultValue={item.MetaTagKeywords}></Form.Control>
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="MetaTagDescription">
+                                    <Form.Label>Meta Tag Description</Form.Label>
+                                    <div className="textarea-form-control">
+                                        <Form.Control as="textarea" name="MetaTagDescription" defaultValue={item.MetaTagDescription}></Form.Control>
+                                    </div>
+                                </Form.Group>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Form>
         </>
     );
 }

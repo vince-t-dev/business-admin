@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
 import { Link } from "react-router-dom";
-import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Table, Badge } from 'react-bootstrap';
+import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Table, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faList } from '@fortawesome/free-solid-svg-icons';
 import Footer from "../components/Footer";
@@ -171,9 +171,15 @@ function List() {
                                     <td>
                                         <span>
                                             <div className="btn-group">
-                                                <Link to={"/list/"+a.Id} state={{item: a}} className="btn btn-link"><i data-toggle="tooltip" title="Edit" className="xpri-edit"></i></Link>
-                                                <a href="" className="btn btn-link" target="_blank"><i data-toggle="tooltip" title="Preview" className="xpri-preview"></i></a>
-                                                <button type="button" className="btn btn-link"><i data-toggle="tooltip" title="Delete" className="xpri-delete"></i></button>
+                                                <OverlayTrigger overlay={<Tooltip>Edit</Tooltip>}>
+                                                    <Link to={"/list/"+a.Id} state={{item: a}} className="btn btn-link"><i data-toggle="tooltip" className="xpri-edit"></i></Link>
+                                                </OverlayTrigger>
+                                                <OverlayTrigger overlay={<Tooltip>Preview</Tooltip>}>
+                                                    <a href="" className="btn btn-link" target="_blank"><i data-toggle="tooltip" className="xpri-preview"></i></a>
+                                                </OverlayTrigger>
+                                                <OverlayTrigger overlay={<Tooltip>Delete</Tooltip>}>
+                                                    <button type="button" className="btn btn-link"><i data-toggle="tooltip" className="xpri-delete"></i></button>
+                                                </OverlayTrigger>
                                             </div>
                                         </span>
                                     </td>
