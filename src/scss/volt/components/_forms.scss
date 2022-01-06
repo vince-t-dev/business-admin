@@ -288,10 +288,7 @@ input[type=range]::-ms-track {
         overflow: hidden;
         footer {
             background: $white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 0;
+            padding: 1rem;
         }
     }
 }

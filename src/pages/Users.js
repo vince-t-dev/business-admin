@@ -150,9 +150,25 @@ function Users() {
                         ))}
 
                         { error && <div>Fetching users error: {error.message}</div> }
-                        { !isLoaded && <tr><td colSpan="4"><div className="text-center my-3">Loading...</div></td></tr> }
                         { !users.length && isLoaded && <tr><td colSpan="4"><div className="text-center my-3">No result found.</div></td></tr> }
                         </tbody>
+
+                        {!isLoaded &&
+                                <tbody>
+                                    <tr>
+                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                                    </tr>
+                                </tbody> 
+                            }
                     </Table>
                 </Card.Body>
             </Card>

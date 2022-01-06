@@ -70,6 +70,13 @@
     &:active:focus {
         box-shadow: none;
     }
+    &.icon {
+        width: 2rem;
+        height: 2rem;
+        i {
+            font-size: 1rem;
+        }
+    }
 }
 
 

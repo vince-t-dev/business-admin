@@ -186,9 +186,28 @@ function List() {
                                 </tr>
                             ))}   
                             { error && <div>Fetching list error: {error.message}</div> }
-                            { !isLoaded && <tr><td colSpan="6"><div className="text-center my-3">Loading...</div></td></tr> }
                             { !items.length && isLoaded && <tr><td colSpan="6"><div className="text-center my-3">No result found.</div></td></tr> }
                             </tbody>
+                            {/* loader */}
+                            { !isLoaded &&
+                                <tbody>
+                                    <tr>
+                                        <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div><div className="empty"></div></span></td>
+                                        <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span><div className="empty"></div></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div><div className="empty"></div></span></td>
+                                        <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span><div className="empty"></div></span></td>
+                                    </tr> 
+                                    <tr>
+                                        <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div><div className="empty"></div></span></td>
+                                        <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span><div className="empty"></div></span></td>
+                                    </tr> 
+                                </tbody> 
+                            }
                         </Table>
                     </Form>
            

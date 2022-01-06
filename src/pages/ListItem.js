@@ -116,7 +116,11 @@ function ListItem(props) {
                                                                 }}
                                                             />
                                                             <footer>
-                                                                <Form.Range defaultValue="0.5" min="0" max="1" step="0.0001" onChange={zoomMedia}/>
+                                                                <Row className="align-items-center justify-content-between">
+                                                                    <Col></Col>
+                                                                    <Col xs={6} className="text-center"><Form.Range defaultValue="0.5" min="0" max="1" step="0.0001" onChange={zoomMedia}/></Col>
+                                                                    <Col className="text-end"><Button variant="primary" type="button" className="icon"><i className="xpri-image"></i></Button></Col>
+                                                                </Row>
                                                             </footer>
                                                         </section>
                                                     </Form.Group>}
