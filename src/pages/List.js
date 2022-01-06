@@ -185,7 +185,7 @@ function List() {
                                     </td>
                                 </tr>
                             ))}   
-                            { error && <div>Fetching users error: {error.message}</div> }
+                            { error && <div>Fetching list error: {error.message}</div> }
                             { !isLoaded && <tr><td colSpan="6"><div className="text-center my-3">Loading...</div></td></tr> }
                             { !items.length && isLoaded && <tr><td colSpan="6"><div className="text-center my-3">No result found.</div></td></tr> }
                             </tbody>

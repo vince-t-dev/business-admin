@@ -26,7 +26,7 @@ npm run build
 
 *Temporary workaround until XPR supports files with chunks* - rename css/js/svg, remove all dots in filename.
 
-6. Go to XPR `GIT Bundles` and hit `Clone` on your bundle. That's it!
+6. Navigate to XPR `GIT Bundles` and hit `Clone` on your bundle. That's it!
 
 ## Documentation
 
