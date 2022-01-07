@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/__xpr__/pub_engine/business-admin/web/static/css/main.b96d1a9a.chunk.css",
-    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.12e3d50a.chunk.js",
-    "main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.12e3d50a.chunk.js.map",
+    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.21259408.chunk.js",
+    "main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.21259408.chunk.js.map",
     "runtime-main.js": "/__xpr__/pub_engine/business-admin/web/static/js/runtime-main.e70decfa.js",
     "runtime-main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/runtime-main.e70decfa.js.map",
     "static/css/2.c91538ac.chunk.css": "/__xpr__/pub_engine/business-admin/web/static/css/2.c91538ac.chunk.css",
@@ -12,7 +12,7 @@
     "static/css/2.c91538ac.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/2.c91538ac.chunk.css.map",
     "static/css/main.b96d1a9a.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/main.b96d1a9a.chunk.css.map",
     "static/js/2.8b127d9f.chunk.js.LICENSE.txt": "/__xpr__/pub_engine/business-admin/web/static/js/2.8b127d9f.chunk.js.LICENSE.txt",
-    "static/js/main.12e3d50a.chunk.js.LICENSE.txt": "/__xpr__/pub_engine/business-admin/web/static/js/main.12e3d50a.chunk.js.LICENSE.txt",
+    "static/js/main.21259408.chunk.js.LICENSE.txt": "/__xpr__/pub_engine/business-admin/web/static/js/main.21259408.chunk.js.LICENSE.txt",
     "static/media/404.59d1f9fd.svg": "/__xpr__/pub_engine/business-admin/web/static/media/404.59d1f9fd.svg",
     "static/media/500.d508258f.svg": "/__xpr__/pub_engine/business-admin/web/static/media/500.d508258f.svg",
     "static/media/volt.scss": "/__xpr__/pub_engine/business-admin/web/static/media/dinnextltpro-regular.070e0f7a.otf",
@@ -44,6 +44,6 @@
     "static/css/2.c91538ac.chunk.css",
     "static/js/2.8b127d9f.chunk.js",
     "static/css/main.b96d1a9a.chunk.css",
-    "static/js/main.12e3d50a.chunk.js"
+    "static/js/main.21259408.chunk.js"
   ]
 }
