@@ -84,7 +84,7 @@ export default (props = {}) => {
       </Navbar>
       <CSSTransition timeout={300} in={show} classNames="sidebar-transition">
         <Navbar className={`collapse ${showClass} sidebar d-md-block bg-white text-white`}>
-          <Navbar.Brand sticky="top" href="/dev/" className="d-none d-sm-flex w-100 align-items-center justify-content-center">
+          <Navbar.Brand sticky="top" href="/my-business/" className="d-none d-sm-flex w-100 align-items-center justify-content-center">
             {/* TODO: update path when svg is fixed */}
             <img src="/__xpr__/pub_engine/business-admin/web/xprs-logo-dark.svg" className="d-inline-block" alt="Expresia" height="1.25rem"/>
           </Navbar.Brand>

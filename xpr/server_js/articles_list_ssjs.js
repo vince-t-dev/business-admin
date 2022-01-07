@@ -9,7 +9,7 @@ exports.process = function(context, options) {
         "_noUnhydrated"                     : 1,
         "with"                              : "Picture,Categories,CustomFields,Language",
         "related_Language_Id__eq"           : request.language.Id,
-        // expresia /dev/ section
+        // expresia /my-business/ section
         "SectionId__in"                     : 6103,
         "order_fields"                      : "SortOrder",
         "order_dirs"                        : "ASC",
