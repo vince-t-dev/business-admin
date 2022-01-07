@@ -49,8 +49,9 @@ export default (props = {}) => {
   const NavItem = (props) => {
     const { title, link, external, target, icon, image, badgeText, badgeBg = "secondary", badgeColor = "primary" } = props;
     const classNames = badgeText ? "d-flex justify-content-start align-items-center justify-content-between" : "";
-    //const navItemClassName = link === pathname ? "active" : "";
-    const setHome = (pathname == "/" && link == "/list");
+    
+    // set active state for home page
+    const setHome = (pathname == "/" && link == "/my-business/list");
     const linkProps = external ? { href: link } : { as: Link, to: link };
     
     return (
