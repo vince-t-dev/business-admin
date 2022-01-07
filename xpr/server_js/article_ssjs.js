@@ -14,7 +14,7 @@ exports.process = function(context, options) {
     if (request.urlParams.page) article_params.page = request.urlParams.page;
     let article = api({
         method: "GET",
-        uri : "/articles/"+request.urlParams.secondary,
+        uri : "/articles/"+request.urlParams.id,
         params : article_params
     });
 

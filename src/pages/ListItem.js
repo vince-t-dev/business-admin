@@ -1,6 +1,6 @@
-import React,{useEffect, useState} from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, CardGroup, Table, Badge } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate, useMatch } from "react-router-dom";
+import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, CardGroup, Table } from 'react-bootstrap';
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 
@@ -29,9 +29,35 @@ const editorRTEConfig = {
 
 function ListItem(props) {
     const location = useLocation();
+    const match = useMatch("/my-business/list/:id");
     const navigate = useNavigate();
-console.log('location',location) 
-    const item = location.state.item;
+    //const [error, setError] = useState(null);
+    //const [isLoaded, setIsLoaded] = useState(false);
+    //const [item, setItem] = useState({_embedded:{},CustomFields:{}});
+    var item = location.state ? location.state.item : {_embedded:{},CustomFields:{}};
+   
+    if (location.state) {
+        //setItem(location.state.item);
+    } else {
+        // fetch results when query changes
+        //useEffect(() => {
+            //setIsLoaded(false);
+            fetch(`/__xpr__/pub_engine/business-admin/element/article_json?id=`+match.params.id)
+                .then(res => res.json())
+                .then(
+                (result) => {
+                   console.log(result); 
+                    //setIsLoaded(true);
+                    //setItem(result);
+                    item = result;
+                },
+                (error) => {
+                    //setIsLoaded(true);
+                    //setError(error);
+                }
+            )
+        //},[]);
+    }
     
     // cropper media zoom
     const [cropper, setCropper] = useState();
@@ -43,7 +69,8 @@ console.log('location',location)
         target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
         cropper.zoomTo(val);
     }
-
+    console.log('item',item);
+    console.log('props',props); 
     return (
         <>
             <div className="d-lg-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4">
