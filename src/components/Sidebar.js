@@ -51,7 +51,7 @@ export default (props = {}) => {
     const classNames = badgeText ? "d-flex justify-content-start align-items-center justify-content-between" : "";
     
     // set active state for home page
-    const setHome = (pathname == "/" && link == "/my-business/list");
+    const setHome = ((pathname == "/" || pathname == "/my-business/") && link == "/my-business/list");
     const linkProps = external ? { href: link } : { as: Link, to: link };
     
     return (

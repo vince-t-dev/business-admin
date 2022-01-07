@@ -24,9 +24,9 @@ npm run build
 
 5. Put files in build folder to `/xpr/web/` folder.
 
-*Temporary workaround until XPR supports files with chunks* - rename css/js/svg, remove all dots in filename.
+6. *Temporary workaround until XPR supports files with hash* - Rename css/js/svg, remove all dots in filename and update index.hbs file.
 
-6. Navigate to XPR `GIT Bundles` and hit `Clone` on your bundle. That's it!
+7. Navigate to XPR `GIT Bundles` and hit `Clone` on your bundle. That's it!
 
 ## Documentation
 
