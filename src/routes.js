@@ -1,6 +1,7 @@
 
 export const AllRoutes = {
     // pages
+    Home: { path: "/my-business/" },
     List: { path: "/my-business/list" },
     ListItem: { path: "/my-business/list/:id" },
     Users: { path: "/my-business/users" },
