@@ -7,9 +7,9 @@ exports.process = function(context, options) {
     
     let articles_params = {
         "_noUnhydrated"                     : 1,
-        "with"                              : "Picture,Categories,Language",
+        "with"                              : "Picture,Categories,CustomFields,Language",
         "related_Language_Id__eq"           : request.language.Id,
-        // expresia /dev/
+        // expresia /dev/ section
         "SectionId__in"                     : 6103,
         "order_fields"                      : "SortOrder",
         "order_dirs"                        : "ASC",

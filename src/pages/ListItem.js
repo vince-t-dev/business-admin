@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Table, Badge } from 'react-bootstrap';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, CardGroup, Table, Badge } from 'react-bootstrap';
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 
@@ -8,6 +8,7 @@ import "cropperjs/dist/cropper.css";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 // integrated from online builder
 import InlineEditor from 'ckeditor5-custom-build/build/ckeditor';
+import { faRemoveFormat } from "@fortawesome/free-solid-svg-icons";
 const editorTextConfig = {
     toolbar: ["bold","italic","underline","undo","redo"]
 };
@@ -28,6 +29,8 @@ const editorRTEConfig = {
 
 function ListItem(props) {
     const location = useLocation();
+    const navigate = useNavigate();
+console.log('location',location) 
     const item = location.state.item;
     
     // cropper media zoom
@@ -46,7 +49,7 @@ function ListItem(props) {
             <div className="d-lg-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4">
                 <div className="mb-4 mb-lg-0">
                     <Breadcrumb className="d-none d-md-inline-block" listProps={{ className: "breadcrumb-dark breadcrumb-transparent" }}>
-                        <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/list" }}>Dashboard</Breadcrumb.Item>
+                        <Breadcrumb.Item onClick={() => navigate(-1)}>Dashboard</Breadcrumb.Item>
                         <Breadcrumb.Item active>Details</Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
@@ -102,7 +105,7 @@ function ListItem(props) {
                                                      { item._embedded.Picture && 
                                                      <Form.Group className="mb-4" controlId="picture">
                                                         <Form.Label>Picture</Form.Label>
-                                                        <section className="media-wrapper">
+                                                        <Card className="media-wrapper">
                                                             <Cropper
                                                                 src={item._embedded.Picture.SourcePath}
                                                                 style={{ height: 300, width: "100%" }}
@@ -115,14 +118,14 @@ function ListItem(props) {
                                                                     setCropper(instance);
                                                                 }}
                                                             />
-                                                            <footer>
+                                                            <Card.Footer>
                                                                 <Row className="align-items-center justify-content-between">
                                                                     <Col></Col>
                                                                     <Col xs={6} className="text-center"><Form.Range defaultValue="0.5" min="0" max="1" step="0.0001" onChange={zoomMedia}/></Col>
                                                                     <Col className="text-end"><Button variant="primary" type="button" className="icon"><i className="xpri-image"></i></Button></Col>
                                                                 </Row>
-                                                            </footer>
-                                                        </section>
+                                                            </Card.Footer>
+                                                        </Card>
                                                     </Form.Group>}
 
                                                     <Form.Group className="mb-4" controlId="html">
@@ -139,6 +142,22 @@ function ListItem(props) {
                                                             } }
                                                         />
                                                     </Form.Group>
+                                                 
+                                                    <h2 className="heading-2">Courses</h2>
+                                                    <CardGroup>
+                                                        <Card border="primary">
+                                                            <Card.Body>
+                                                                <Form.Group className="mb-3" controlId="DefaultPageTitle">
+                                                                    <Form.Label>Title</Form.Label>
+                                                                    <Form.Control type="text" name="PageTitle" defaultValue="Course title 1"></Form.Control>
+                                                                </Form.Group>
+                                                                <Form.Group className="mb-3" controlId="DefaultPageTitle">
+                                                                    <Form.Label>Description</Form.Label>
+                                                                    <Form.Control type="text" name="PageTitle" defaultValue="BC Mussels, Tomato Coconut Cream, smoked Chili & Lime"></Form.Control>
+                                                                </Form.Group>
+                                                            </Card.Body>        
+                                                        </Card>
+                                                    </CardGroup>      
                                                 </Col>
                                             </Row>
                                         </div>

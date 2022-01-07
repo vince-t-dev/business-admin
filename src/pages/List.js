@@ -172,7 +172,7 @@ function List() {
                                         <span>
                                             <div className="btn-group">
                                                 <OverlayTrigger overlay={<Tooltip>Edit</Tooltip>}>
-                                                    <Link to={"/list/"+a.Id} state={{item: a}} className="btn btn-link"><i data-toggle="tooltip" className="xpri-edit"></i></Link>
+                                                    <Link to={"/dev/list/"+a.Id} state={{item: a}} className="btn btn-link"><i data-toggle="tooltip" className="xpri-edit"></i></Link>
                                                 </OverlayTrigger>
                                                 <OverlayTrigger overlay={<Tooltip>Preview</Tooltip>}>
                                                     <a href="" className="btn btn-link" target="_blank"><i data-toggle="tooltip" className="xpri-preview"></i></a>
@@ -210,8 +210,6 @@ function List() {
                             }
                         </Table>
                     </Form>
-           
-                    
                 </Card.Body>
             </Card>
             <Footer selectedItems={selectedItems}/>
