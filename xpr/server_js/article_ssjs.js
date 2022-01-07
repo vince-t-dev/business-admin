@@ -1,5 +1,6 @@
 // this returns all xprobjects
 const xpr_objects = require("/xpr/request");
+const utilities = require("/xpr/utilities");
 
 exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
@@ -12,7 +13,7 @@ exports.process = function(context, options) {
     }
     if (request.urlParams.q) article_params.q_Title_Description_Html = request.urlParams.q;
     if (request.urlParams.page) article_params.page = request.urlParams.page;
-XprConsole.log('id:',request.urlParams.id); 
+utilities.XprConsole.log('id:',request.urlParams.id); 
     let article = api({
         method: "GET",
         uri : "/articles/"+request.urlParams.id,
