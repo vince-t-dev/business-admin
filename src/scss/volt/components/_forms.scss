@@ -82,9 +82,11 @@
 
 .form-select {
     color: $dark;
+    font-size: $h5-font-size;
     background-position: right 0.4rem center;
     padding-right: 1.8rem;
-    border-color: $tertiary;
+    border-color: $gray-alt;
+    box-shadow: none;
     &:focus,&:active {
         box-shadow: none;
     }
@@ -154,6 +156,27 @@ input[type=range] {
     }
     &:focus {
         outline:none;
+    }
+}
+
+
+//
+// Tags
+// 
+
+.tags {
+    .form-control-plaintext {
+        padding: 0;
+        outline: none;
+    }
+    .btn {
+        margin-right: .5rem;
+        margin-bottom: .5rem;
+        &:hover {
+            .form-control-plaintext {
+                color: $white;
+            }
+        }
     }
 }
   
@@ -272,7 +295,7 @@ input[type=range]::-ms-track {
         opacity: 0;
     }
     .cropper-modal {
-        background-color: $gray-600;
+        background-color: $gray-alt;
         opacity: 0.7;
     }
 
@@ -289,6 +312,31 @@ input[type=range]::-ms-track {
         .card-footer {
             background: $white;
             padding: 1rem;
+        }
+    }
+
+    // card
+    .card-group {
+        display: block;
+        .card {
+            border-radius: 0;
+            border: 1px solid $gray-300;
+            + .card { 
+                margin-top: 0.625rem;
+            }
+            .btn-cherry {
+                width: 1.5rem;
+                height: 1.5rem;
+                line-height: 1;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                border: 0;
+                border-radius: 0;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
         }
     }
 }

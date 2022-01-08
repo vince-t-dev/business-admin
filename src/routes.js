@@ -3,7 +3,7 @@ export const AllRoutes = {
     // pages
     Home: { path: "/my-business/" },
     List: { path: "/my-business/list" },
-    ListItem: { path: "/my-business/list/:id" },
+    ListItem: { path: "/my-business/list/edit/:id" },
     Users: { path: "/my-business/users" },
     DashboardOverview: { path: "/my-business/dashboard/overview" },
     Transactions: { path: "/my-business/transactions" },

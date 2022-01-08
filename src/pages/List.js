@@ -115,7 +115,7 @@ function List() {
                     </Col>
                     <Col sm="auto">
                         <div className="btn-toolbar mb-2 mb-md-0">
-                            <Button variant="primary" size="sm">
+                            <Button as={Link} variant="primary" size="sm" to={"/my-business/list/edit/new"} state={{item: {}}}>
                                 <i className="xpri-plus pe-1"></i> New Article
                             </Button>
                         </div>
@@ -172,7 +172,7 @@ function List() {
                                         <span>
                                             <div className="btn-group">
                                                 <OverlayTrigger overlay={<Tooltip>Edit</Tooltip>}>
-                                                    <Link to={"/my-business/list/"+a.Id} state={{item: a}} className="btn btn-link"><i data-toggle="tooltip" className="xpri-edit"></i></Link>
+                                                    <Link to={"/my-business/list/edit/"+a.Id} state={{item: a}} className="btn btn-link"><i data-toggle="tooltip" className="xpri-edit"></i></Link>
                                                 </OverlayTrigger>
                                                 <OverlayTrigger overlay={<Tooltip>Preview</Tooltip>}>
                                                     <a href="" className="btn btn-link" target="_blank"><i data-toggle="tooltip" className="xpri-preview"></i></a>
@@ -194,17 +194,17 @@ function List() {
                                     <tr>
                                         <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div><div className="empty"></div></span></td>
                                         <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
-                                        <td><span><div className="empty"></div></span></td>
+                                        <td><span></span></td>
                                     </tr>
                                     <tr>
                                         <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div><div className="empty"></div></span></td>
                                         <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
-                                        <td><span><div className="empty"></div></span></td>
+                                        <td><span></span></td>
                                     </tr> 
                                     <tr>
                                         <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div><div className="empty"></div></span></td>
                                         <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
-                                        <td><span><div className="empty"></div></span></td>
+                                        <td><span></span></td>
                                     </tr> 
                                 </tbody> 
                             }

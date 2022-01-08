@@ -52,7 +52,7 @@
     justify-content: center;
     background: $primary;
     border-radius: 1.719rem;
-    width: 9.375rem;
+    width: 8.75rem;
     height: 2.5rem;
     font-weight: 600;
     font-size: 0.875rem;
@@ -149,9 +149,25 @@
 //
 
 .btn-outline-primary {
-    color:$dark;
-    border-color:$dark;
+    &.icon {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 1rem;
+    }
 }
+// outline dark
+.btn-outline-dark {
+    font-weight: $font-weight-normal;
+    font-size: $h5-font-size;
+    border-color: $gray-600;
+    display: inline-flex;
+    align-items: center;
+    i { 
+        font-size: $h3-font-size;
+        margin-left: .5rem;
+    }
+}
+
 
 //
 // Button group

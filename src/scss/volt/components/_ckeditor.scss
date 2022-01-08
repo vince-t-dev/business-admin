@@ -68,7 +68,9 @@
     }
 
     .ck.ck-button.ck-on, 
-    a.ck.ck-button.ck-on {
+    a.ck.ck-button.ck-on,
+    .ck.ck-button.ck-on:not(.ck-disabled):active, 
+    a.ck.ck-button.ck-on:not(.ck-disabled):active {
         background: transparent;
         color: $white;
     }

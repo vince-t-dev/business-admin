@@ -13,10 +13,6 @@
 
 // * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
 
-// Fonts
-@import url('../../src/assets/fonts/dinnext');
-@import url('../../src/assets/fonts/xpricons');
-
 
 // Bootstrap mixins and functions
 @import "../../node_modules/bootstrap/scss/mixins";
@@ -48,5 +44,6 @@
 // Components
 @import "volt/components";
 
-// write your custom styles here!
-
+// Fonts 
+@import "../../src/assets/fonts/dinnext";
+@import "../../src/assets/fonts/xpricons";
