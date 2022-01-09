@@ -1,38 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useMatch } from "react-router-dom";
 import { Breadcrumb, Button, Row, Col, Form, Card, CardGroup } from "react-bootstrap";
+import TextEditor from "./components/TextEditor";
 import ImageEditor from "./components/ImageEditor";
-
-// ckeditor 5
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-// integrated from online builder
-import InlineEditor from 'ckeditor5-custom-build/build/ckeditor';
-
 
 function ListItem(props) {
     const location = useLocation();
     const match = useMatch("/my-business/list/edit/:id");
 
-    // ckeditor config
-    const editorTextConfig = { toolbar: ["bold","italic","underline","undo","redo"] };
-    const editorRTEConfig = {
-        toolbar: ["bold","italic","underline","link","|","fontSize","alignment","bulletedList","numberedList","blockQuote","|","imageUpload","mediaEmbed","insertTable","undo","redo"],
-        image: {
-            resizeUnit:"px",
-            toolbar: ["imageTextAlternative","imageStyle:alignLeft","imageStyle:full","imageStyle:alignRight"],
-            styles: ["full","alignLeft","alignRight"]
-        },
-        ckfinder: {
-            uploadUrl: "/__xpr__/pub_engine/business-admin/element/file_uploader",
-            options: {
-                resourceType: 'Images'
-            }
-        }
-    };
-
     // fetch data from location or api
     const [error, setError] = useState(null);
     const [item, setItem] = useState(null);
+    const [jsonData, setJsonData] = useState({});
     useEffect(() => {
         if (location.state) {
             let data = location.state.item;
@@ -61,7 +40,7 @@ function ListItem(props) {
         newCardValues.splice(i, 1);
         setCardValues(newCardValues);
     }
-    let handleCardChange= (i,e) => {
+    let handleCardChange = (i,e) => {
         let newCardValues = [...cardValues];
         newCardValues[i][e.target.name] = e.target.value;
         setCardValues(newCardValues);
@@ -77,11 +56,47 @@ function ListItem(props) {
         newTags.splice(i, 1);
         setTags(newTags);
     }
-    let handleTagChange= (i,e) => {
+    let handleTagChange = (i,e) => {
         let newTags = [...tags];
         newTags[i][e.target.name] = e.target.value;
         setTags(newTags);
     }
+
+    // update nested object
+    const updateObject = (object, path, value) => {
+        let schema = object;  
+        let p_list = path.split(".");
+        let len = p_list.length;
+        for(let i = 0; i < len-1; i++) {
+            let elem = p_list[i];
+            if( !schema[elem] ) schema[elem] = {}
+            schema = schema[elem];
+        }
+        schema[p_list[len-1]] = value;
+        return schema;
+    }
+
+    // update data object
+    const updateData = (name,value) => { 
+        let data = updateObject(jsonData, name, value);
+        setJsonData(data);
+    }
+
+    // upload image
+    function base64ToBlob(base64, mime) {
+        mime = mime || "";
+        var sliceSize = 1024;
+        var byteChars = window.atob(base64);
+        var byteArrays = [];
+        for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) { var slice = byteChars.slice(offset, offset + sliceSize);var byteNumbers = new Array(slice.length);for (var i = 0; i < slice.length; i++) { byteNumbers[i] = slice.charCodeAt(i); }var byteArray = new Uint8Array(byteNumbers);byteArrays.push(byteArray); }
+        return new Blob(byteArrays, {type: mime});
+    }
+
+    // TODO: submit form
+    const submit = e => {
+        e.preventDefault();
+        console.log('jsonData',jsonData);
+    };
 
     return (
         <>
@@ -95,7 +110,7 @@ function ListItem(props) {
             </div>
 
             {item && 
-            <Form className="form-content-update">
+            <Form className="form-content-update" onSubmit={submit}>
                 <Row className="mb-5">
                     <Col sm={8}>
                         <Card border="light" className="shadow-sm">
@@ -114,51 +129,23 @@ function ListItem(props) {
                                                     {/* ck editor */}
                                                     <Form.Group className="ck-heading mb-4" controlId="title">
                                                         <Form.Label>Title</Form.Label>
-                                                        <CKEditor
-                                                            editor={ InlineEditor }
-                                                            config={ editorTextConfig }
-                                                            data={item.Title}
-                                                            onReady={ editor => {
-                                                                editor.model.schema.extend("paragraph", {isLimit: true});
-                                                            } }
-                                                            onBlur={ ( event, editor ) => {
-                                                                const data = editor.getData();
-                                                            } }
-                                                        />
+                                                        <TextEditor name="Title" data={item.Title} updateData={updateData}/>
                                                     </Form.Group>
 
                                                     <Form.Group className="mb-4" controlId="description">
                                                         <Form.Label>Description</Form.Label>
-                                                        <CKEditor
-                                                            editor={ InlineEditor }
-                                                            config={ editorRTEConfig }
-                                                            data={item.Description}
-                                                            onReady={ editor => {
-                                                            } }
-                                                            onBlur={ ( event, editor ) => {
-                                                                const data = editor.getData();
-                                                            } }
-                                                        />
+                                                        <TextEditor name="Description" data={item.Description} rte={true} updateData={updateData}/>
                                                     </Form.Group>
                                                     
                                                     {/* image editor */}
                                                     <Form.Group className="mb-4">
                                                         <Form.Label>Picture</Form.Label>
-                                                        <ImageEditor src={item._embedded && item._embedded.Picture ? item._embedded.Picture.SourcePath : null}/>
+                                                        <ImageEditor name="_embedded.Picture" data={item._embedded && item._embedded.Picture ? item._embedded.Picture.SourcePath : null} updateData={updateData}/>
                                                     </Form.Group>
 
                                                     <Form.Group className="mb-4" controlId="html">
                                                         <Form.Label>Html</Form.Label>
-                                                        <CKEditor
-                                                            editor={ InlineEditor }
-                                                            config={ editorRTEConfig }
-                                                            data={item.Html}
-                                                            onReady={ editor => {
-                                                            } }
-                                                            onBlur={ ( event, editor ) => {
-                                                                const data = editor.getData();
-                                                            } }
-                                                        />
+                                                        <TextEditor name="Html" data={item.Html} rte={true} updateData={updateData}/>
                                                     </Form.Group>
                                                  
                                                     {/* content card group */}
@@ -168,7 +155,7 @@ function ListItem(props) {
                                                             {cardValues.map((card, index) => (
                                                             <Card key={index}>
                                                                 <Card.Body>
-                                                                    {index ? <Button variant="cherry" onClick={removeCardFields}><i className="xpri-trash"></i></Button> : null}
+                                                                    {index ? <Button variant="cherry" onClick={e => removeCardFields(index,e)}><i className="xpri-trash"></i></Button> : null}
                                                                     <Form.Group className="mb-3" controlId="title">
                                                                         <Form.Label>Title</Form.Label>
                                                                         <Form.Control type="text" name="title" value={card.title} onChange={e => handleCardChange(index,e)} placeholder="Course title" className="fw-bold text-eggplant"></Form.Control>
@@ -193,7 +180,7 @@ function ListItem(props) {
                                                             {tags.map((el,index) => (
                                                             <Button variant="outline-dark" key={index}>
                                                                 <Form.Control type="text" plaintext htmlSize={el.name.length < 11 ? 11 : el.name.length} name="name" value={el.name} onChange={e => handleTagChange(index,e)} placeholder="Add New Tag"></Form.Control>
-                                                                <i className="xpri-delete" onClick={removeTags}></i>
+                                                                <i className="xpri-delete" onClick={e => removeTags(index,e)}></i>
                                                             </Button>
                                                             ))}
                                                         </section>
@@ -201,7 +188,7 @@ function ListItem(props) {
                                                     </Form.Group>
 
                                                     <fieldset className="d-flex justify-content-end">
-                                                        <Button variant="primary" className="shadow">Submit</Button>
+                                                        <Button type="submit" variant="primary" className="shadow">Submit</Button>
                                                     </fieldset>
                                                 </Col>
                                             </Row>
@@ -217,7 +204,7 @@ function ListItem(props) {
                                 <h2 className="heading-2">SEO</h2>
                                 <Form.Group className="mb-3" controlId="DefaultPageTitle">
                                     <Form.Label>Page Title</Form.Label>
-                                    <Form.Control type="text" name="PageTitle" defaultValue={item.PageTitle} placeholder="Enter Page Title"></Form.Control>
+                                    <Form.Control type="text" name="PageTitle" defaultValue={item.PageTitle} onChange={e => {updateData(e.target.name,e.target.value)}} placeholder="Enter Page Title"></Form.Control>
                                 </Form.Group>
                                 
                                 <Form.Group className="mb-3" controlId="MetaTagKeywords">

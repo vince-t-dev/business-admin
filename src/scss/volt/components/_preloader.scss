@@ -51,7 +51,7 @@
 .empty {
     display: inline-block;
     width: 95%;
-    height: 0.938rem;
+    height: 0.75rem;
     position: relative;
     overflow: hidden;
     background-color: $gray-400;
@@ -74,7 +74,7 @@
         content: '';
     }
     & + .empty {
-        margin-top: 0.625rem;
+        margin-top: 0.438rem;
     }
 
     @keyframes shimmer {

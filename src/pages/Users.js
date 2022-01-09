@@ -160,11 +160,11 @@ function Users() {
                                         <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
                                     </tr>
                                     <tr>
-                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td>
-                                        <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-50"></div></span></td>
                                     </tr>
                                     <tr>
-                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-75"></div></span></td>
                                         <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
                                     </tr>
                                 </tbody> 
