@@ -12,7 +12,7 @@ export const AllRoutes = {
     BootstrapTables: { path: "/my-business/tables/bootstrap-tables" },
     Billing: { path: "/my-business/examples/billing" },
     Invoice: { path: "/my-business/examples/invoice" },
-    Signin: { path: "/my-business/examples/sign-in" },
+    Login: { path: "/my-business/login" },
     Signup: { path: "/my-business/examples/sign-up" },
     ForgotPassword: { path: "/my-business/examples/forgot-password" },
     ResetPassword: { path: "/my-business/examples/reset-password" },

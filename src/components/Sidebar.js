@@ -97,7 +97,7 @@ export default (props = {}) => {
                 </div>
                 <div className="d-flex text-dark align-items-center">
                   <h6 className="m-0">Hi, Bonnie</h6>
-                  <Button as={Link} variant="secondary" size="xs" to={AllRoutes.Signin.path} className="text-dark mx-3">
+                  <Button as={Link} variant="secondary" size="xs" to={AllRoutes.Login.path} className="text-dark mx-3">
                     <FontAwesomeIcon icon={faSignOutAlt} className="me-2" /> Sign Out
                   </Button>
                 </div>
@@ -118,7 +118,7 @@ export default (props = {}) => {
               </CollapsableNavItem>
 
               <CollapsableNavItem eventKey="examples/" title="Page Examples" icon={faFileAlt}>
-                <NavItem title="Sign In" link={AllRoutes.Signin.path} />
+                <NavItem title="Sign In" link={AllRoutes.Login.path} />
                 <NavItem title="Sign Up" link={AllRoutes.Signup.path} />
                 <NavItem title="Forgot password" link={AllRoutes.ForgotPassword.path} />
                 <NavItem title="Reset password" link={AllRoutes.ResetPassword.path} />

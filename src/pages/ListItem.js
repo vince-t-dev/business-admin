@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useMatch } from "react-router-dom";
 import { Breadcrumb, Button, Row, Col, Form, Card, CardGroup } from "react-bootstrap";
-import TextEditor from "./components/TextEditor";
-import ImageEditor from "./components/ImageEditor";
+import TextEditor from "../components/TextEditor";
+import ImageEditor from "../components/ImageEditor";
 
 function ListItem(props) {
     const location = useLocation();
@@ -12,15 +12,19 @@ function ListItem(props) {
     const [error, setError] = useState(null);
     const [item, setItem] = useState(null);
     const [jsonData, setJsonData] = useState({});
-    useEffect(() => {
+    useEffect(() => { 
+        console.log('location',location);   
+        console.log('match',match);
         if (location.state) {
             let data = location.state.item;
             setItem(data);
+        } else if (match?.params?.id == "new") {
+            setItem({});
         } else {
             fetch(`/__xpr__/pub_engine/business-admin/element/article_json?id=`+match.params.id)
                 .then(res => res.json())
                 .then(
-                (result) => {
+                (result) => { 
                     setItem(result);
                 },
                 (error) => {

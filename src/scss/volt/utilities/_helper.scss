@@ -76,6 +76,11 @@
     border-bottom-end-radius: 0 !important;
 }
 
+// Border radius
+.rounded {
+    border-radius: $border-radius;
+}
+
 .rounded-xl {
     border-radius: $border-radius-xl;
 }
