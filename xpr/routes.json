@@ -21,7 +21,7 @@
         "method" : "GET",
         "route" : "/ajax_handler",
         "script" : {
-            "path" : "/ajax/script",
+            "path" : "/ajax/ajax_handler",
             "options" : {}
         },
         "element" : "/ajax/ajax_handler"
