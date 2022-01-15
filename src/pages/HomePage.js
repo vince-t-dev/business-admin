@@ -103,7 +103,7 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
   );
 };
 
-function PrivateRoute({ children, ...rest }) {
+function PrivateRoute({ children, ...rest }) {		
 	let auth = useAuth();
 console.log('auth?',auth);	
 	const location = useLocation();

@@ -51,9 +51,9 @@ function useAuthProvider() {
 		if (callback) callback(response);
 	}
 
-	useEffect(() => {
-		//check authentication
-	}, [])
+	//check authentication
+	/*useEffect(() => {
+	}, [])*/
 
 	return {
 		user,

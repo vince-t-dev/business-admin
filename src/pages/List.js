@@ -4,6 +4,8 @@ import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Table, Badge, Ove
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faList } from '@fortawesome/free-solid-svg-icons';
 import Footer from "../components/Footer";
+import { useAuth } from "../context/auth";
+import axios from "axios";
 
 function List() {
     const [error, setError] = useState(null);
@@ -12,7 +14,7 @@ function List() {
     const [search, setSearch] = useState("");
     const [query, setQuery] = useState("");
     const [selectedItems, setSelectedItems] = useState([]);
-    
+
     // update search value
     const updateSearch = e => {
         setSearch(e.target.value);    
@@ -25,9 +27,41 @@ function List() {
     }
 
     // fetch results when query changes
+    let auth = useAuth();
     useEffect(() => {
         setIsLoaded(false);
-        fetch(`/__xpr__/pub_engine/business-admin/element/articles_json?q=${query}`)
+        // TODO
+        let articles_params = {
+            "_noUnhydrated"                     : 1,
+            "with"                              : "Picture,Categories,CustomFields,Language",
+            "related_Language_Id__eq"           : 1/*request.language.Id*/,
+            // expresia /my-business/ section
+            "SectionId__in"                     : 6103,
+            "order_fields"                      : "SortOrder",
+            "order_dirs"                        : "ASC",
+            "per_page"                          : 10
+        }
+        //if (request.urlParams.q) articles_params.q_Title_Description_Html = request.urlParams.q;
+        //if (request.urlParams.page) articles_params.page = request.urlParams.page;
+        let articles = axios.get("/api/articles/", {
+			headers: { 
+				"Content-Type": "multipart/form-data",
+				"xpr-token-backend": auth.user.token
+			},
+            params: articles_params,
+			withCredentials: true
+		})
+        .then(function (result) {
+            setIsLoaded(true);
+            let articles_data = result.data?._embedded?.Article;
+            setItems(articles_data);
+        })
+        .catch(function (error) {
+            setIsLoaded(true);
+            setError(error);
+        });
+       
+        /*fetch(`/__xpr__/pub_engine/business-admin/element/articles_json?q=${query}`)
             .then(res => res.json())
             .then(
             (result) => {
@@ -38,7 +72,8 @@ function List() {
                 setIsLoaded(true);
                 setError(error);
             }
-        )
+        )*/
+
         setSelectedItems([]);
     }, [query]);
 
