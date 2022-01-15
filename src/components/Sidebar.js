@@ -76,7 +76,7 @@ export default (props = {}) => {
   return (
     <>
       <Navbar expand={false} collapseOnSelect variant="light" className="navbar-theme-primary position-sticky top-0 px-4 d-md-none">
-        <Navbar.Brand className="me-lg-5" as={Link} to={AllRoutes.DashboardOverview.path}>
+        <Navbar.Brand className="me-lg-5" as={Link} to={AllRoutes.Home.path}>
           <Image src="/__xpr__/pub_engine/business-admin/web/xprs-logo-dark.svg" className="navbar-brand-light" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" onClick={onCollapse}>
@@ -85,7 +85,7 @@ export default (props = {}) => {
       </Navbar>
       <CSSTransition timeout={300} in={show} classNames="sidebar-transition">
         <Navbar className={`collapse ${showClass} sidebar d-md-block bg-white text-white`}>
-          <Navbar.Brand sticky="top" href="/my-business/" className="d-none d-sm-flex w-100 align-items-center justify-content-center">
+          <Navbar.Brand sticky="top" as={Link} to={AllRoutes.Home.path} className="d-none d-sm-flex w-100 align-items-center justify-content-center">
             {/* TODO: update path when svg is fixed */}
             <img src="/__xpr__/pub_engine/business-admin/web/xprs-logo-dark.svg" className="d-inline-block" alt="Expresia" height="1.25rem"/>
           </Navbar.Brand>

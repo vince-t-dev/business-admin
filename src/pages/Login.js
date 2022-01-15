@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faEye, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
-import { Col, Row, Form, Image, Button, Container, InputGroup, Navbar } from 'react-bootstrap';
+import { Col, Row, Form, Image, Button, Container, InputGroup, Alert, Spinner } from 'react-bootstrap';
 import LogoDark from "../assets/media/xprs-logo-dark.svg";
 import { useAuth } from "../context/auth";
 //import Profile3 from "../../assets/img/team/profile-picture-3.jpg";
@@ -17,19 +17,32 @@ function Login(props) {
     
     let navigate = useNavigate();
     let location = useLocation();
-    let auth = useAuth();
     let from = (location.state && location.state.from) ? location.state.from.pathname : "/";
+    let auth = useAuth();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [isLoaded, setIsLoaded] = useState(true);
+
     let credentials = { 
         UserLogin: username, 
         UserPassword: password
     }
+
+    // submission
     const handleLogin = (e) => {
         e.preventDefault();
-        auth.signin(credentials,(e) => {
-            // redirect to previous visited url
-            navigate(from, { replace: true });
+        setIsLoaded(false);
+        auth.signin(credentials,(res) => {
+            setIsLoaded(true);
+            // success: redirect to last visit page
+            if (res.status == "SUCCESS") {
+                navigate(from, { replace: true });
+            // error: set error    
+            } else if (res.error) {
+                if (res.error == 403) setError("Incorrect username or password.");
+                if (!res?.error) setError("No server response"); 
+            }
         });
     };
       
@@ -77,8 +90,10 @@ function Login(props) {
                                         </InputGroup>
                                     </Form.Group>
                                     <Button variant="primary" type="submit" className="w-100">
-                                        Login
+                                        Login { !isLoaded && <Spinner animation="border" variant="white" size="sm" className="ms-2"/>}
                                     </Button>
+                                    
+                                    {error && <Alert className="mt-3" variant="primary">{error}</Alert>}
                                 </Form>
                             </div>
                         </Col>

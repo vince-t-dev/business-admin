@@ -7,14 +7,12 @@ import ImageEditor from "../components/ImageEditor";
 function ListItem(props) {
     const location = useLocation();
     const match = useMatch("/my-business/list/edit/:id");
-
+    
     // fetch data from location or api
     const [error, setError] = useState(null);
     const [item, setItem] = useState(null);
     const [jsonData, setJsonData] = useState({});
     useEffect(() => { 
-        console.log('location',location);   
-        console.log('match',match);
         if (location.state) {
             let data = location.state.item;
             setItem(data);

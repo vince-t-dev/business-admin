@@ -1,6 +1,8 @@
 .form-control {
     line-height: 1;
-    border-radius: 0.313rem;
+    &:not([class^="rounded-"]) {
+        border-radius: 0.313rem;
+    }
     &, &:focus {
         box-shadow:none;
         color: $dark;
@@ -101,6 +103,10 @@
 .vr { 
     height: 1.188rem;
     align-self:center;
+}
+
+hr {
+    opacity: 1;
 }
 
 //Add File Alternative Style

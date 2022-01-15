@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCog, faEnvelopeOpen, faSearch, faSignOutAlt, faUserShield } from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
-import { Row, Col, Nav, Form, Image, Navbar, Dropdown, Container, ListGroup, InputGroup } from 'react-bootstrap';
+import { Row, Col, Nav, Image, Navbar, Dropdown, Container, ListGroup, Spinner } from 'react-bootstrap';
 import { useAuth } from "../context/auth";
 import NOTIFICATIONS_DATA from "../data/notifications";
 import Profile3 from "../assets/img/team/profile-picture-5.jpg";
 
 export default (props) => {
+	// notifications
   	const [notifications, setNotifications] = useState(NOTIFICATIONS_DATA);
   	const areNotificationsRead = notifications.reduce((acc, notif) => acc && notif.read, true);
   	const markNotificationsAsRead = () => {
@@ -20,8 +21,8 @@ export default (props) => {
 
   	const Notification = (props) => {
     	const { link, sender, image, time, message, read = false } = props;
-    	const readClassName = read ? "" : "text-danger";
-
+    	const readClassName = read ? "" : "text-info";
+		
 		return ( 
 		<ListGroup.Item action href={link} className="border-bottom border-light">
 			<Row className="align-items-center">
@@ -44,12 +45,17 @@ export default (props) => {
 		);
 	};
 
-	const { authed, logout } = useAuth();
+	// logout
+	const [isLoaded, setIsLoaded] = useState(true);
+	const [showRightDropdown, setShowRightDropdown] = useState(false);
 	const navigate = useNavigate();
-
-	const handleLogout = () => {
-		logout();
-		navigate("/my-business/login");
+	let auth = useAuth();
+	const handleLogout = e => {
+		setIsLoaded(false);
+		setShowRightDropdown(true);
+		auth.signout(res => {
+			navigate("/");
+        });
 	};
 
   	return (
@@ -83,7 +89,10 @@ export default (props) => {
 						</Dropdown.Menu>
             		</Dropdown>
             		<span className="divider"></span>
-					<Dropdown as={Nav.Item}>
+					<Dropdown as={Nav.Item} show={showRightDropdown} 
+						onToggle={(isOpen, event) => {
+							if (event.source !== "select") setShowRightDropdown(isOpen);
+						}}>
 						<Dropdown.Toggle as={Nav.Link} className="p-0 m-0">
 							<div className="media d-flex align-items-center">
 							{Profile3 ?
@@ -98,23 +107,23 @@ export default (props) => {
 							</div>
 						</Dropdown.Toggle>
 						<Dropdown.Menu className="user-dropdown dropdown-menu-right mt-2">
-							<Dropdown.Item className="fw-bold">
+							<Dropdown.Item onClick={() => {setShowRightDropdown(false)}}>
 							<FontAwesomeIcon icon={faUserCircle} className="me-2" /> My Profile
 							</Dropdown.Item>
-							<Dropdown.Item className="fw-bold">
+							<Dropdown.Item onClick={() => {setShowRightDropdown(false)}}>
 							<FontAwesomeIcon icon={faCog} className="me-2" /> Settings
 							</Dropdown.Item>
-							<Dropdown.Item className="fw-bold">
+							<Dropdown.Item onClick={() => {setShowRightDropdown(false)}}>
 							<FontAwesomeIcon icon={faEnvelopeOpen} className="me-2" /> Messages
 							</Dropdown.Item>
-							<Dropdown.Item className="fw-bold">
+							<Dropdown.Item onClick={() => {setShowRightDropdown(false)}}>
 							<FontAwesomeIcon icon={faUserShield} className="me-2" /> Support
 							</Dropdown.Item>
 
 							<Dropdown.Divider />
 
-							<Dropdown.Item className="fw-bold" onClick={handleLogout}>
-							<FontAwesomeIcon icon={faSignOutAlt} className="text-danger me-2" /> Logout
+							<Dropdown.Item onClick={(e) => {handleLogout(e)}} className={isLoaded ? "" : "d-flex"}>
+							{ !isLoaded ? <Spinner animation="border" variant="dark" size="sm" className="me-2"/> : <FontAwesomeIcon icon={faSignOutAlt} className="text-danger me-2" />}  Logout 
 							</Dropdown.Item>
 						</Dropdown.Menu>
 					</Dropdown>

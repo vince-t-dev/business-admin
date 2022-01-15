@@ -12,7 +12,7 @@ function List() {
     const [search, setSearch] = useState("");
     const [query, setQuery] = useState("");
     const [selectedItems, setSelectedItems] = useState([]);
-
+    
     // update search value
     const updateSearch = e => {
         setSearch(e.target.value);    

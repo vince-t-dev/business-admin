@@ -11,30 +11,53 @@ export const useAuth = () => useContext(authContext);
 
 function useAuthProvider() {
 	const [user, setUser] = useState(null);
-	const signin = (credentials, callback) => {
-	console.log('in sign in', credentials);
-		let formData = { 
-			"jsonData": credentials,
-			"XPR_PostbackAction": "XPRS/Ajax Handler",
-			"action": "login"
-		}	
-		axios.post('/elementAjax/XPRS/Ajax Handler', formData)
-		.then(function (response) {
-			console.log('axios res',response);
-		})
-		.catch(function (error) {
-			console.log(error);
+
+	// sign in
+	const signin = async (credentials, callback) => {
+		let formData = new FormData();
+		formData.append("XPR_PostbackAction","XPRS/Ajax Handler");
+		formData.append("action","authenticate");
+		formData.append("jsonData",JSON.stringify(credentials));
+		
+		const response = await axios.post("/elementAjax/XPRS/Ajax Handler",formData, {
+			headers: { "Content-Type": "multipart/form-data" },
+			withCredentials: true
 		});
-		// TODO
-		setUser('test value');
-		if (callback) callback(user);
+
+		// set user data
+		let result = (response.data?.data) ? JSON.parse(response.data?.data) : response.data; 
+		let userData = {"token": result.token};
+		if (!result.error) {
+			setUser(userData);
+			localStorage.setItem("user",JSON.stringify(userData));
+		}
+		if (callback) callback(result);
 	}
+
+	// sign out
+	const signout = async (callback) => {
+		let formData = new FormData();
+		formData.append("XPR_PostbackAction","XPRS/Ajax Handler");
+		formData.append("action","logout");
+		
+		const response = await axios.post("/elementAjax/XPRS/Ajax Handler",formData, {
+			headers: { "Content-Type": "multipart/form-data" },
+			withCredentials: true
+		});
+
+		// clear user data
+		setUser(null);
+		localStorage.clear();
+		if (callback) callback(response);
+	}
+
 	useEffect(() => {
 		//check authentication
-		console.log('useEffect(): check auth',user);
 	}, [])
+
 	return {
 		user,
-		signin
+		signin,
+		signout
 	}
 }

@@ -1258,7 +1258,7 @@ $dropdown-min-width:                10rem;
 $dropdown-padding-y:                .5rem;
 $dropdown-spacer:                   .125rem;
 $dropdown-font-size:                1rem;
-$dropdown-item-font-weight:         $font-weight-light;
+$dropdown-item-font-weight:         $font-weight-normal;
 $dropdown-item-hover-color:         $gray-900;
 
 $dropdown-color:                    $body-color;
@@ -1558,9 +1558,9 @@ $list-group-item-color-level:       6;
 $list-group-item-border-radius:     $border-radius;
 
 $list-group-hover-bg:               $gray-100;
-$list-group-active-color:           $component-active-color;
-$list-group-active-bg:              $component-active-bg;
-$list-group-active-border-color:    $list-group-active-bg;
+$list-group-active-color:           $gray-900;
+$list-group-active-bg:              $gray-400;
+$list-group-active-border-color:    $gray-400;
 
 $list-group-disabled-color:         $gray-600;
 $list-group-disabled-bg:            $list-group-bg;
