@@ -16,5 +16,14 @@
             "options" : {}
         },
         "element" : "/ajax/json_formatter"
+    },
+    {
+        "method" : "GET",
+        "route" : "/ajax_handler",
+        "script" : {
+            "path" : "/ajax/script",
+            "options" : {}
+        },
+        "element" : "/ajax/ajax_handler"
     }
 ]
