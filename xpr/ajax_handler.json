@@ -1,0 +1,8 @@
+{
+	"fields" : [ 
+        { "name" : "action", "required" : false, "type" : "text" },
+        { "name" : "Id", "required" : false, "type" : "text" },
+        { "name" : "jsonData", "required" : false, "type" : "text" }
+	],
+	"script": "/ajax_handler"
+}
