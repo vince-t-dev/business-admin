@@ -18,9 +18,9 @@ exports.process = function(context, options) {
      } else {
         return { "good": expiry }
      }*/
-     let el = xpr_objects.XprElementContext;
+     let el = xpr_objects.XprElementContext();
      let xpr_utilities = require("/xpr/utilities");
-     let XprSettings = xpr_utilities.XprSettings;
+     let XprSettings = xpr_utilities.XprSettings();
      return { el, XprSettings };
 
     let articles_params = {
