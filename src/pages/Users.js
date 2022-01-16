@@ -2,6 +2,7 @@ import React,{useEffect,useState} from "react";
 import { Breadcrumb, Button, ButtonGroup, Row, Col, InputGroup, Form, Image, Dropdown, Card, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faPlus, faCog, faCheck, faSearch, faSlidersH, faLink, faList } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from "../context/auth";
 
 function Users() {
     const [error, setError] = useState(null);
@@ -22,10 +23,16 @@ function Users() {
     }
 
     // fetch results when query changes
+    let auth = useAuth();
     useEffect(() => {
         setIsLoaded(false);
-        fetch(`/__xpr__/pub_engine/business-admin/element/users_json?q=${query}`)
-            .then(res => res.json())
+        fetch(`/__xpr__/pub_engine/business-admin/element/users_json?q=${query}`, {
+            method: "GET",
+            headers: {
+                Auth: auth.user.token
+            }
+        })
+        .then(res => res.json())
             .then(
             (result) => {
                 setIsLoaded(true);

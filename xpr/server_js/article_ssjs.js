@@ -5,6 +5,16 @@ exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
     let request = xpr_objects.XprRequest();
     
+    // validate token
+    let token = api({
+        uri: "/auth/tokens/",
+        method: "GET",
+        params: { "Token__eq": request.headers.Auth }
+    });
+    var expiry = (new Date(token[0].Expiry)).toISOString();
+    var today = (new Date()).toISOString();
+    if (Date.parse(expiry) <= Date.parse(today) || !token.length) return { error: "Invalid/expired token." }
+
     let article_params = {
         "_noUnhydrated"                     : 1,
         "with"                              : "Picture,Categories,CustomFields,Language",

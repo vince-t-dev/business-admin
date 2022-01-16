@@ -3,6 +3,7 @@ import { Link, useLocation, useMatch } from "react-router-dom";
 import { Breadcrumb, Button, Row, Col, Form, Card, CardGroup } from "react-bootstrap";
 import TextEditor from "../components/TextEditor";
 import ImageEditor from "../components/ImageEditor";
+import { useAuth } from "../context/auth";
 
 function ListItem(props) {
     const location = useLocation();
@@ -12,6 +13,7 @@ function ListItem(props) {
     const [error, setError] = useState(null);
     const [item, setItem] = useState(null);
     const [jsonData, setJsonData] = useState({});
+    let auth = useAuth();
     useEffect(() => { 
         if (location.state) {
             let data = location.state.item;
@@ -19,9 +21,14 @@ function ListItem(props) {
         } else if (match?.params?.id == "new") {
             setItem({});
         } else {
-            fetch(`/__xpr__/pub_engine/business-admin/element/article_json?id=`+match.params.id)
-                .then(res => res.json())
-                .then(
+            fetch(`/__xpr__/pub_engine/business-admin/element/article_json?id=`+match.params.id, {
+                method: "GET",
+                headers: {
+                    Auth: auth.user.token
+                }
+            })
+            .then(res => res.json())
+            .then(
                 (result) => { 
                     setItem(result);
                 },
