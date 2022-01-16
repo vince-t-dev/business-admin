@@ -13,11 +13,12 @@ exports.process = function(context, options) {
     });
     var expiry = token[0].Expiry;
     var today = (new Date()).toISOString().split('T')[0];
-    if (Date.parse(expiry) <= Date.parse(today)) {
+    /*if (Date.parse(expiry) <= Date.parse(today)) {
         return { "expired!": today }
      } else {
-        return { "expiry date": expiry }
-     }
+        return { "good": expiry }
+     }*/
+     return { request, exp: Date.parse(expiry), today: Date.parse(today) };
 
     let articles_params = {
         "_noUnhydrated"                     : 1,
