@@ -5,6 +5,9 @@ exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
     let request = xpr_objects.XprRequest();
     
+    // validate token
+    
+
     let articles_params = {
         "_noUnhydrated"                     : 1,
         "with"                              : "Picture,Categories,CustomFields,Language",

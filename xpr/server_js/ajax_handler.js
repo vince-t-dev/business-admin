@@ -38,7 +38,7 @@ exports.process = function(context, options) {
         case "logout":
             // delete token
             let token = api({
-                uri: "/auth/tokens/?Token__eq="+request.urlParams.access_token,
+                uri: "/auth/tokens/?Token__eq="+request.headers.Authorization,
                 method: "GET"
             });
             api({

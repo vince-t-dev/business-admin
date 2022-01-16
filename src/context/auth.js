@@ -24,7 +24,7 @@ function useAuthProvider() {
 
 		// set user data
 		let result = (response.data?.data) ? JSON.parse(response.data?.data) : response.data; 
-		let userData = {"token": result.token};
+		let userData = {"token": result.token, "data": result.user};
 		if (!result.error) {
 			setUser(userData);
 			localStorage.setItem("user",JSON.stringify(userData));
@@ -35,8 +35,12 @@ function useAuthProvider() {
 	// sign out
 	const signout = async (callback) => {
 		let user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
-		
-		const response = await axios.get("/__xpr__/pub_engine/business-admin/element/ajax_handler?access_token="+user.token, {
+		let jsonData = { action: "logout" };
+		const response = await axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(jsonData), {
+			headers: { 
+				"Authorization": user.token,
+				"Content-Type": "application/json" 
+			},
 			withCredentials: true
 		});
 
