@@ -11,16 +11,14 @@ exports.process = function(context, options) {
         method: "GET",
         params: { "Token__eq": request.headers.Auth }
     });
-    var expiry = token[0].Expiry;
-    /*var today = (new Date()).toISOString().split('T')[0];
-    if (Date.parse(expiry) <= Date.parse(today)) {
+    var expiry = (new Date(token[0].Expiry)).toISOString().split('T')[0];
+    var today = (new Date()).toISOString().split('T')[0];
+    /*if (Date.parse(expiry) <= Date.parse(today)) {
         return { "expired!": today }
      } else {
         return { "good": expiry }
      }*/
-     var day = (new Date()).toISOString();
-     var formatted_date = day.toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
-     return { today: formatted_date };
+     return { today: today, expiry: expiry };
 
     let articles_params = {
         "_noUnhydrated"                     : 1,
