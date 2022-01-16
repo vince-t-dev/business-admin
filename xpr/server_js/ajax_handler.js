@@ -37,7 +37,8 @@ exports.process = function(context, options) {
         
         case "logout":
             // delete token
-            return request;
+            let headers = xpr_objects.WebResponse();
+            return headers;
             /*let token = api({
                 uri: "/auth/tokens/?Token__eq="+request.headers.Authorization,
                 method: "GET"
