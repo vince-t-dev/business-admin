@@ -24,7 +24,7 @@ function useAuthProvider() {
 
 		// set user data
 		let result = (response.data?.data) ? JSON.parse(response.data?.data) : response.data; 
-		let userData = {"token": result.token, "data": result.user};
+		let userData = {"token": result.token, "data": response.data?.user};
 		if (!result.error) {
 			setUser(userData);
 			localStorage.setItem("user",JSON.stringify(userData));

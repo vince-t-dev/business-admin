@@ -40,9 +40,7 @@ exports.process = function(context, options) {
             let token = api({
                 uri: "/auth/tokens/",
                 method: "GET",
-                params: {
-                    "Token__eq": request.headers.Auth
-                }
+                params: { "Token__eq": request.headers.Auth }
             });
             api({
                 uri: "/auth/tokens/"+token[0].Id,
