@@ -19,7 +19,12 @@ exports.process = function(context, options) {
                         UserType: "token"
                     }
                 });
-                response.user = request.users.backend;
+                let user = api({
+                    uri: "/users/",
+                    method: "GET",
+                    params: { Username__eq: jsonData.UserLogin }
+                })
+                response.user = user[0];
             } catch(error) {
                 response.error = error.status;
                 return response;
