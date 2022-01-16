@@ -1,13 +1,12 @@
 // this returns all xprobjects
 const xpr_objects = require("/xpr/request");
-const moment = require("/xpr/moment");
 
 exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
     let request = xpr_objects.XprRequest();
     
     // validate token
-    return moment();
+    return xpr_objects;
 
     let articles_params = {
         "_noUnhydrated"                     : 1,
