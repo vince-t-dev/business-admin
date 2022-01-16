@@ -33,7 +33,7 @@ function List() {
         fetch(`/__xpr__/pub_engine/business-admin/element/articles_json?q=${query}`, {
             method: "GET",
             headers: {
-                Authorization: auth.user.token
+                Auth: auth.user.token
             }
         })
         .then(res => res.json())

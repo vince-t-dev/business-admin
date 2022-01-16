@@ -38,7 +38,7 @@ function useAuthProvider() {
 		let jsonData = { action: "logout" };
 		const response = await axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(jsonData), {
 			headers: {
-				"Authorization": user.token,
+				"Auth": user.token,
 				"Content-Type": "application/json" 
 			},
 			withCredentials: true
