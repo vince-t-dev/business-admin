@@ -18,7 +18,7 @@ exports.process = function(context, options) {
      } else {
         return { "good": expiry }
      }*/
-     var day = new Date();
+     var day = (new Date()).toISOString().split('T')[0];
      var formatted_date = day.toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
      return { today: formatted_date };
 
