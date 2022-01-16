@@ -7,7 +7,7 @@ exports.process = function(context, options) {
     let request = xpr_objects.XprRequest();
     
     // validate token
-    return moment;
+    return moment();
 
     let articles_params = {
         "_noUnhydrated"                     : 1,
