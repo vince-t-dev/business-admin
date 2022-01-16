@@ -14,10 +14,6 @@ function useAuthProvider() {
 
 	// sign in
 	const signin = async (credentials, callback) => {
-		/*let formData = new FormData();
-		formData.append("XPR_PostbackAction","XPRS/Ajax Handler");
-		formData.append("action","authenticate");
-		formData.append("jsonData",JSON.stringify(credentials));*/
 		let jsonData = credentials;
 		jsonData.action = "login";
 		
@@ -38,12 +34,9 @@ function useAuthProvider() {
 
 	// sign out
 	const signout = async (callback) => {
-		let formData = new FormData();
-		formData.append("XPR_PostbackAction","XPRS/Ajax Handler");
-		formData.append("action","logout");
+		let user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
 		
-		const response = await axios.post("/elementAjax/XPRS/Ajax Handler",formData, {
-			headers: { "Content-Type": "multipart/form-data" },
+		const response = await axios.get("/__xpr__/pub_engine/business-admin/element/ajax_handler?access_token="+user.token, {
 			withCredentials: true
 		});
 

@@ -36,17 +36,20 @@ exports.process = function(context, options) {
         break;
         
         case "logout":
-            // logout
-            response = api({
-      			uri: "/auth/admin/logout",
-      			method: "GET"
-    		});
-    		
             // delete token
             let token = api({
-                uri: "/auth/tokens/"+request.urlParams.access_token,
-                method: "DELETE",
+                uri: "/auth/tokens/?Token__eq="+request.urlParams.access_token,
+                method: "GET"
             });
+            api({
+                uri: "/auth/tokens/"+token[0].Id,
+                method: "DELETE"
+            });
+            // logout
+            response = api({
+                uri: "/auth/admin/logout",
+                method: "GET"
+          });
     		return response;
     	break;
     }
