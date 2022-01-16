@@ -11,8 +11,8 @@ exports.process = function(context, options) {
         method: "GET",
         params: { "Token__eq": request.headers.Auth }
     });
-    var expiry = (new Date(token[0].Expiry)).toISOString().split('T')[0];
-    var today = (new Date()).toISOString().split('T')[0];
+    var expiry = (new Date(token[0].Expiry)).toISOString();
+    var today = (new Date()).toISOString();
     /*if (Date.parse(expiry) <= Date.parse(today)) {
         return { "expired!": today }
      } else {
