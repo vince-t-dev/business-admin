@@ -19,7 +19,7 @@ exports.process = function(context, options) {
         return { "good": expiry }
      }*/
 
-     return { date: new Date() };
+     return { date: today.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}) };
 
     let articles_params = {
         "_noUnhydrated"                     : 1,
