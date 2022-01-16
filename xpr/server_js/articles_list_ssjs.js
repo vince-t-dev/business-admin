@@ -18,11 +18,8 @@ exports.process = function(context, options) {
      } else {
         return { "good": expiry }
      }*/
-     //let XprCallingDatasource = xpr_objects.XprCallingDatasource();
-     //let XprCurrentBundle = xpr_objects.XprCurrentBundle();
-     let xpr = require("/xpr/");
-     //let XprWeb = xpr_objects.XprWeb();
-     return { xpr };
+     let el = xpr_objects.XprElementContext;
+     return { el };
 
     let articles_params = {
         "_noUnhydrated"                     : 1,
