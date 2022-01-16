@@ -37,10 +37,8 @@ function useAuthProvider() {
 		let user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {};
 		let jsonData = { action: "logout" };
 		const response = await axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(jsonData), {
-			params: { 
-				"access_token": user.token
-			},
 			headers: {
+				"Authorization": user.token,
 				"Content-Type": "application/json" 
 			},
 			withCredentials: true
