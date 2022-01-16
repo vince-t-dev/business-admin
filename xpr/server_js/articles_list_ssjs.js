@@ -20,9 +20,9 @@ exports.process = function(context, options) {
      }*/
      let XprElementContext = xpr_objects.XprElementContext();
      let XprCallingDatasource = xpr_objects.XprCallingDatasource();
-     let XprCurrentBundle = xpr_objects.XprCurrentBundle();
+     //let XprCurrentBundle = xpr_objects.XprCurrentBundle();
      let XprWeb = xpr_objects.XprWeb();
-     return { XprElementContext, XprCallingDatasource, XprCurrentBundle, XprWeb };
+     return { XprElementContext, XprCallingDatasource, XprWeb };
 
     let articles_params = {
         "_noUnhydrated"                     : 1,
