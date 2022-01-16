@@ -16,7 +16,7 @@ exports.process = function(context, options) {
     if (Date.parse(expiry) <= Date.parse(today)) {
         return { "expired!": today }
      } else {
-        return { "valid!": today }
+        return { "expiry date": expiry }
      }
 
     let articles_params = {
