@@ -18,7 +18,7 @@ exports.process = function(context, options) {
      } else {
         return { "good": expiry }
      }*/
-     var today = new Date();
+     var today = (new Date()).toISOString();
      return { date: today.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}) };
 
     let articles_params = {
