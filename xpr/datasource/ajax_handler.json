@@ -1,10 +1,6 @@
 {
     "adapter" : "XprPostHandler",
     "config" : {
-        "scripts" : [
-            {
-                "path" : "/ajax_handler"
-            }
-        ]
+        "postHandler" : "ajax_handler"
     }
 }
