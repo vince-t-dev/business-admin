@@ -13,13 +13,8 @@ exports.process = function(context, options) {
     });
     var expiry = (new Date(token[0].Expiry)).toISOString();
     var today = (new Date()).toISOString();
-    /*if (Date.parse(expiry) <= Date.parse(today)) {
-        return { "expired!": today }
-     } else {
-        return { "good": expiry }
-     }*/
-     return { today: today, expiry: expiry };
-
+    if (Date.parse(expiry) <= Date.parse(today) || !token.length) return { error: "Invalid/expired token." }
+    
     let articles_params = {
         "_noUnhydrated"                     : 1,
         "with"                              : "Picture,Categories,CustomFields,Language",
