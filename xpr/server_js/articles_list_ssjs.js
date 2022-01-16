@@ -18,8 +18,8 @@ exports.process = function(context, options) {
      } else {
         return { "good": expiry }
      }*/
-     var today = (new Date()).toISOString();
-     return { date: today.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}) };
+     var day = new Date();
+     return { today: day.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}) };
 
     let articles_params = {
         "_noUnhydrated"                     : 1,
