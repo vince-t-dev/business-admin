@@ -1,9 +1,9 @@
-// this returns all xprobjects
+// ajax handler route
 const xpr_objects = require("/xpr/request");
 
 exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
     let request = xpr_objects.XprRequest();
  
-    return { context, options };
+    return { context, options, xpr_objects };
 }
