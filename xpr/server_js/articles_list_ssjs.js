@@ -18,10 +18,8 @@ exports.process = function(context, options) {
      } else {
         return { "good": expiry }
      }*/
-     let el = xpr_objects.XprElementContext();
-     let xpr_utilities = require("/xpr/utilities");
-     let XprSettings = xpr_utilities.XprSettings();
-     return { el, XprSettings };
+
+     return { date: new Date() };
 
     let articles_params = {
         "_noUnhydrated"                     : 1,
