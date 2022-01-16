@@ -4,7 +4,7 @@ const xpr_objects = require("/xpr/request");
 exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
     let request = xpr_objects.XprRequest();
-    let jsonData = JSON.parse(request?.body);
+    let jsonData = request.body ? JSON.parse(request.body) : {};
     let response = {};
 
     switch (jsonData.action) {
@@ -19,13 +19,12 @@ exports.process = function(context, options) {
                         UserType: "token"
                     }
                 });
+                response.user = request.users.backend;
             } catch(error) {
                 response.error = error.status;
                 return response;
             }
 
-            response.user = request.users?.backend;
-            
             return response;
         break;
         

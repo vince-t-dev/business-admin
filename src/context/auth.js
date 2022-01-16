@@ -14,13 +14,15 @@ function useAuthProvider() {
 
 	// sign in
 	const signin = async (credentials, callback) => {
-		let formData = new FormData();
+		/*let formData = new FormData();
 		formData.append("XPR_PostbackAction","XPRS/Ajax Handler");
 		formData.append("action","authenticate");
-		formData.append("jsonData",JSON.stringify(credentials));
+		formData.append("jsonData",JSON.stringify(credentials));*/
+		let jsonData = credentials;
+		jsonData.action = "login";
 		
-		const response = await axios.post("/elementAjax/XPRS/Ajax Handler",formData, {
-			headers: { "Content-Type": "multipart/form-data" },
+		const response = await axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(jsonData), {
+			headers: { "Content-Type": "application/json" },
 			withCredentials: true
 		});
 
