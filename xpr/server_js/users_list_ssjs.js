@@ -6,7 +6,7 @@ exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
     let request = xpr_objects.XprRequest();
 
-    return check_auth;
+    return check_auth.auth();
     
     let users_params = { per_page: 10 };
     if (request.urlParams.q) users_params.q_FirstName_LastName_Email = request.urlParams.q;
