@@ -12,13 +12,13 @@ exports.process = function(context, options) {
         params: { "Token__eq": request.headers.Auth }
     });
     var expiry = token[0].Expiry;
-    var today = (new Date()).toISOString().split('T')[0];
-    /*if (Date.parse(expiry) <= Date.parse(today)) {
+    /*var today = (new Date()).toISOString().split('T')[0];
+    if (Date.parse(expiry) <= Date.parse(today)) {
         return { "expired!": today }
      } else {
         return { "good": expiry }
      }*/
-
+     var today = new Date();
      return { date: today.toLocaleString("en-US", {timeZone: "America/Los_Angeles"}) };
 
     let articles_params = {
