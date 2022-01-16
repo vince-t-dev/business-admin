@@ -4,9 +4,9 @@ const xpr_objects = require("/xpr/request");
 exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
     let request = xpr_objects.XprRequest();
-    
+    return request;
     // validate token
-    
+
 
     let articles_params = {
         "_noUnhydrated"                     : 1,
