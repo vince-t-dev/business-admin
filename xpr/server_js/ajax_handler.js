@@ -10,6 +10,7 @@ exports.process = function(context, options) {
     switch (jsonData.action) {
         case "login":
             try {
+                // get token
                 response = api({
                     uri: "/auth/admin/login",
                     method: "POST",
@@ -19,6 +20,7 @@ exports.process = function(context, options) {
                         UserType: "token"
                     }
                 });
+                // get user info
                 let user = api({
                     uri: "/users/",
                     method: "GET",
@@ -34,11 +36,17 @@ exports.process = function(context, options) {
         break;
         
         case "logout":
+            // logout
             response = api({
       			uri: "/auth/admin/logout",
       			method: "GET"
     		});
     		
+            // delete token
+            let token = api({
+                uri: "/auth/tokens/"+request.urlParams.access_token,
+                method: "DELETE",
+            });
     		return response;
     	break;
     }
