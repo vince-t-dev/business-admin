@@ -1,4 +1,4 @@
-// ajax handler route
+// ajax handler: route
 const xpr_objects = require("/xpr/request");
 const utilities = require("/xpr/utilities");
 
