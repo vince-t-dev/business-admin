@@ -1,6 +1,6 @@
 // this returns all xprobjects
 const xpr_objects = require("/xpr/request");
-const check_auth = require("auth");
+const check_auth = require("/auth");
 
 exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
