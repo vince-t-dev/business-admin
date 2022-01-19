@@ -1,5 +1,6 @@
 // ajax handler: element
 const xpr_objects = require("/xpr/request");
+const library = require("./library");
 
 exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
@@ -53,6 +54,12 @@ exports.process = function(context, options) {
             });
     		return response;
     	break;
+
+        case "checkAuth":
+            // validate token
+            response = library.checkAuth(request.headers.Auth);
+            return response;
+        break;
     }
 
     return response;

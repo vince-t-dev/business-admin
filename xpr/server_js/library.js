@@ -8,7 +8,8 @@ exports.checkAuth = function checkAuth(accessToken) {
         method: "GET",
         params: { "Token__eq": accessToken }
     });
+    if (!token.length) return { error: "token not found."};
     let expiry = (new Date(token[0].Expiry)).toISOString();
     let today = (new Date()).toISOString();
-    return ((Date.parse(expiry) >= Date.parse(today) && token.length)) ? { status: "valid token" } : { error: "invalid/expired token" };
+    return ((Date.parse(expiry) >= Date.parse(today) && token.length)) ? { status: "valid token." } : { error: "invalid/expired token." };
 }

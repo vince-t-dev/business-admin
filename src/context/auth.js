@@ -11,7 +11,7 @@ export const useAuth = () => useContext(authContext);
 
 function useAuthProvider() {
 	const [user, setUser] = useState(null);
-
+	
 	// sign in
 	const signin = async (credentials, callback) => {
 		let jsonData = credentials;
@@ -52,13 +52,26 @@ function useAuthProvider() {
 
 	//check authentication
 	useEffect(() => {
-		// TODO
-		// validate token 
+		// validate access token on page load
 		if (localStorage.getItem("user")) {
 			let user_data = JSON.parse(localStorage.getItem("user"));
 			let token = user_data.token;
-			console.log('user token: ',token);
-		} 
+			let jsonData = { action: "checkAuth" };
+			const response = axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(jsonData), {
+				headers: {
+					"Auth": token,
+					"Content-Type": "application/json" 
+				},
+				withCredentials: true
+			});
+			// invalid/expired token
+			if (response.error) {
+				// clear user data and redirect user to login screen
+				setUser(null);
+				localStorage.clear();
+				window.location.replace("/my-business/login");
+			}
+		}
 	}, [])
 
 	return {
