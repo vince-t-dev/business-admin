@@ -66,6 +66,7 @@ function useAuthProvider() {
 			});
 			// invalid/expired token
 			if (response.error) {
+				console.log('response',response);
 				// clear user data and redirect user to login screen
 				setUser(null);
 				localStorage.clear();
