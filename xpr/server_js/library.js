@@ -1,6 +1,6 @@
 exports.checkAuth = function checkAuth(token) {
     // check authentication
-    let token = api({
+    let check_auth = api({
         uri: "/auth/tokens/",
         method: "GET",
         params: { "Token__eq": token }
