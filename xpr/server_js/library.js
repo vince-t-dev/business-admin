@@ -10,5 +10,5 @@ exports.checkAuth = function checkAuth(accessToken) {
     });
     let expiry = (new Date(token[0].Expiry)).toISOString();
     let today = (new Date()).toISOString();
-    return { auth_error: (Date.parse(expiry) <= Date.parse(today) || !token.length) }
+    return ((Date.parse(expiry) >= Date.parse(today) && token.length)) ? { status: "valid token" } : { error: "invalid/expired token" };
 }
