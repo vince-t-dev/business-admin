@@ -14,4 +14,4 @@ function library() {
     }
 }
 
-module.exports = library();
+exports = library();

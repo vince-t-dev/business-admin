@@ -51,8 +51,15 @@ function useAuthProvider() {
 	}
 
 	//check authentication
-	/*useEffect(() => {
-	}, [])*/
+	useEffect(() => {
+		// TODO
+		// validate token 
+		if (localStorage.getItem("user")) {
+			let user_data = JSON.parse(localStorage.getItem("user"));
+			let token = user_data.token;
+			console.log('user token: ',token);
+		} 
+	}, [])
 
 	return {
 		user,
