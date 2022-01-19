@@ -1,6 +1,6 @@
 // this returns all xprobjects
 const xpr_objects = require("/xpr/request");
-//const library = require("./library");
+const library = require("./library");
 
 exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
