@@ -57,21 +57,22 @@ function useAuthProvider() {
 			let user_data = JSON.parse(localStorage.getItem("user"));
 			let token = user_data.token;
 			let jsonData = { action: "checkAuth" };
-			const response = axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(jsonData), {
+			axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(jsonData), {
 				headers: {
 					"Auth": token,
 					"Content-Type": "application/json" 
 				},
 				withCredentials: true
+			})
+			.then(function(response) {
+				// invalid/expired token
+				if (response.data?.error) {
+					// clear user data and redirect user to login screen
+					setUser(null);
+					localStorage.clear();
+					window.location.replace("/my-business/login");
+				}
 			});
-			// invalid/expired token
-			if (response.error) {
-				console.log('response',response);
-				// clear user data and redirect user to login screen
-				setUser(null);
-				localStorage.clear();
-				window.location.replace("/my-business/login");
-			}
 		}
 	}, [])
 
