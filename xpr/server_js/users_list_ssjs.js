@@ -8,7 +8,7 @@ exports.process = function(context, options) {
 
     // validate token
     let token = library.checkAuth(request.headers.Auth);
-    if (token.error) return token.error;
+    if (token.error) return token;
     
     let users_params = { per_page: 10 };
     if (request.urlParams.q) users_params.q_FirstName_LastName_Email = request.urlParams.q;
