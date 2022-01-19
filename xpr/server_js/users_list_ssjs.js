@@ -7,7 +7,7 @@ exports.process = function(context, options) {
     let request = xpr_objects.XprRequest();
 
     // validate token
-    return library.checkAuth();
+    return library(request.headers.Auth);
     
     let users_params = { per_page: 10 };
     if (request.urlParams.q) users_params.q_FirstName_LastName_Email = request.urlParams.q;
