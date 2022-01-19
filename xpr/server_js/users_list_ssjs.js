@@ -1,13 +1,14 @@
 // this returns all xprobjects
 const xpr_objects = require("/xpr/request");
-const library = require("./library");
+//const library = require("./library");
+const { checkAuth } = require("./library");
 
 exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
     let request = xpr_objects.XprRequest();
 
-    // TODO: figure out how module works
-    return library;
+    // validate token
+    return checkAuth(request.headers.Auth);
     
     let users_params = { per_page: 10 };
     if (request.urlParams.q) users_params.q_FirstName_LastName_Email = request.urlParams.q;
