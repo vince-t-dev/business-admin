@@ -5,22 +5,27 @@ import { faAngleDown, faAngleUp, faChartArea, faChartBar, faChartLine, faFlagUsa
 import { faAngular, faBootstrap, faReact, faVuejs } from "@fortawesome/free-brands-svg-icons";
 import { Col, Row, Card, Image, Button, ListGroup, ProgressBar } from 'react-bootstrap';
 import { CircleChart, BarChart, SalesValueChart, SalesValueChartphone } from "./Charts";
+import { useAuth } from "../context/auth";
 
-import Profile1 from "../assets/img/team/profile-picture-1.jpg";
+import Profile5 from "../assets/img/team/profile-picture-5.jpg";
 import ProfileCover from "../assets/img/profile-cover.jpg";
-
 import teamMembers from "../data/teamMembers";
 
-
 export const ProfileCardWidget = () => {
+  let auth = useAuth();
+
   return (
     <Card border="light" className="text-center p-0 mb-4">
       <div style={{ backgroundImage: `url(${ProfileCover})` }} className="profile-cover rounded-top" />
       <Card.Body className="pb-5">
-        <Card.Img src={Profile1} alt="Neil Portrait" className="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" />
-        <Card.Title>Neil Sims</Card.Title>
+        { auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage ?
+          <Card.Img src={auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage.SourcePath} alt="" className="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" />
+        :
+          <Card.Img src={Profile5} alt="" className="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" />
+        }
+        <Card.Title>{auth.user?.data ? auth.user.data.FirstName + " " + auth.user.data.LastName : "Bonnie Green" }</Card.Title>
         <Card.Subtitle className="fw-normal">Senior Software Engineer</Card.Subtitle>
-        <Card.Text className="text-gray mb-4">New York, USA</Card.Text>
+        <Card.Text className="text-gray mb-4">{ auth.user?.data?.City ? auth.user?.data?.City : "New York, USA"}</Card.Text>
 
         <Button variant="primary" size="sm" className="m-auto">
           <FontAwesomeIcon icon={faUserPlus} className="me-1" /> Connect

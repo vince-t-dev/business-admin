@@ -1,13 +1,13 @@
 
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCog, faEnvelopeOpen, faSearch, faSignOutAlt, faUserShield } from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { Row, Col, Nav, Image, Navbar, Dropdown, Container, ListGroup, Spinner } from 'react-bootstrap';
 import { useAuth } from "../context/auth";
 import NOTIFICATIONS_DATA from "../data/notifications";
-import Profile3 from "../assets/img/team/profile-picture-5.jpg";
+import Profile5 from "../assets/img/team/profile-picture-5.jpg";
 
 export default (props) => {
 	// notifications
@@ -95,24 +95,24 @@ export default (props) => {
 						}}>
 						<Dropdown.Toggle as={Nav.Link} className="p-0 m-0">
 							<div className="media d-flex align-items-center">
-							{Profile3 ?
-							<Image src={Profile3} className="user-avatar md-avatar rounded-circle me-3" />
-							:
-							<i className="xpri xpri-user me-3"></i>
-							} 
-							<div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-								<span>{auth.user?.data ? auth.user.data.FirstName + " " + auth.user.data.LastName : "Bonnie Green" }</span>
-								<i className="xpri-arrow-right ms-2 text-cherry"></i>
-							</div>
+								{ auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage ?
+								<Image src={auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage?.SourcePath} className="user-avatar md-avatar rounded-circle me-3" />
+								:
+								<Image src={Profile5} className="user-avatar md-avatar rounded-circle me-3" />
+								} 
+								<div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
+									<span>{auth.user?.data ? auth.user.data.FirstName + " " + auth.user.data.LastName : "Bonnie Green" }</span>
+									<i className="xpri-arrow-right ms-2 text-cherry"></i>
+								</div>
 							</div>
 						</Dropdown.Toggle>
 						<Dropdown.Menu className="user-dropdown dropdown-menu-right mt-2">
-							<Dropdown.Item onClick={() => {setShowRightDropdown(false)}}>
+							<Dropdown.Item onClick={() => {navigate("/my-business/settings");setShowRightDropdown(false);}}>
 							<FontAwesomeIcon icon={faUserCircle} className="me-2" /> My Profile
 							</Dropdown.Item>
-							<Dropdown.Item onClick={() => {setShowRightDropdown(false)}}>
+							{/*<Dropdown.Item onClick={() => {setShowRightDropdown(false)}}>
 							<FontAwesomeIcon icon={faCog} className="me-2" /> Settings
-							</Dropdown.Item>
+							</Dropdown.Item>*/}
 							<Dropdown.Item onClick={() => {setShowRightDropdown(false)}}>
 							<FontAwesomeIcon icon={faEnvelopeOpen} className="me-2" /> Messages
 							</Dropdown.Item>

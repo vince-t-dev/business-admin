@@ -281,7 +281,7 @@ export const TransactionsTable = () => {
   return (
     <Card border="light" className="table-wrapper table-responsive shadow-sm">
       <Card.Body className="pt-0">
-        <Table hover className="user-table align-items-center">
+        <Table className="user-table align-items-center">
           <thead>
             <tr>
               <th className="border-bottom">#</th>
