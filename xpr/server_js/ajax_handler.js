@@ -25,7 +25,11 @@ exports.process = function(context, options) {
                 let user = api({
                     uri: "/users/",
                     method: "GET",
-                    params: { Username__eq: jsonData.UserLogin }
+                    params: { 
+                        _noUnhydrated: 1,
+                        with: "CustomFields",
+                        Username__eq: jsonData.UserLogin 
+                    }
                 })
                 response.user = user[0];
             } catch(error) {

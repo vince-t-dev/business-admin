@@ -101,7 +101,7 @@ export default (props) => {
 							<i className="xpri xpri-user me-3"></i>
 							} 
 							<div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-								<span>Bonnie Green</span>
+								<span>{auth.user?.data ? auth.user.data.FirstName + " " + auth.user.data.LastName : "Bonnie Green" }</span>
 								<i className="xpri-arrow-right ms-2 text-cherry"></i>
 							</div>
 							</div>

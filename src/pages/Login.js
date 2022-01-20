@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faEye, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
@@ -46,6 +46,11 @@ function Login(props) {
         });
     };
       
+    // redirect user to home if they are logged in
+    useEffect(() => {
+        if (localStorage.getItem("user")) navigate("/");
+    },[]);
+
     return (
         <main>
             <section className="vh-100 bg-soft d-flex align-items-center my-0">
