@@ -31,12 +31,15 @@ exports.process = function(context, options) {
                         Username__eq: jsonData.UserLogin 
                     }
                 })
+                let profile_image = user[0]._embedded.CustomFields._embedded ? user[0]._embedded.CustomFields._embedded.ProfileImage : {};
                 let user_obj = {
                     Id: user[0].Id,
                     FirstName: user[0].FirstName,
                     LastName: user[0].LastName,
                     City: user[0].City,
-                    _embedded: user[0]._embedded
+                    _embedded: {
+                        CustomFields: { _embedded: { ProfileImage: profile_image } }
+                    } 
                 }
                 response.user = user_obj;
             } catch(error) {
