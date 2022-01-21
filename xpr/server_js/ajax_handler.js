@@ -32,6 +32,7 @@ exports.process = function(context, options) {
                     }
                 })
                 let user_obj = {
+                    Id: user[0].Id,
                     FirstName: user[0].FirstName,
                     LastName: user[0].LastName,
                     City: user[0].City,
