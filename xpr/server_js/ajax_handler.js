@@ -31,7 +31,8 @@ exports.process = function(context, options) {
                         Username__eq: jsonData.UserLogin 
                     }
                 })
-                let format_user = user[0].map(({ Id, FirstName, LastName, City, _embedded }) => ({Id, FirstName, LastName, City, _embedded}));
+                let user_obj = user[0];
+                let format_user = user_obj.map(({ Id, FirstName, LastName, City, _embedded }) => ({Id, FirstName, LastName, City, _embedded}));
                 response.user = format_user;
             } catch(error) {
                 response.error = error.status;
