@@ -31,14 +31,25 @@
     justify-content: center;
     align-items: center;
     font-weight: $font-weight-bold;
+    &.border { 
+        border: 1px solid $gray-900 !important; 
+    }
     @include border-radius($circle-radius);
     &.xs-avatar{
         height: $user-avatar-height-xs;
         width:  $user-avatar-width-xs;
+        min-height: $user-avatar-height-xs;
+        min-width:  $user-avatar-width-xs;
         img{
             height: $user-avatar-height-xs;
             width:  $user-avatar-width-xs;
         }
+    }
+
+    i { 
+        font-size: 1.063rem !important;
+        color: $gray-900;
+        margin: 0 !important;
     }
 
 	.md-avatar{

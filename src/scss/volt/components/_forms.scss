@@ -58,8 +58,11 @@
     }
 }
 
-.focused {
+.input-group-text:not([class^="rounded"]) {
+    border-radius: $border-radius-md;
+}
 
+.focused {
     .form-control {
         border-color: $input-focus-border-color;
         background-color: $input-focus-bg;
@@ -349,5 +352,20 @@ input[type=range]::-ms-track {
                 right: 0;
             }
         }
+    }
+
+    // date and time picker
+    .rdt {
+        .input-group {
+            border: 0;
+            padding:0;
+            .form-control {
+                padding: $input-padding-y-lg $input-padding-x-lg;
+                border: 1px solid $gray-400;
+                border-right: 0;
+                border-radius: $border-radius-md;
+            }
+        }
+        
     }
 }

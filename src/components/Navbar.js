@@ -7,7 +7,6 @@ import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { Row, Col, Nav, Image, Navbar, Dropdown, Container, ListGroup, Spinner } from 'react-bootstrap';
 import { useAuth } from "../context/auth";
 import NOTIFICATIONS_DATA from "../data/notifications";
-import Profile5 from "../assets/img/team/profile-picture-5.jpg";
 
 export default (props) => {
 	// notifications
@@ -98,7 +97,7 @@ export default (props) => {
 								{ auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage ?
 								<Image src={auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage?.SourcePath} className="user-avatar md-avatar rounded-circle me-3" />
 								:
-								<Image src={Profile5} className="user-avatar md-avatar rounded-circle me-3" />
+								<div className="user-avatar xs-avatar border rounded-circle me-3"><i className="xpri-members m-0"></i></div>
 								} 
 								<div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
 									<span>{auth.user?.data ? auth.user.data.FirstName + " " + auth.user.data.LastName : "Bonnie Green" }</span>

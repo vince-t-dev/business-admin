@@ -31,7 +31,7 @@ function TextEditor(props) {
             <CKEditor
                 editor={ InlineEditor }
                 config={ props.rte ? rteConfig : textConfig }
-                data={props.data}
+                data={props.value}
                 onReady={ editor => {
                     if (!props.rte) editor.model.schema.extend("paragraph", {isLimit: true});
                 } }

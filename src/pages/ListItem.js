@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useMatch } from "react-router-dom";
-import { Breadcrumb, Button, Row, Col, Form, Card, CardGroup } from "react-bootstrap";
+import { Breadcrumb, Button, Row, Col, Form, Card, CardGroup, InputGroup } from "react-bootstrap";
+import axios from "axios";
 import TextEditor from "../components/TextEditor";
 import ImageEditor from "../components/ImageEditor";
+import DatePicker from "../components/DatePicker";
+
 import { useAuth } from "../context/auth";
 
 function ListItem(props) {
@@ -14,6 +17,7 @@ function ListItem(props) {
     const [item, setItem] = useState(null);
     const [jsonData, setJsonData] = useState({});
     let auth = useAuth();
+
     useEffect(() => { 
         if (location.state) {
             let data = location.state.item;
@@ -87,8 +91,7 @@ function ListItem(props) {
 
     // update data object
     const updateData = (name,value) => { 
-        let data = updateObject(jsonData, name, value);
-        setJsonData(data);
+        updateObject(jsonData, name, value);
     }
 
     // upload image
@@ -101,10 +104,27 @@ function ListItem(props) {
         return new Blob(byteArrays, {type: mime});
     }
 
-    // TODO: submit form
-    const submit = e => {
-        e.preventDefault();
-        console.log('jsonData',jsonData);
+    // submit form
+	const submit_content = async (e, credentials, callback) => {
+        e.preventDefault();  
+        let formData = {};
+		formData.uri = "/articles/"+item.Id;
+		formData.action = "putData";
+        formData.data = jsonData;
+    
+    console.log('formData',formData);    
+		
+		const response = await axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(formData), {
+			headers: { 
+                Auth: auth.user.token,
+                "Content-Type": "application/json" 
+            },
+			withCredentials: true
+		});
+
+		// set user data
+		let result = response;
+        console.log('result',result);
     };
 
     return (
@@ -119,7 +139,7 @@ function ListItem(props) {
             </div>
 
             {item && 
-            <Form className="form-content-update" onSubmit={submit}>
+            <Form className="form-content-update" onSubmit={submit_content}>
                 <Row className="mb-5">
                     <Col sm={8}>
                         <Card border="light" className="shadow-sm">
@@ -138,25 +158,41 @@ function ListItem(props) {
                                                     {/* ck editor */}
                                                     <Form.Group className="ck-heading mb-4" controlId="title">
                                                         <Form.Label>Title</Form.Label>
-                                                        <TextEditor name="Title" data={item.Title} updateData={updateData}/>
+                                                        <TextEditor name="Title" value={item.Title} updateData={updateData}/>
                                                     </Form.Group>
 
                                                     <Form.Group className="mb-4" controlId="description">
                                                         <Form.Label>Description</Form.Label>
-                                                        <TextEditor name="Description" data={item.Description} rte={true} updateData={updateData}/>
+                                                        <TextEditor name="Description" value={item.Description} rte={true} updateData={updateData}/>
                                                     </Form.Group>
                                                     
                                                     {/* image editor */}
                                                     <Form.Group className="mb-4">
                                                         <Form.Label>Picture</Form.Label>
-                                                        <ImageEditor name="_embedded.Picture" data={item._embedded && item._embedded.Picture ? item._embedded.Picture.SourcePath : null} updateData={updateData}/>
+                                                        <ImageEditor name="_embedded.Picture" value={item._embedded && item._embedded.Picture ? item._embedded.Picture.SourcePath : null} updateData={updateData}/>
                                                     </Form.Group>
 
                                                     <Form.Group className="mb-4" controlId="html">
                                                         <Form.Label>Html</Form.Label>
-                                                        <TextEditor name="Html" data={item.Html} rte={true} updateData={updateData}/>
+                                                        <TextEditor name="Html" value={item.Html} rte={true} updateData={updateData}/>
                                                     </Form.Group>
                                                  
+                                                    {/* date and time */}
+                                                    <Row>
+                                                        <Col sm={6}>
+                                                            <Form.Label>Date</Form.Label>
+                                                            <DatePicker name="DisplayDate" value={item.DisplayDate} updateData={updateData}/>
+                                                        </Col>
+                                                        <Col sm={3}>
+                                                            <Form.Label>Start Time</Form.Label>
+                                                            <DatePicker name="StartTime" value={item.StartTime} viewMode="time" updateData={updateData}/>
+                                                        </Col>
+                                                        <Col sm={3}>
+                                                            <Form.Label>End Time</Form.Label>
+                                                            <DatePicker name="EndTime" value={item.EndTime} viewMode="time" updateData={updateData}/>
+                                                        </Col>
+                                                    </Row>    
+
                                                     {/* content card group */}
                                                     <Form.Group className="mb-4" controlId="card-group">
                                                         <h2 className="heading-2 mt-5 mb-4">Courses</h2>
@@ -218,13 +254,13 @@ function ListItem(props) {
                                 
                                 <Form.Group className="mb-3" controlId="MetaTagKeywords">
                                     <Form.Label>Keywords</Form.Label>
-                                    <Form.Control type="text" name="MetaTagKeywords" defaultValue={item.MetaTagKeywords} placeholder="Enter Meta Keywords"></Form.Control>
+                                    <Form.Control type="text" name="MetaTagKeywords" defaultValue={item.MetaTagKeywords} onChange={e => {updateData(e.target.name,e.target.value)}} placeholder="Enter Meta Keywords"></Form.Control>
                                 </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="MetaTagDescription">
                                     <Form.Label>Meta Tag Description</Form.Label>
                                     <div className="textarea-form-control">
-                                        <Form.Control as="textarea" name="MetaTagDescription" defaultValue={item.MetaTagDescription} placeholder="Enter Meta Description"></Form.Control>
+                                        <Form.Control as="textarea" name="MetaTagDescription" defaultValue={item.MetaTagDescription} onChange={e => {updateData(e.target.name,e.target.value)}} placeholder="Enter Meta Description"></Form.Control>
                                     </div>
                                 </Form.Group>
                             </Card.Body>

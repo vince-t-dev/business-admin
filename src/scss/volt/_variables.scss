@@ -466,7 +466,7 @@ $border-color:                $light;
 $border-radius:               0.188rem; // 3px
 $border-radius-xl:            1.563rem;
 $border-radius-lg:            .35rem;
-$border-radius-md:            .0.313rem; // 5px
+$border-radius-md:            0.313rem; // 5px
 $border-radius-sm:            0.188rem; // 3px
 $border-radius-pill:           2rem;
 $circle-radius:                50%;
@@ -775,7 +775,7 @@ $input-btn-padding-y-sm:      .25rem;
 $input-btn-padding-x-sm:      .5rem;
 $input-btn-font-size-sm:      $font-size-sm;
 
-$input-btn-padding-y-lg:      .77rem;
+$input-btn-padding-y-lg:      .65rem;
 $input-btn-padding-x-lg:      .75rem;
 $input-btn-font-size-lg:      $font-size-lg;
 
@@ -867,6 +867,7 @@ $input-box-shadow:                      $box-shadow-inset;
 
 $input-border-radius:                   $border-radius;
 $input-border-radius-sm:                $border-radius-sm;
+$input-border-radius-md:                $border-radius-md;
 $input-border-radius-lg:                $border-radius-lg;
 
 $input-focus-bg:                        $input-bg;
@@ -1719,8 +1720,8 @@ $avatar-lg-x: 3rem;
 $user-avatar-height:2.5rem;  
 $user-avatar-width: 2.5rem;
 
-$user-avatar-height-xs:1.5rem;  
-$user-avatar-width-xs: 1.5rem;
+$user-avatar-height-xs:1.875rem;  
+$user-avatar-width-xs: 1.875rem;
 
 $user-avatar-height-lg:3.5rem;
 $user-avatar-width-lg:3.5rem;

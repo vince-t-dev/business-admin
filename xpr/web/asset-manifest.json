@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/__xpr__/pub_engine/business-admin/web/static/css/main.98b34fa1.chunk.css",
-    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.042d038d.chunk.js",
-    "main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.042d038d.chunk.js.map",
+    "main.css": "/__xpr__/pub_engine/business-admin/web/static/css/main.0dfb57e1.chunk.css",
+    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.59f75d5e.chunk.js",
+    "main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.59f75d5e.chunk.js.map",
     "runtime-main.js": "/__xpr__/pub_engine/business-admin/web/static/js/runtime-main.e70decfa.js",
     "runtime-main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/runtime-main.e70decfa.js.map",
     "static/css/2.c91538ac.chunk.css": "/__xpr__/pub_engine/business-admin/web/static/css/2.c91538ac.chunk.css",
-    "static/js/2.05f26a75.chunk.js": "/__xpr__/pub_engine/business-admin/web/static/js/2.05f26a75.chunk.js",
-    "static/js/2.05f26a75.chunk.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/2.05f26a75.chunk.js.map",
+    "static/js/2.38c0f3ab.chunk.js": "/__xpr__/pub_engine/business-admin/web/static/js/2.38c0f3ab.chunk.js",
+    "static/js/2.38c0f3ab.chunk.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/2.38c0f3ab.chunk.js.map",
     "index.html": "/__xpr__/pub_engine/business-admin/web/index.html",
     "static/css/2.c91538ac.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/2.c91538ac.chunk.css.map",
-    "static/css/main.98b34fa1.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/main.98b34fa1.chunk.css.map",
-    "static/js/2.05f26a75.chunk.js.LICENSE.txt": "/__xpr__/pub_engine/business-admin/web/static/js/2.05f26a75.chunk.js.LICENSE.txt",
-    "static/js/main.042d038d.chunk.js.LICENSE.txt": "/__xpr__/pub_engine/business-admin/web/static/js/main.042d038d.chunk.js.LICENSE.txt",
+    "static/css/main.0dfb57e1.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/main.0dfb57e1.chunk.css.map",
+    "static/js/2.38c0f3ab.chunk.js.LICENSE.txt": "/__xpr__/pub_engine/business-admin/web/static/js/2.38c0f3ab.chunk.js.LICENSE.txt",
+    "static/js/main.59f75d5e.chunk.js.LICENSE.txt": "/__xpr__/pub_engine/business-admin/web/static/js/main.59f75d5e.chunk.js.LICENSE.txt",
     "static/media/404.59d1f9fd.svg": "/__xpr__/pub_engine/business-admin/web/static/media/404.59d1f9fd.svg",
     "static/media/500.d508258f.svg": "/__xpr__/pub_engine/business-admin/web/static/media/500.d508258f.svg",
     "static/media/volt.scss": "/__xpr__/pub_engine/business-admin/web/static/media/dinnextltpro-regular.070e0f7a.otf",
@@ -42,8 +42,8 @@
   "entrypoints": [
     "static/js/runtime-main.e70decfa.js",
     "static/css/2.c91538ac.chunk.css",
-    "static/js/2.05f26a75.chunk.js",
-    "static/css/main.98b34fa1.chunk.css",
-    "static/js/main.042d038d.chunk.js"
+    "static/js/2.38c0f3ab.chunk.js",
+    "static/css/main.0dfb57e1.chunk.css",
+    "static/js/main.59f75d5e.chunk.js"
   ]
 }

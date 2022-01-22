@@ -1,33 +1,73 @@
-.rdtPicker{
-  .dow {
-    height: 1.5rem;
-    line-height: 1.5rem;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-bolder;
-  }
-  td{
-    height: 35px !important;
-    &.rdtActive{
-      background-color: $secondary !important;
-      color: $dark !important;
-      border-radius: $border-radius ;
-      text-shadow: none !important;
-    }
-    &.rdtDay{
-      &:hover{
-        border-radius: $border-radius ;
-      }
-    }
-    &.rdtToday{
-      background-color: $light;
-      border-radius: $border-radius;
-      &::before{
-        border-bottom: 7px solid $secondary;
-      }
-    }
-  }
-  th{
-    border-bottom:0 !important;
-  }
-}
+// 
+// React datetime picker
+//
 
+.rdt {
+	.rdtPicker {
+		box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.126011);
+		border-radius: $border-radius-md;
+		padding: 0.625rem 0.938rem;
+		margin-top: 0;
+		.dow {
+			height: 1.5rem;
+			line-height: 1.5rem;
+			font-size: $font-size-sm;
+			font-weight: $font-weight-bolder;
+		}
+		td {
+			height: 35px !important;
+			&.rdtActive {
+			background-color: $primary !important;
+			color: $light !important;
+			border-radius: $border-radius ;
+			text-shadow: none !important;
+			}
+			&.rdtDay {
+				&:hover {
+					border-radius: $border-radius ;
+				}
+			}
+			&.rdtToday {
+			background-color: $light;
+			border-radius: $border-radius;
+				&::before {
+					border-bottom: 7px solid $secondary;
+				}
+			}
+		}
+		th {
+			border-bottom:0 !important;
+		}
+	}
+	&.time-picker { 
+		.rdtPicker {
+			min-width: 0; 
+		}
+	}
+	.rdtCounters {
+		display: block;
+		.rdtCounterSeparator {
+			line-height: 7rem;
+		}
+		.rdtCounter {
+			.rdtBtn {
+				font-size: 0.563rem;
+				&:hover {
+					background: rgba(0, 0, 0, 0.085);
+				}
+			}
+			.rdtCount { 
+				border-top: 2px solid $primary;
+				border-bottom: 2px solid $primary;
+				font-size: 0.75rem;
+				height: 35%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			& + .rdtCounter {
+				margin-left: 0.3rem;
+			}
+		}
+	}
+}

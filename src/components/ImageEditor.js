@@ -9,7 +9,7 @@ function ImageEditor(props) {
     // cropper js
     // media zoom
     const [cropper, setCropper] = useState();
-    const [image, setImage] = useState(props.data);
+    const [image, setImage] = useState(props.value);
     const zoomMedia = e => {
         let target = e.target;
         const min = target.min;
@@ -37,7 +37,8 @@ function ImageEditor(props) {
         if (typeof cropper !== "undefined") {
             let crop_data = cropper.getCroppedCanvas().toDataURL();
             cropper.replace(crop_data);
-        console.log(crop_data);
+            let base64_image_content = crop_data.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+            props.updateData(props.name, base64_image_content);
         }
     };
 

@@ -138,7 +138,7 @@ function List() {
                         <Row className="justify-content-end align-items-center mb-3">
                             <Col lg={4} className="d-flex justify-content-end">
                                 <InputGroup>
-                                    <Form.Control size="lg" type="text" className="rounded-xl" placeholder="Search" value={search} onChange={updateSearch}/>
+                                    <Form.Control size="lg" type="text" className="rounded-xl px-4" placeholder="Search" value={search} onChange={updateSearch}/>
                                     <InputGroup.Text className="rounded-xl">
                                         <i className="xpri-search text-primary"></i>
                                     </InputGroup.Text>

@@ -21,7 +21,7 @@ exports.process = function(context, options) {
                         UserType: "token"
                     }
                 });
-                // get user info
+                // get basic user info
                 let user = api({
                     uri: "/users/",
                     method: "GET",
@@ -72,6 +72,28 @@ exports.process = function(context, options) {
         case "checkAuth":
             // validate token
             response = library.checkAuth(request.headers.Auth);
+            return response;
+        break;
+
+        // post data
+        case "postData":  
+            response = api({
+                method: "POST",
+                uri: jsonData.uri,
+                data: jsonData.data
+            });
+            
+            return response;
+        break;
+        
+        // put data
+        case "putData":  
+            response = api({
+                "method": "PUT",
+                "uri": jsonData.uri,
+                "data": jsonData.data
+            });
+            
             return response;
         break;
     }
