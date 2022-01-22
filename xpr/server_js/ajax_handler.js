@@ -1,6 +1,19 @@
 // ajax handler: element
+const xpr = require('/xpr');
+return xpr;
 const xpr_objects = require("/xpr/request");
+const xpr_utils = require("/xpr/utilities");
 const library = require("./library");
+
+// convert base64 to blob
+function base64ToBlob(base64, mime) {
+    mime = mime || "";
+    var sliceSize = 1024;
+    var byteChars = xpr_utils.atob(base64);
+    var byteArrays = [];
+    for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) { var slice = byteChars.slice(offset, offset + sliceSize);var byteNumbers = new Array(slice.length);for (var i = 0; i < slice.length; i++) { byteNumbers[i] = slice.charCodeAt(i); }var byteArray = new Uint8Array(byteNumbers);byteArrays.push(byteArray); }
+    return new Blob(byteArrays, {type: mime});
+}
 
 exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
@@ -87,6 +100,17 @@ exports.process = function(context, options) {
         
         // put data
         case "putData":  
+            response = api({
+                method: "PUT",
+                uri: jsonData.uri,
+                data: jsonData.data
+            });
+            
+            return response;
+        break;
+
+        // upload file
+        case "uploadFile":  
             response = api({
                 method: "PUT",
                 uri: jsonData.uri,
