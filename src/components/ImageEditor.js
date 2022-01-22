@@ -58,20 +58,20 @@ function ImageEditor(props) {
 
             let formData = {};
             
-		formData["uri"] = "/files/";
-		formData["action"] = "postData";
-        formData["upload"] = crop_data.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
-    console.log('formData',formData);    
-		axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(formData), {
-			headers: { 
-                Auth: auth.user.token,
-                "Content-Type": "application/json" 
-            },
-			withCredentials: true
-		})
-        .then(function(response) {
-            console.log('response!',response);
-        });
+            formData.uri = "/files/";
+            formData.action = "postData";
+            formData.upload = { data: crop_data.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""), filename: "rc-image-1.jpeg" };
+        console.log('formData',formData);    
+            axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(formData), {
+                headers: { 
+                    Auth: auth.user.token,
+                    "Content-Type": "application/json" 
+                },
+                withCredentials: true
+            })
+            .then(function(response) {
+                console.log('response!',response);
+            });
         
 
 

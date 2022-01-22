@@ -1,14 +1,14 @@
 // ajax handler: element
 const xpr_objects = require("/xpr/request");
+const xpr_utils = require("/xpr/utilities");
+
 const library = require("./library");
 
 exports.process = function(context, options) {
-    
     var api = xpr_objects.XprApi;
     let request = xpr_objects.XprRequest();
     let jsonData = request.body ? JSON.parse(request.body) : {};
     let response = {};
-    return { request, context, options };
     switch (jsonData.action) {
         case "login":
             try {
@@ -78,10 +78,11 @@ exports.process = function(context, options) {
 
         // post data
         case "postData":  
+        let file = xpr_utils.atob(jsonData.upload.data);
             response = api({
                 method: "POST",
                 uri: jsonData.uri,
-                data: jsonData.data
+                data: file
             });
             
             return response;
