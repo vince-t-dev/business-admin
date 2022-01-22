@@ -56,16 +56,16 @@ function ImageEditor(props) {
 
 
 
-            let formData = new FormData();
+            let formData = {};
             
-		formData.append("uri" ,"/files/");
-		formData.append("action", "postData");
-        formData.append("upload", image_to_upload, "rc-image-1.jpeg");
+		formData["uri"] = "/files/";
+		formData["action"] = "postData";
+        formData["upload"] = crop_data.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
     console.log('formData',formData);    
-		axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",formData, {
+		axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(formData), {
 			headers: { 
                 Auth: auth.user.token,
-                "Content-Type": "multipart/form-data" 
+                "Content-Type": "application/json" 
             },
 			withCredentials: true
 		})
