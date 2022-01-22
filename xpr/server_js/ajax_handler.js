@@ -3,6 +3,7 @@ const xpr_objects = require("/xpr/request");
 const library = require("./library");
 
 exports.process = function(context, options) {
+    return { context, options };
     var api = xpr_objects.XprApi;
     let request = xpr_objects.XprRequest();
     let jsonData = request.body ? JSON.parse(request.body) : {};

@@ -5,6 +5,9 @@ import "cropperjs/dist/cropper.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCropAlt } from '@fortawesome/free-solid-svg-icons';
 
+import { useAuth } from "../context/auth";
+import axios from "axios";
+
 function ImageEditor(props) {
     // cropper js
     // media zoom
@@ -32,13 +35,46 @@ function ImageEditor(props) {
         };
         reader.readAsDataURL(files[0]);
     };
+    // convert base64 to blob
+    function base64ToBlob(base64, mime) {
+        mime = mime || "";
+        var sliceSize = 1024;
+        var byteChars = window.atob(base64);
+        var byteArrays = [];
+        for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) { var slice = byteChars.slice(offset, offset + sliceSize);var byteNumbers = new Array(slice.length);for (var i = 0; i < slice.length; i++) { byteNumbers[i] = slice.charCodeAt(i); }var byteArray = new Uint8Array(byteNumbers);byteArrays.push(byteArray); }
+        return new Blob(byteArrays, {type: mime});
+    }
+    let auth = useAuth();
     // on crop
     const crop = () => {
         if (typeof cropper !== "undefined") {
             let crop_data = cropper.getCroppedCanvas().toDataURL();
             cropper.replace(crop_data);
             let base64_image_content = crop_data.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
-            props.updateData(props.name, base64_image_content);
+            let image_to_upload = base64ToBlob(base64_image_content, "image/jpeg");   
+            props.updateData(props.name, image_to_upload);
+
+
+
+            let formData = new FormData();
+            
+		formData.append("uri" ,"/files/");
+		formData.append("action", "postData");
+        formData.append("upload", image_to_upload, "rc-image-1.jpeg");
+    console.log('formData',formData);    
+		axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",formData, {
+			headers: { 
+                Auth: auth.user.token,
+                "Content-Type": "multipart/form-data" 
+            },
+			withCredentials: true
+		})
+        .then(function(response) {
+            console.log('response!',response);
+        });
+        
+
+
         }
     };
 

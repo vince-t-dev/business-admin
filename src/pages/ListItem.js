@@ -94,16 +94,6 @@ function ListItem(props) {
         updateObject(jsonData, name, value);
     }
 
-    // upload image
-    function base64ToBlob(base64, mime) {
-        mime = mime || "";
-        var sliceSize = 1024;
-        var byteChars = window.atob(base64);
-        var byteArrays = [];
-        for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) { var slice = byteChars.slice(offset, offset + sliceSize);var byteNumbers = new Array(slice.length);for (var i = 0; i < slice.length; i++) { byteNumbers[i] = slice.charCodeAt(i); }var byteArray = new Uint8Array(byteNumbers);byteArrays.push(byteArray); }
-        return new Blob(byteArrays, {type: mime});
-    }
-
     // submit form
 	const submit_content = async (e, credentials, callback) => {
         e.preventDefault();  
@@ -111,9 +101,7 @@ function ListItem(props) {
 		formData.uri = "/articles/"+item.Id;
 		formData.action = "putData";
         formData.data = jsonData;
-    
     console.log('formData',formData);    
-		
 		const response = await axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(formData), {
 			headers: { 
                 Auth: auth.user.token,
@@ -122,7 +110,7 @@ function ListItem(props) {
 			withCredentials: true
 		});
 
-		// set user data
+		// result
 		let result = response;
         console.log('result',result);
     };
