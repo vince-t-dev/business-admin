@@ -79,7 +79,7 @@ exports.process = function(context, options) {
         // post data
         case "postData":  
         return xpr_utils;
-        let atob = xpr_utils.atob();
+        let atob = xpr_utils.atob;
         let file = atob(jsonData.upload.data);
             response = api({
                 method: "POST",
