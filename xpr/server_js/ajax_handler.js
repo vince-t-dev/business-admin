@@ -1,6 +1,4 @@
 // ajax handler: element
-const xpr = require('/xpr/');
-return xpr;
 const xpr_objects = require("/xpr/request");
 const xpr_utils = require("/xpr/utilities");
 const library = require("./library");
