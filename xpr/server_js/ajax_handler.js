@@ -1,7 +1,5 @@
 // ajax handler: element
 const xpr_objects = require("/xpr/request");
-const xpr_utils = require("/xpr/utilities");
-
 const library = require("./library");
 
 exports.process = function(context, options) {
@@ -78,12 +76,10 @@ exports.process = function(context, options) {
 
         // post data
         case "postData":  
-        let atob = xpr_utils.atob;
-        let file = atob(jsonData.upload.data);
             response = api({
                 method: "POST",
                 uri: jsonData.uri,
-                data: file
+                data: jsonData.data
             });
             
             return response;
@@ -92,9 +88,9 @@ exports.process = function(context, options) {
         // put data
         case "putData":  
             response = api({
-                "method": "PUT",
-                "uri": jsonData.uri,
-                "data": jsonData.data
+                method: "PUT",
+                uri: jsonData.uri,
+                data: jsonData.data
             });
             
             return response;
