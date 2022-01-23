@@ -76,17 +76,17 @@ function ImageEditor(props) {
             .then(data => {
                 console.log('response!',data);
             });*/
-
+            console.log('hello kitty');
             axios.post("/api/files/",formData, {
                 headers: { 
-                    "xpr-token-backend": auth.user.token,
-                    //"xpr-token-backend": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDMyNzQwMzIsImlhdCI6MTY0Mjg0MjAzMiwidWlkIjoiNjFlYmM3YjA4ZmVhZiIsInhzcmYiOiIwMzM0ZTY3MmNmODZhOTg3MWQzNWIyODJjYmJlNjkyMjc4NTAwNTY2OGZiMzAyODkiLCJ1c2VyX2lkIjo2MjQsImRlYnVnIjpudWxsfQ.gMTr9tYStMY9DJF2WdT9UtKM-ma8sSzmE2-xIZUJFh8", 
+                    //"xpr-token-backend": auth.user.token,
+                    "xpr-token-backend": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDMyNzQwMzIsImlhdCI6MTY0Mjg0MjAzMiwidWlkIjoiNjFlYmM3YjA4ZmVhZiIsInhzcmYiOiIwMzM0ZTY3MmNmODZhOTg3MWQzNWIyODJjYmJlNjkyMjc4NTAwNTY2OGZiMzAyODkiLCJ1c2VyX2lkIjo2MjQsImRlYnVnIjpudWxsfQ.gMTr9tYStMY9DJF2WdT9UtKM-ma8sSzmE2-xIZUJFh8", 
                     "Content-Type": "multipart/form-data"
                 },
                 //withCredentials: true
             })
             .then(function(response) {
-                console.log('response 1',response);
+                console.log('response',response);
             });
         }
     };
