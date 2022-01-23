@@ -1,6 +1,5 @@
 // ajax handler: element
 const xpr_objects = require("/xpr/request");
-const xpr_utils = require("/xpr/utilities");
 const library = require("./library");
 
 exports.process = function(context, options) {
@@ -43,12 +42,6 @@ exports.process = function(context, options) {
                     } 
                 }
                 response.user = user_obj;
-
-                // get xsrf token
-                var sessionCookie = request.cookies.replace(/(?:(?:^|.*;\s*)xpr-token-backend\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-                var sessionData = JSON.parse(xpr_utils.atob(sessionCookie.split('.')[1]));
-
-                response.xsrf_token = sessionData.xsrf;
             } catch(error) {
                 response.error = error.status;
                 return response;

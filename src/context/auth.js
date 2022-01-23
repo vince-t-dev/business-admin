@@ -22,10 +22,14 @@ function useAuthProvider() {
 			withCredentials: true
 		});
 
-		// set user data
-	console.log('???',response);	
 		let result = (response.data?.data) ? JSON.parse(response.data?.data) : response.data; 
-		let userData = {"token": result.token, "xsrf_token": response.data?.xsrf_token, "data": response.data?.user};
+
+		// get xsrf token
+		let sessionCookie = document.cookie.replace(/(?:(?:^|.*;\s*)xpr-token-backend\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+		let sessionData = sessionCookie ? JSON.parse(atob(sessionCookie.split('.')[1])) : "";
+		let xsrf_token = sessionData.xsrf;
+
+		let userData = {"token": result.token, "xsrf_token": xsrf_token, "data": response.data?.user};
 		if (!result.error) {
 			setUser(userData);
 			localStorage.setItem("user",JSON.stringify(userData));
