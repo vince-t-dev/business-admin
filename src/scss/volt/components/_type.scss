@@ -123,15 +123,28 @@ a, .text-action {
   @include font-size($font-size-sm);
   font-weight: $font-weight-light;
 }
-
-.font-base{
+.font-base {
 	@include font-size($font-size-base);
 	font-weight: $font-weight-light;
 }
-
 .font-medium {
 	@include font-size($font-size-lg);
 	font-weight: $font-weight-light;
+}
+.font-xs {
+	font-size: $font-size-xs !important;
+}
+.font-sm {
+	font-size: $font-size-sm !important;
+}
+.font-md {
+	font-size: $font-size-md !important;
+}
+.font-lg {
+	font-size: $font-size-lg !important;
+}
+.font-xl {
+	font-size: $font-size-xl !important;
 }
 
 

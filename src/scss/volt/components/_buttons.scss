@@ -45,6 +45,10 @@
 // Primary button
 //
 
+.btn-primary { 
+    border: 0; 
+}
+
 .btn-primary,
 .btn-secondary {
     display: inline-flex;
@@ -73,7 +77,7 @@
     &.icon {
         width: 2rem;
         height: 2rem;
-        i {
+        i:not([class*="font-"]) {
             font-size: 1rem;
         }
         svg {

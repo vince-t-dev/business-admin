@@ -192,7 +192,8 @@ $theme-colors: map-merge((
   "reddit" :      $reddit,  
   "github":       $github,
   "eggplant":     $eggplant,
-  "cherry":       $cherry
+  "cherry":       $cherry,
+  "green":        $green
 ), $theme-colors);
 
 // Set a specific jump point for requesting color jumps

@@ -24,7 +24,7 @@ function useAuthProvider() {
 
 		let result = (response.data?.data) ? JSON.parse(response.data?.data) : response.data; 
 
-		// get xsrf token
+		// get xsrf token from cookie
 		let sessionCookie = document.cookie.replace(/(?:(?:^|.*;\s*)xpr-token-backend\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 		let sessionData = sessionCookie ? JSON.parse(atob(sessionCookie.split('.')[1])) : "";
 		let xsrf_token = sessionData.xsrf;

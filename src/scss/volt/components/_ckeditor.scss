@@ -12,20 +12,20 @@
 
 .ck.ck-editor__editable_inline,
 .ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused {
-    padding: 0 !important;
+    padding: 0 0 0.875rem !important;
     border: 0 !important;
     border-bottom: 1px solid $gray-600 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
+    font-size: 1rem;
     width: 100%;
 }
 
 .ck.ck-editor__editable_inline>:first-child {
     margin-top: 0 !important;
 }
-
 .ck.ck-editor__editable_inline>:last-child {
-    margin-bottom: 0.875rem !important;
+    margin-bottom: 0 !important;
 }
 
 .ck-body-wrapper {
