@@ -109,10 +109,17 @@ exports.process = function(context, options) {
 
         // upload file
         case "uploadFile":  
+            let file = base64ToBlob(jsonData.file, "image/png");   
+            let formData = new FormData();
+            let timestamp = Math.floor(Date.now() / 1000);
+            formData.append("overwrite",0);
+            formData.append("unzip",0);
+            formData.append("files[]",file,"xpr-business-ss-"+timestamp+".png");  
+
             response = api({
-                method: "PUT",
-                uri: jsonData.uri,
-                data: jsonData.data
+                method: "POST",
+                uri: "/files/",
+                data: formData
             });
             
             return response;
