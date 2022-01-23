@@ -62,12 +62,27 @@ function ImageEditor(props) {
             formData.append("overwrite",0);
             formData.append("unzip",0);
             formData.append("files[]",image_to_upload,"xpr-business-"+timestamp+".png");  
+
+            /*const requestOptions = {
+                method: "POST",
+                headers: { 
+                    "xpr-token-backend": auth.user.token,
+                    "Content-Type": "multipart/form-data" 
+                },
+                body: formData
+            };
+            fetch("/api/files/", requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log('response!',data);
+            });*/
+
             axios.post("/api/files/",formData, {
                 headers: { 
                     "xpr-token-backend": auth.user.token,
                     "Content-Type": "multipart/form-data" 
                 },
-                withCredentials: true
+                //withCredentials: true
             })
             .then(function(response) {
                 console.log('response!',response);
