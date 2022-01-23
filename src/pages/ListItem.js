@@ -12,7 +12,7 @@ function ListItem(props) {
     const location = useLocation();
     const match = useMatch("/my-business/list/edit/:id");
     
-    // fetch data from location or api
+    // fetch data from location state or api
     const [error, setError] = useState(null);
     const [item, setItem] = useState(null);
     const [jsonData, setJsonData] = useState({});
