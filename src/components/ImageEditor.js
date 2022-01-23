@@ -49,28 +49,9 @@ function ImageEditor(props) {
         if (typeof cropper !== "undefined") {
             let crop_data = cropper.getCroppedCanvas().toDataURL();
             cropper.replace(crop_data);
-            // TODO: rework fe cropping behaviours
+            // TODO: rework cropping behaviours
             // get blob data
-
             let base64_image_content = crop_data.replace(/^data:image\/(png|jpg|jpeg|webp|svg+xml);base64,/, "");
-            let formData = {};
-            //let timestamp = Math.floor(Date.now() / 1000);
-            //formData.append("overwrite",0);
-            //formData.append("unzip",0);
-            formData.action = "uploadFile";
-            formData.file = base64_image_content;
-            axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(formData), {
-                headers: { 
-                    "xpr-token-backend": auth.user.token,
-                    "Content-Type": "application/json" 
-                },
-                withCredentials: true
-            })
-            .then(function(response) {
-                console.log('response!',response);
-            });
-
-            /*let base64_image_content = crop_data.replace(/^data:image\/(png|jpg|jpeg|webp|svg+xml);base64,/, "");
             let image_to_upload = base64ToBlob(base64_image_content, "image/png");   
             
             props.updateData(props.name, image_to_upload);
@@ -90,7 +71,7 @@ function ImageEditor(props) {
             })
             .then(function(response) {
                 console.log('response!',response);
-            });*/
+            });
         }
     };
 
