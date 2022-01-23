@@ -23,6 +23,7 @@ function useAuthProvider() {
 		});
 
 		// set user data
+	console.log('???',response);	
 		let result = (response.data?.data) ? JSON.parse(response.data?.data) : response.data; 
 		let userData = {"token": result.token, "xsrf_token": response.data?.xsrf_token, "data": response.data?.user};
 		if (!result.error) {

@@ -42,7 +42,7 @@ exports.process = function(context, options) {
                 }
                 response.user = user_obj;
                 // get xsrf token
-                response.xsrf_token = request.headers.X-Xsrf-Token;
+                response.xsrf_token = request;
             } catch(error) {
                 response.error = error.status;
                 return response;
