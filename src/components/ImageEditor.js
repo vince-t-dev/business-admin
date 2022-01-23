@@ -63,7 +63,7 @@ function ImageEditor(props) {
             formData.append("unzip",0);
             formData.append("files[]",image_to_upload,"xpr-business-"+timestamp+".png");  
 
-            const requestOptions = {
+            /*const requestOptions = {
                 method: "POST",
                 headers: { 
                     "xpr-token-backend": auth.user.token,
@@ -75,18 +75,19 @@ function ImageEditor(props) {
             .then(response => response.json())
             .then(data => {
                 console.log('response!',data);
-            });
+            });*/
 
-            /*axios.post("/api/files/",formData, {
+            axios.post("/api/files/",formData, {
                 headers: { 
-                    "xpr-token-backend": auth.user.token,
-                    "Content-Type": "multipart/form-data" 
+                    //"xpr-token-backend": auth.user.token,
+                    "xpr-token-backend": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDMyNzQwMzIsImlhdCI6MTY0Mjg0MjAzMiwidWlkIjoiNjFlYmM3YjA4ZmVhZiIsInhzcmYiOiIwMzM0ZTY3MmNmODZhOTg3MWQzNWIyODJjYmJlNjkyMjc4NTAwNTY2OGZiMzAyODkiLCJ1c2VyX2lkIjo2MjQsImRlYnVnIjpudWxsfQ.gMTr9tYStMY9DJF2WdT9UtKM-ma8sSzmE2-xIZUJFh8", 
+                    "Content-Type": "multipart/form-data"
                 },
                 withCredentials: true
             })
             .then(function(response) {
                 console.log('response!',response);
-            });*/
+            });
         }
     };
 
