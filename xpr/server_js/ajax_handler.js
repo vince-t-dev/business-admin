@@ -73,6 +73,7 @@ exports.process = function(context, options) {
         case "checkAuth":
             // validate token
             response = library.checkAuth(request.headers.Auth);
+            response.request = request;
             return response;
         break;
 
