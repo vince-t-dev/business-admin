@@ -44,8 +44,8 @@ function ImageEditor(props) {
         const reader = new FileReader();
         reader.onload = () => {
             setImage(reader.result);
-            // TODO: upload on save
-          console.log('reader.result',reader.result);  
+            // upload to server
+            uploadFile(reader.result);
         };
         reader.readAsDataURL(files[0]);
     };
@@ -118,7 +118,7 @@ function ImageEditor(props) {
                         </Col>
                         <Col className="d-flex align-items-center justify-content-end">
                             <Form.Group controlId="crop">
-                                <Button variant="primary" className={enableCrop ? "d-none" : "icon"} onClick={setEnableCrop}>
+                                <Button variant="primary" className={(enableCrop || !image) ? "d-none" : "icon"} onClick={setEnableCrop}>
                                     <FontAwesomeIcon icon={faCropAlt} size="xs"/>    
                                 </Button>
                                 <Button variant="primary" className={enableCrop ? "icon bg-cherry" : "d-none"} onClick={e => { setEnableCrop(false) }}>

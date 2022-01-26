@@ -4,15 +4,16 @@ import moment from "moment-timezone";
 import Datetime from "react-datetime";
 
 function DatePicker(props) {
-    const [value, setValue] = useState(props.value || "");
     const viewMode = props.viewMode || "days";
     const isTimePicker = (viewMode == "time");
     const dateFormat = !isTimePicker ? "YYYY-MM-DD" : false;
+    let formatted_value = props.value;
+    const [value, setValue] = useState(formatted_value);
     let placeholder = (isTimePicker) ? "HH:mm" : "yyyy-mm-dd";
 
-    // update jsondata
+    // on value change: format value and update jsondata
     useEffect(() => {
-        let formatted_value = !isTimePicker ? moment(value).format("YYYY-MM-DD") : moment(value).format("HH:mm");
+        formatted_value = (!isTimePicker) ? moment(value).format("YYYY-MM-DD") : moment(value).format("HH:mm");
         props.updateData(props.name, formatted_value);
     },[value]);
 
@@ -25,10 +26,10 @@ function DatePicker(props) {
                 initialViewMode={viewMode}
                 className={viewMode+"-picker"}
                 renderInput={(props, openCalendar) => (
-                <InputGroup {...props}>
+                <InputGroup>
                     <Form.Control
                         type="text"
-                        value={props.value}
+                        value={props.value ? props.value : value}
                         placeholder={placeholder}
                         onFocus={openCalendar} 
                         onChange={() => {}} />

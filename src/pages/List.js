@@ -197,7 +197,7 @@ function List() {
                             { error && <div>Fetching list error: {error.message}</div> }
                             { !items.length && isLoaded && <tr><td colSpan="6"><div className="text-center my-3">No result found.</div></td></tr> }
                             </tbody>
-                            {/* loader */}
+                            {/* skeleton loader */}
                             { !isLoaded &&
                                 <tbody>
                                     <tr>
@@ -213,6 +213,11 @@ function List() {
                                     <tr>
                                         <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-25"></div><div className="empty"></div></div></span></td>
                                         <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span></span></td>
+                                    </tr> 
+                                    <tr>
+                                        <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-50"></div><div className="empty"></div></div></span></td>
+                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
                                         <td><span></span></td>
                                     </tr> 
                                 </tbody> 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useMatch } from "react-router-dom";
-import { Breadcrumb, Button, Row, Col, Form, Card, CardGroup, InputGroup } from "react-bootstrap";
+import { Link, useLocation, useMatch, useNavigate } from "react-router-dom";
+import { Breadcrumb, Button, Row, Col, Form, Card, CardGroup, InputGroup, Spinner } from "react-bootstrap";
 import axios from "axios";
 import TextEditor from "../components/TextEditor";
 import ImageEditor from "../components/ImageEditor";
@@ -10,21 +10,26 @@ import { useAuth } from "../context/auth";
 
 function ListItem(props) {
     const location = useLocation();
+    const navigate = useNavigate();
     const match = useMatch("/my-business/list/edit/:id");
     
-    // fetch data from location state or api
+    // fetch data from api
     const [error, setError] = useState(null);
     const [item, setItem] = useState(null);
     const [jsonData, setJsonData] = useState({});
+    const [isSaved, setIsSaved] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(true);
     let auth = useAuth();
-
     useEffect(() => { 
-        if (location.state) {
-            let data = location.state.item;
-            setItem(data);
-        } else if (match?.params?.id == "new") {
+        // could use location state to bypass api call but would need a way to detect changes
+        //if (location.state) {
+            //let data = location.state.item;    
+            //setItem(data);
+        // for create new form    
+        if (match?.params?.id == "new") {
             setItem({});
         } else {
+            setIsLoaded(false);
             fetch(`/__xpr__/pub_engine/business-admin/element/article_json?id=`+match.params.id, {
                 method: "GET",
                 headers: {
@@ -34,6 +39,7 @@ function ListItem(props) {
             .then(res => res.json())
             .then(
                 (result) => { 
+                    setIsLoaded(true);
                     setItem(result);
                 },
                 (error) => {
@@ -101,8 +107,13 @@ function ListItem(props) {
 		formData.uri = "/articles/"+item.Id;
 		formData.action = "putData";
         formData.data = jsonData;
-     // TODO: we ain't there yet
-    console.log('formData',formData);    
+        console.log('data to send',jsonData);
+        setIsSaved(false);
+        
+        // TODO: create new method
+
+
+        // save and pub
 		const response = await axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(formData), {
 			headers: { 
                 Auth: auth.user.token,
@@ -113,7 +124,12 @@ function ListItem(props) {
 
 		// result
 		let result = response;
-        console.log('result',result);
+        if (result) {
+            setIsSaved(true);
+            setItem(result.data);
+            // update state
+            navigate({state: {item: result.data}});
+        }
     };
 
     return (
@@ -170,15 +186,15 @@ function ListItem(props) {
                                                     <Row>
                                                         <Col sm={6}>
                                                             <Form.Label>Date</Form.Label>
-                                                            <DatePicker name="DisplayDate" value={item.DisplayDate} updateData={updateData}/>
+                                                            <DatePicker name="DisplayDate" value={item.DisplayDate || ""} updateData={updateData}/>
                                                         </Col>
                                                         <Col sm={3}>
                                                             <Form.Label>Start Time</Form.Label>
-                                                            <DatePicker name="StartTime" value={item.StartTime} viewMode="time" updateData={updateData}/>
+                                                            <DatePicker name="StartTime" value={item.StartTime || ""} viewMode="time" updateData={updateData}/>
                                                         </Col>
                                                         <Col sm={3}>
                                                             <Form.Label>End Time</Form.Label>
-                                                            <DatePicker name="EndTime" value={item.EndTime} viewMode="time" updateData={updateData}/>
+                                                            <DatePicker name="EndTime" value={item.EndTime || ""} viewMode="time" updateData={updateData}/>
                                                         </Col>
                                                     </Row>    
 
@@ -222,7 +238,9 @@ function ListItem(props) {
                                                     </Form.Group>
 
                                                     <fieldset className="d-flex justify-content-end">
-                                                        <Button type="submit" variant="primary" className="shadow">Submit</Button>
+                                                        <Button variant="primary" type="submit" className="shadow">
+                                                           {isSaved ? "Save" : "Saving" } { !isSaved && <Spinner animation="border" variant="white" size="sm" className="ms-2"/>}
+                                                        </Button>
                                                     </fieldset>
                                                 </Col>
                                             </Row>
@@ -257,6 +275,68 @@ function ListItem(props) {
                     </Col>
                 </Row>
             </Form>
+            }
+
+            {/* skeleton loader */}
+            { !isLoaded &&
+                <Row className="mb-5">
+                    <Col sm={8}>
+                        <Card border="light" className="shadow-sm">
+                            <Card.Body>
+                                <Row className="justify-content-end align-items-center">
+                                    <Col sm={12}>
+                                        <div className="mb-4">
+                                            <Row className="justify-content-between">
+                                                <Col sm={8} className="mb-3">
+                                                    <h2 className="heading-2">Details</h2>
+                                                    <p className="subheading-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col sm={12}>
+                                                    <Form.Group className="mb-4">
+                                                        <div className="empty w-25 mb-2"></div>
+                                                        <div><div className="empty w-50"></div></div>
+                                                    </Form.Group>
+
+                                                    <Form.Group className="mb-4">
+                                                        <div className="empty w-25 mb-2"></div>
+                                                        <div><div className="empty w-75"></div></div>
+                                                    </Form.Group>
+                                                    
+                                                    {/* image editor */}
+                                                    <Form.Group className="mb-4">
+                                                        <div className="empty w-25 mb-2"></div>
+                                                        <div className="empty fh-250"></div>
+                                                    </Form.Group>
+
+                                                    <Form.Group className="mb-4">
+                                                        <div className="empty w-25 mb-2"></div>
+                                                        <div className="empty"></div>
+                                                        <div><div className="empty w-75 mt-2"></div></div>
+                                                    </Form.Group>
+                                                </Col>
+                                            </Row>
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col sm={4}>
+                        <Card border="light" className="shadow-sm">
+                            <Card.Body>
+                                <h2 className="heading-2 mb-3">SEO</h2>
+                                <div className="empty w-25"></div>
+                                <div><div className="empty w-75 mb-3"></div></div>
+                                <div className="empty w-25"></div>
+                                <div><div className="empty w-50 mb-3"></div></div>
+                                <div className="empty w-25"></div>
+                                <div className="empty mb-3"></div>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
             }
         </>
     );

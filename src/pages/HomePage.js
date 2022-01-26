@@ -105,15 +105,12 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
 
 function PrivateRoute({ children, ...rest }) {		
 	let auth = useAuth();
-console.log('auth?',auth);	
 	const location = useLocation();
 	let userData = (localStorage.getItem("user")) ? JSON.parse(localStorage.getItem("user")) : ""; 
 	auth.user = userData;
 	return (
-		//<Outlet {...rest} render={({ location }) =>
-        auth.user ? <Outlet {...rest}/> :
+        auth.user ? <Outlet {...rest} location={location}/> :
         (<Navigate to="/my-business/login" state={{ from: location }} replace />)
-		//}///>
 	)
 }
 

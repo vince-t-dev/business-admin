@@ -12,7 +12,7 @@ exports.process = function(context, options) {
     
     let articles_params = {
         "_noUnhydrated"                     : 1,
-        "with"                              : "Picture,Categories,CustomFields,Language",
+        "with"                              : "Categories,Language",
         "related_Language_Id__eq"           : request.language.Id,
         // expresia /my-business/ section
         "SectionId__in"                     : 6103,
