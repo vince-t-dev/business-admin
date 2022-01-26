@@ -21,7 +21,7 @@ function ListItem(props) {
     const [isLoaded, setIsLoaded] = useState(true);
     let auth = useAuth();
     useEffect(() => { 
-        // could use location state to bypass api call but would need a way to detect changes
+        // could use location state from listing to bypass api call but would need an efficent way to detect changes
         //if (location.state) {
             //let data = location.state.item;    
             //setItem(data);
