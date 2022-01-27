@@ -213,9 +213,9 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";`}
         />
 
         <Documentation
-          title="Datepicker"
+          title="DateTimePicker"
           description={
-            <p>Use the <code>&#x3C;Datetime&#x3E;</code> component to use a datepicker as an input field. You can read more about the options that you can use for this component by reading the <Card.Link href="https://www.npmjs.com/package/react-datetime" target="_blank">react-datetime</Card.Link> documentation.</p>
+            <p>Use the <code>&#x3C;Datetime&#x3E;</code> component. You can read more about the options that you can use for this component by reading the <Card.Link href="https://www.npmjs.com/package/react-datetime" target="_blank">react-datetime</Card.Link> documentation.</p>
           }
           scope={{ Datetime, Form, InputGroup, FontAwesomeIcon, faCalendarAlt, moment }}
           imports={`import React, { useState } from "react";
@@ -225,7 +225,7 @@ import moment from "moment-timezone";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";`}
-          example={`const Datepicker = () => {
+          example={`const DateTimePicker = () => {
   const [birthday, setBirthday] = React.useState("");
 
   return(
@@ -252,7 +252,7 @@ import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";`}
   );
 }
 
-render( <Datepicker /> )`}
+render( <DateTimePicker /> )`}
         />
 
       </Container>

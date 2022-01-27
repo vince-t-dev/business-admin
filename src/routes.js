@@ -2,6 +2,7 @@
 export const AllRoutes = {
     // pages
     Home: { path: "/my-business/" },
+    Start: { path: "/__xpr__/pub_engine/business-admin/web" },
     List: { path: "/my-business/list" },
     ListItem: { path: "/my-business/list/edit/:id" },
     Users: { path: "/my-business/users" },

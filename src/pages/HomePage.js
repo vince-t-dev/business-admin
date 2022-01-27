@@ -129,6 +129,7 @@ export default () => (
 				{/* xpr */}
 				<Route index element={<RouteWithSidebar component={List}/>} />
 				<Route path={AllRoutes.Home.path} element={<RouteWithSidebar component={List}/>}/>
+				<Route path={AllRoutes.Start.path} element={<RouteWithSidebar component={List}/>}/>
 				<Route path={AllRoutes.List.path} element={<RouteWithSidebar component={List}/>}/>
 				<Route path={AllRoutes.ListItem.path} element={<RouteWithSidebar component={ListItem}/>}/>
 				<Route path={AllRoutes.Users.path} element={<RouteWithSidebar component={Users}/>}/>

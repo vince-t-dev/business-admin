@@ -24,8 +24,9 @@ exports.process = function(context, options) {
     if (request.urlParams.page) articles_params.page = request.urlParams.page;
     let articles = api({
         method: "GET",
-        uri : "/articles/",
-        params : articles_params
+        uri: "/articles/",
+        parseHAL: false,
+        params: articles_params
     });
 
     return articles;

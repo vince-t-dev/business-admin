@@ -1259,7 +1259,7 @@ $navbar-dark-brand-hover-color:           $navbar-dark-active-color;
 $dropdown-min-width:                10rem;
 $dropdown-padding-y:                .5rem;
 $dropdown-spacer:                   .125rem;
-$dropdown-font-size:                1rem;
+$dropdown-font-size:                0.875rem;
 $dropdown-item-font-weight:         $font-weight-normal;
 $dropdown-item-hover-color:         $gray-900;
 
@@ -1652,7 +1652,7 @@ $spinner-width-sm:        1.2rem;
 $spinner-height-sm:       $spinner-width-sm;
 $spinner-border-width-sm: .2em;
 
-// Datepicker
+// Date time picker
 
 $datepicker-border-radius: $border-radius-sm;
 $datepicker-dropdown-padding: 20px 22px;

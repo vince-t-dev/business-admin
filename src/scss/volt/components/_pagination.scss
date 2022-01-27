@@ -1,23 +1,49 @@
 /**
  * = Paginations
  */
-
- .page-link {
-    &:active,&:focus {
-        box-shadow: none;
+.pagination {
+    margin: 2rem 0;
+    justify-content: center;
+    .page-item {
+        user-select: none;
+        & + .page-item {
+            margin-left: 0.938rem;
+        }
+        .page-link {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            padding: 0;
+            font-weight: $font-weight-bold;
+            font-size: 0.75rem;
+            line-height: 1.5rem;
+            text-align: center;
+            color: $gray-500;
+            background: transparent;
+            border: 0;
+            box-shadow: none;
+            span { 
+                font-size: 1.5rem;
+            }
+        }
+        &.active {
+            .page-link {
+                background: $primary;
+                color: $white;
+            }
+        }
     }
- }
 
- .circle-pagination{
-    .page-link,
-    span{
-        @include display-flex();
-        align-items: center;
-        justify-content: center;
-        width: 34px;
-        height: 34px;
-        padding: 0;
-        @include border-radius($circle-radius);
+    .circle-pagination{
+        .page-link,
+        span{
+            @include display-flex();
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            padding: 0;
+            @include border-radius($circle-radius);
+        }
     }
 }
-

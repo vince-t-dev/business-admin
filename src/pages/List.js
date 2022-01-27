@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Table, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Breadcrumb, Button, Row, Col, InputGroup, Form, Pagination, Card, Table, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faList } from '@fortawesome/free-solid-svg-icons';
 import Footer from "../components/Footer";
+import CustomPagination from "../components/Pagination";
 import { useAuth } from "../context/auth";
 
 function List() {
@@ -40,7 +41,7 @@ function List() {
         .then(
             (result) => {
                 setIsLoaded(true);
-                setItems(result);
+                setItems(result._embedded?.Article);
             },
             (error) => {
                 setIsLoaded(true);
@@ -224,6 +225,9 @@ function List() {
                             }
                         </Table>
                     </Form>
+
+                    <CustomPagination totalPages={5}/>
+
                 </Card.Body>
             </Card>
             <Footer selectedItems={selectedItems}/>

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useMatch, useNavigate } from "react-router-dom";
-import { Breadcrumb, Button, Row, Col, Form, Card, CardGroup, InputGroup, Spinner } from "react-bootstrap";
+import { Breadcrumb, Button, Row, Col, Form, Card, CardGroup, Dropdown, Spinner } from "react-bootstrap";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 import TextEditor from "../components/TextEditor";
 import ImageEditor from "../components/ImageEditor";
-import DatePicker from "../components/DatePicker";
+import DateTimePicker from "../components/DateTimePicker";
 
 import { useAuth } from "../context/auth";
 
@@ -12,11 +14,13 @@ function ListItem(props) {
     const location = useLocation();
     const navigate = useNavigate();
     const match = useMatch("/my-business/list/edit/:id");
-    
+    const isCreateNew = (match?.params?.id == "new");
+
     // fetch data from api
     const [error, setError] = useState(null);
     const [item, setItem] = useState(null);
-    const [jsonData, setJsonData] = useState({});
+    let content_data = isCreateNew ? {"_embedded": { "Section": { "Id": 6103 }, "Language": {"Id": 1 }}} : {};
+    const [jsonData, setJsonData] = useState(content_data);
     const [isSaved, setIsSaved] = useState(true);
     const [isLoaded, setIsLoaded] = useState(true);
     let auth = useAuth();
@@ -26,7 +30,7 @@ function ListItem(props) {
             //let data = location.state.item;    
             //setItem(data);
         // for create new form    
-        if (match?.params?.id == "new") {
+        if (isCreateNew) {
             setItem({});
         } else {
             setIsLoaded(false);
@@ -101,18 +105,23 @@ function ListItem(props) {
     }
 
     // submit form
-	const submit_content = async (e, credentials, callback) => {
-        e.preventDefault();  
+	const submit_content = async (options) => {
         let formData = {};
-		formData.uri = "/articles/"+item.Id;
-		formData.action = "putData";
+        // create new item
+        if (isCreateNew) {
+            formData.uri = "/articles/";
+		    formData.action = "postData";
+            jsonData.Active = (options == "publish") ? 1 : 0;
+        // edit item    
+        } else {
+            formData.uri = "/articles/"+item.Id;
+		    formData.action = "putData";
+        }
+	
         formData.data = jsonData;
         console.log('data to send',jsonData);
         setIsSaved(false);
         
-        // TODO: create new method
-
-
         // save and pub
 		const response = await axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(formData), {
 			headers: { 
@@ -127,8 +136,11 @@ function ListItem(props) {
         if (result) {
             setIsSaved(true);
             setItem(result.data);
-            // update state
-            navigate({state: {item: result.data}});
+            // create new form: redirect back to listing page editing form: update states
+            if (isCreateNew)
+                navigate("/my-business/list");
+            else
+                navigate({state: {item: result.data}});
         }
     };
 
@@ -144,7 +156,7 @@ function ListItem(props) {
             </div>
 
             {item && 
-            <Form className="form-content-update" onSubmit={submit_content}>
+            <Form className="form-content-update" onSubmit={e => {e.preventDefault()}}>
                 <Row className="mb-5">
                     <Col sm={8}>
                         <Card border="light" className="shadow-sm">
@@ -186,15 +198,15 @@ function ListItem(props) {
                                                     <Row>
                                                         <Col sm={6}>
                                                             <Form.Label>Date</Form.Label>
-                                                            <DatePicker name="DisplayDate" value={item.DisplayDate || ""} updateData={updateData}/>
+                                                            <DateTimePicker name="DisplayDate" value={item.DisplayDate || ""} updateData={updateData}/>
                                                         </Col>
                                                         <Col sm={3}>
                                                             <Form.Label>Start Time</Form.Label>
-                                                            <DatePicker name="StartTime" value={item.StartTime || ""} viewMode="time" updateData={updateData}/>
+                                                            <DateTimePicker name="StartTime" value={item.StartTime || ""} viewMode="time" updateData={updateData}/>
                                                         </Col>
                                                         <Col sm={3}>
                                                             <Form.Label>End Time</Form.Label>
-                                                            <DatePicker name="EndTime" value={item.EndTime || ""} viewMode="time" updateData={updateData}/>
+                                                            <DateTimePicker name="EndTime" value={item.EndTime || ""} viewMode="time" updateData={updateData}/>
                                                         </Col>
                                                     </Row>    
 
@@ -238,9 +250,25 @@ function ListItem(props) {
                                                     </Form.Group>
 
                                                     <fieldset className="d-flex justify-content-end">
-                                                        <Button variant="primary" type="submit" className="shadow">
-                                                           {isSaved ? "Save" : "Saving" } { !isSaved && <Spinner animation="border" variant="white" size="sm" className="ms-2"/>}
+                                                        { isCreateNew ? 
+                                                        <Dropdown>
+                                                            <Dropdown.Toggle as={Button} variant="primary">
+                                                                {isSaved ? "Save" : "Saving" } { isSaved ? <span className="icon icon-small ms-1"><FontAwesomeIcon icon={faChevronDown} /></span> : <Spinner animation="border" variant="white" size="sm" className="ms-2"/> }
+                                                            </Dropdown.Toggle>
+                                                            <Dropdown.Menu className="dashboard-dropdown dropdown-menu-left mt-1">
+                                                                <Dropdown.Item onClick={e => { submit_content("draft")}}>
+                                                                    Save as Draft
+                                                                </Dropdown.Item>
+                                                                <Dropdown.Item onClick={e => { submit_content("publish")}}>
+                                                                    Publish
+                                                                </Dropdown.Item>
+                                                            </Dropdown.Menu>
+                                                        </Dropdown>
+                                                        :
+                                                        <Button variant="primary" type="button" onClick={submit_content} className="shadow">
+                                                           {isSaved ? "Save" : "Saving" } { !isSaved && <Spinner animation="border" variant="white" size="sm" className="ms-2"/> }
                                                         </Button>
+                                                        }
                                                     </fieldset>
                                                 </Col>
                                             </Row>
