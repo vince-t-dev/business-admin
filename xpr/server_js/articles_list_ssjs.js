@@ -29,5 +29,6 @@ exports.process = function(context, options) {
         params: articles_params
     });
 
+    articles.Pagination = library.pagination({total: articles.Total, per_page: 10, page: request.urlParams.page});
     return articles;
 }
