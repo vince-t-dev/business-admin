@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useMatch, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Breadcrumb, Button, Row, Col, Form, Card, CardGroup, Dropdown, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -11,10 +11,10 @@ import DateTimePicker from "../components/DateTimePicker";
 import { useAuth } from "../context/auth";
 
 function ListItem(props) {
-    const location = useLocation();
+    //const location = useLocation();
     const navigate = useNavigate();
-    const match = useMatch("/my-business/list/edit/:id");
-    const isCreateNew = (match?.params?.id == "new");
+    const { id } = useParams();
+    const isCreateNew = (id == "new");
 
     // fetch data from api
     const [error, setError] = useState(null);
@@ -34,7 +34,7 @@ function ListItem(props) {
             setItem({});
         } else {
             setIsLoaded(false);
-            fetch(`/__xpr__/pub_engine/business-admin/element/article_json?id=`+match.params.id, {
+            fetch(`/__xpr__/pub_engine/business-admin/element/article_json?id=`+id, {
                 method: "GET",
                 headers: {
                     Auth: auth.user.token

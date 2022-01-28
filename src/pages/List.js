@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Breadcrumb, Button, Row, Col, InputGroup, Form, Pagination, Card, Table, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Table, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faList } from '@fortawesome/free-solid-svg-icons';
 import Footer from "../components/Footer";
@@ -11,9 +11,13 @@ function List() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
+    const [listPagination, setListPagination] = useState({});
     const [search, setSearch] = useState("");
     const [query, setQuery] = useState("");
     const [selectedItems, setSelectedItems] = useState([]);
+    const params = useParams();
+    const navigate = useNavigate();
+    const [page, setPage] = useState(params?.page?.split("p")[1]||1);
 
     // update search value
     const updateSearch = e => {
@@ -26,31 +30,39 @@ function List() {
         setQuery(search);
     }
 
-    // fetch results when query changes
+    // fetch page when pagination param changes
+    useEffect(() => {
+        setPage(Number(params?.page?.split("p")[1]||1));
+    },[params]);
+
+    // fetch items when query changes
     let auth = useAuth();
     useEffect(() => {
+        if (query) navigate("/my-business/list/p1");
+        fetchItems(query,page);
+    }, [query,page]);
+
+    // fetch items
+    const fetchItems = (query,page) => {
         setIsLoaded(false);
-       
-        fetch(`/__xpr__/pub_engine/business-admin/element/articles_json?q=${query}`, {
+        fetch(`/__xpr__/pub_engine/business-admin/element/articles_json?q=${query}&page=${page}`, {
             method: "GET",
-            headers: {
-                Auth: auth.user.token
-            }
+            headers: { Auth: auth.user.token }
         })
         .then(res => res.json())
         .then(
             (result) => {
                 setIsLoaded(true);
                 setItems(result._embedded?.Article);
+                setListPagination(result.Pagination);
             },
             (error) => {
                 setIsLoaded(true);
                 setError(error);
             }
         )
-
         setSelectedItems([]);
-    }, [query]);
+    }
 
     // get selected items
     const getSelectedItems = e => {
@@ -162,7 +174,7 @@ function List() {
                             </thead>
                             <tbody>
 
-                            {isLoaded && items.map(a => (
+                            {isLoaded && items?.map(a => (
                                 <tr key={"list-"+a.Id} className={selectedItems.find(item => item.Id == a.Id) ? "selected" : undefined}>
                                     <td><span className="justify-content-start"><Form.Check inline onChange={getSelectedItems} name="list-check" value={a.Id}/></span></td>
                                     <td><span className="justify-content-start">{a.ArticleLink ? <FontAwesomeIcon icon={faLink}/> : <FontAwesomeIcon icon={faList}/> }</span></td>
@@ -196,7 +208,7 @@ function List() {
                                 </tr>
                             ))}   
                             { error && <div>Fetching list error: {error.message}</div> }
-                            { !items.length && isLoaded && <tr><td colSpan="6"><div className="text-center my-3">No result found.</div></td></tr> }
+                            { !items?.length && isLoaded && <tr><td colSpan="6"><div className="text-center my-3">No result found.</div></td></tr> }
                             </tbody>
                             {/* skeleton loader */}
                             { !isLoaded &&
@@ -224,9 +236,8 @@ function List() {
                                 </tbody> 
                             }
                         </Table>
-                    </Form>
-
-                    <CustomPagination totalPages={5}/>
+                    </Form>   
+                    { isLoaded && items && <CustomPagination totalPages={listPagination?.totalPages} page={page} href={"/my-business/list/p"}/> }
 
                 </Card.Body>
             </Card>

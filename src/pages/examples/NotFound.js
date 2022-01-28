@@ -30,7 +30,7 @@ export default () => {
             </p>
                 <Button as={Link} variant="primary" className="animate-hover" to={AllRoutes.DashboardOverview.path}>
                   <FontAwesomeIcon icon={faChevronLeft} className="animate-left-3 me-3 ms-2" />
-                  Go back home
+                  Go back
                 </Button>
               </div>
             </Col>
