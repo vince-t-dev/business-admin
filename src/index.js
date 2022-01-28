@@ -13,10 +13,11 @@
 
 // * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal.
 
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/auth";
+import { SiteContext } from "./context/site";
 
 // core styles
 import "./scss/volt.scss";
@@ -25,16 +26,18 @@ import "./scss/volt.scss";
 import "@fortawesome/fontawesome-free/css/all.css"; 
 import "react-datetime/css/react-datetime.css";
  
+// home page
 import HomePage from "./pages/HomePage";
 import ScrollToTop from "./components/ScrollToTop";
 
-
 ReactDOM.render(
 	<AuthProvider>
-		<BrowserRouter>
-			<ScrollToTop />
-			<HomePage />
-		</BrowserRouter>
+		<SiteContext>
+			<BrowserRouter>
+				<ScrollToTop />
+				<HomePage />
+			</BrowserRouter>
+		</SiteContext>
 	</AuthProvider>,
-  document.getElementById("root")
+  	document.getElementById("root")
 );

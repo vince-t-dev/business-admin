@@ -7,15 +7,16 @@ function CustomPagination(props) {
     const totalPages = props.totalPages;
     const navigate = useNavigate();
   
+    // active page hook
     useEffect(() => {
         navigate(props.href+activeItem);        
     },[activeItem]);
 
+    // previous/next arrows
     const onPrevItem = () => {
         const prevActiveItem = activeItem == 1 ? activeItem : activeItem - 1;
         setActiveItem(prevActiveItem);
-    };
-  
+    };  
     const onNextItem = (totalPages) => {
         const nextActiveItem = activeItem == totalPages ? activeItem : activeItem + 1;
         setActiveItem(nextActiveItem);
@@ -23,7 +24,8 @@ function CustomPagination(props) {
   
     const items = [];
     for (let number = 1; number <= totalPages; number++) {
-        const isItemActive = activeItem == number;
+        const isItemActive = props.page == number;
+        // pagination on click
         const handlePaginationChange = () => {
             setActiveItem(number);
             navigate(props.href+number);

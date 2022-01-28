@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
 import { AllRoutes } from "../routes";
 import { useAuth } from "../context/auth";
+import { useSite } from "../context/site";
 
 // pages
 import Users from "./Users";
@@ -54,12 +55,13 @@ import Toasts from "./components/Toasts";
 
 // full page with loader
 const RouteWithLoader = ({ component: Component, ...rest }) => {
-  	const [loaded, setLoaded] = useState(false);
+	let site = useSite();
+  	const [loaded, setLoaded] = useState(site.siteConfig.showPreloader);
 
   	useEffect(() => {
-    	const timer = setTimeout(() => setLoaded(true), 1000);
+    	const timer = setTimeout(() => setLoaded(!site.siteConfig.showPreloader), 1000);
     	return () => clearTimeout(timer);
-  	}, []);
+  	}, [site]);
 
   	return (
     	//<Route {...rest} render={props => ( 
@@ -72,12 +74,13 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
 
 // page with sidebar
 const RouteWithSidebar = ({ component: Component, ...rest }) => {
-  	const [loaded, setLoaded] = useState(false);
+	let site = useSite();
+  	const [loaded, setLoaded] = useState(site.siteConfig.showPreloader);
 
   	useEffect(() => {
-    	const timer = setTimeout(() => setLoaded(true), 1000);
+    	const timer = setTimeout(() => setLoaded(!site.siteConfig.showPreloader), 1000);
     	return () => clearTimeout(timer);
-  	}, []);
+  	}, [site]);
 
   	/*const localStorageIsSettingsVisible = () => {
     	return localStorage.getItem('settingsVisible') === 'false' ? false : true

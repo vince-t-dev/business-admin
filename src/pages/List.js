@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Table, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Image, Table, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink, faList } from '@fortawesome/free-solid-svg-icons';
 import Footer from "../components/Footer";
 import CustomPagination from "../components/Pagination";
 import { useAuth } from "../context/auth";
+import { useSite } from "../context/site";
 
 function List() {
     const [error, setError] = useState(null);
@@ -18,6 +19,7 @@ function List() {
     const params = useParams();
     const navigate = useNavigate();
     const [page, setPage] = useState(params?.page?.split("p")[1]||1);
+    const site = useSite();
 
     // update search value
     const updateSearch = e => {
@@ -160,6 +162,7 @@ function List() {
                         </Row>
                     </Form>
                     <Form>
+                        {/* list table */}
                         <Table responsive="sm">
                             <thead>
                                 <tr>
@@ -210,9 +213,30 @@ function List() {
                             { error && <div>Fetching list error: {error.message}</div> }
                             { !items?.length && isLoaded && <tr><td colSpan="6"><div className="text-center my-3">No result found.</div></td></tr> }
                             </tbody>
+
                             {/* skeleton loader */}
                             { !isLoaded &&
                                 <tbody>
+                                    <tr>
+                                        <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-25"></div><div className="empty"></div></div></span></td>
+                                        <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-50"></div><div className="empty"></div></div></span></td>
+                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span></span></td>
+                                    </tr> 
+                                    <tr>
+                                        <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-25"></div><div className="empty"></div></div></span></td>
+                                        <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span></span></td>
+                                    </tr> 
+                                    <tr>
+                                        <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-50"></div><div className="empty"></div></div></span></td>
+                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                                        <td><span></span></td>
+                                    </tr> 
                                     <tr>
                                         <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-25"></div><div className="empty"></div></div></span></td>
                                         <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
@@ -237,7 +261,9 @@ function List() {
                             }
                         </Table>
                     </Form>   
-                    { isLoaded && items && <CustomPagination totalPages={listPagination?.totalPages} page={page} href={"/my-business/list/p"}/> }
+                    
+                    {/* pagination */}
+                    <CustomPagination totalPages={listPagination?.totalPages} page={page} href={"/my-business/list/p"}/>
 
                 </Card.Body>
             </Card>

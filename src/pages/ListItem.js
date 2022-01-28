@@ -138,7 +138,7 @@ function ListItem(props) {
             setItem(result.data);
             // create new form: redirect back to listing page editing form: update states
             if (isCreateNew)
-                navigate("/my-business/list");
+                navigate("/my-business/list/p1");
             else
                 navigate({state: {item: result.data}});
         }
