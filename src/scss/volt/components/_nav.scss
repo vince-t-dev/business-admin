@@ -67,12 +67,17 @@
     }
 
     .nav-link { 
+        font-size: $h1-font-size; 
+	    font-weight: 600;
+        color: $gray-700;
+        letter-spacing: 0.031rem;
+        line-height: 1.25;
     	padding: $nav-pills-padding-y $nav-pills-padding-x;
         transition: $transition-base;
-        box-shadow:$nav-link-shadow;
-        border:$nav-pills-border-width solid $nav-pills-border-color;
+        box-shadow: $nav-link-shadow;
+        border-bottom: $nav-pills-border-width solid $nav-pills-border-color;
 
-        &.avatar-link{
+        &.avatar-link {
             border:0;
         }
 
@@ -85,7 +90,7 @@
     .show > .nav-link {
         color: $nav-pills-link-active-color;
         background-color: $nav-pills-link-active-bg;
-        border-color:$nav-pills-link-active-color;
+        border-color: $nav-pills-border-active-color;
     }
 
     &.rounded{
@@ -112,7 +117,7 @@
 
     @include media-breakpoint-down(xs) {
         .nav-item {
-            margin-bottom: $spacer;
+            margin-bottom: 0;
         }
     }
 }

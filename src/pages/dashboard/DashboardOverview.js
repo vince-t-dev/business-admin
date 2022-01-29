@@ -5,7 +5,6 @@ import { faCashRegister, faChartLine, faCloudUploadAlt, faPlus, faRocket, faTask
 import { Col, Row, Button, Dropdown, ButtonGroup } from 'react-bootstrap';
 
 import { CounterWidget, CircleChartWidget, BarChartWidget, TeamMembersWidget, ProgressTrackWidget, RankingWidget, SalesValueWidget, SalesValueWidgetPhone, AcquisitionWidget } from "../../components/Widgets";
-import { PageVisitsTable } from "../../components/Tables";
 import { trafficShares, totalOrders } from "../../data/charts";
 
 export default () => {
@@ -91,7 +90,7 @@ export default () => {
             <Col xs={12} xl={8} className="mb-4">
               <Row>
                 <Col xs={12} className="mb-4">
-                  <PageVisitsTable />
+
                 </Col>
 
                 <Col xs={12} lg={6} className="mb-4">

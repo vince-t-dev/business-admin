@@ -1168,19 +1168,20 @@ $nav-tabs-link-active-color:        $gray-700;
 $nav-tabs-link-active-bg:           $light;
 $nav-tabs-link-active-border-color: $light;
 
-$nav-pills-padding-y:               .75rem;
-$nav-pills-padding-x:               .85rem;
+$nav-pills-padding-y:               0rem;
+$nav-pills-padding-x:               0rem;
 
 $nav-pills-space-x:                 1rem;
-$nav-pills-border-circle:           50%;
+$nav-pills-border-circle:           0;
 
 $nav-pills-bg:                      $white;
-$nav-pills-border-width:            1px;
-$nav-pills-border-color:            $light;
-$nav-pills-border-radius:           $border-radius;
+$nav-pills-border-width:            4px;
+$nav-pills-border-color:            transparent;
+$nav-pills-border-active-color:     $eggplant;
+$nav-pills-border-radius:           0;
 
-$nav-pills-link-hover-color:        $primary;
-$nav-pills-link-active-color:       $primary;
+$nav-pills-link-hover-color:        $eggplant;
+$nav-pills-link-active-color:       $eggplant;
 $nav-pills-active-border-color:     lighten( $dark, 20% );
 $nav-pills-link-active-bg:          #f8f8f8;
 

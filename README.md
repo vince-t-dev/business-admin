@@ -1,6 +1,6 @@
 ## Quick start
 
-### Using YARN/NPM
+### Using yarn/npm
 
 1. Make sure you have [Node.js](https://nodejs.org/en/) installed. Make sure the installed Node version is >= 8.10.
 
@@ -14,7 +14,7 @@ yarn install
 yarn start
 ```
 
-3. Open http://localhost:3000 to view it in the browser. Any changes you make to the code will be automatically reflected in the browser.
+3. http://localhost:3000 should launch on your browser. JS/Sass changes are reflected instantly and pages scroll and refresh on devices as you work.
 
 4. If you want to generate the production files, change the `homepage` value from the `package.json` to the domain name that the app will be hosted on.
 

@@ -10,9 +10,7 @@ import List from "./List";
 import ListItem from "./ListItem";
 import Upgrade from "./Upgrade";
 import DashboardOverview from "./dashboard/DashboardOverview";
-import Transactions from "./Transactions";
 import Settings from "./Settings";
-import BootstrapTables from "./tables/BootstrapTables";
 import Login from "./Login";
 import Signup from "./examples/Signup";
 import ForgotPassword from "./examples/ForgotPassword";
@@ -139,10 +137,8 @@ export default () => (
 				{/* other references */}
 				<Route path={AllRoutes.DashboardOverview.path} element={<RouteWithSidebar component={DashboardOverview}/>}/>
 				<Route path={AllRoutes.Upgrade.path} element={<RouteWithSidebar component={Upgrade}/>}/>
-				<Route path={AllRoutes.Transactions.path} element={<RouteWithSidebar component={Transactions}/>}/>
 				<Route path={AllRoutes.Settings.path} element={<RouteWithSidebar component={Settings}/>}/>
-				<Route path={AllRoutes.BootstrapTables.path} element={<RouteWithSidebar component={BootstrapTables}/>}/>
-
+				
 				{/* components */}
 				<Route path={AllRoutes.Accordions.path} element={<RouteWithSidebar component={Accordion}/>}/>
 				<Route path={AllRoutes.Alerts.path} element={<RouteWithSidebar component={Alerts}/>}/>

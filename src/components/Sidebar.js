@@ -53,7 +53,7 @@ export default (props = {}) => {
 		const classNames = badgeText ? "d-flex justify-content-start align-items-center justify-content-between" : "";
 		
 		// set active state for home page
-		const setHome = ((pathname == "/" || pathname == "/my-business/") && link == "/my-business/list");
+		const setHome = ((pathname == "/" || pathname.indexOf("/my-business/list")>-1) && link.indexOf("/my-business/list")>-1);
 		const linkProps = external ? { href: link } : { as: Link, to: link };
 		
 		return (
@@ -117,12 +117,7 @@ export default (props = {}) => {
 				<NavItem title="Lists" link="/my-business/list/p1" icon={faList} />
 				<NavItem title="Users" link={AllRoutes.Users.path} icon={faUsers} />
 				<NavItem title="Charts" link={AllRoutes.DashboardOverview.path} icon={faChartPie} />
-				<NavItem title="Transactions" icon={faHandHoldingUsd} link={AllRoutes.Transactions.path} />
 				<NavItem title="Settings" icon={faCog} link={AllRoutes.Settings.path} />
-
-				<CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>
-					<NavItem title="Bootstrap Table" link={AllRoutes.BootstrapTables.path} />
-				</CollapsableNavItem>
 
 				{/*<Dropdown.Divider className="my-3 border-indigo" />*/}
 

@@ -5,12 +5,15 @@ import { useNavigate } from "react-router-dom";
 function CustomPagination(props) {
     const [activeItem, setActiveItem] = useState(Number(props.page));
     const totalPages = props.totalPages;
-    const navigate = useNavigate();
-  
-    // active page hook
+    const navigate = useNavigate();   
+
+    // active page hooks
     useEffect(() => {
         navigate(props.href+activeItem);        
     },[activeItem]);
+    useEffect(() => {
+        setActiveItem(props.page);
+    },[props.page]);
 
     // previous/next arrows
     const onPrevItem = () => {

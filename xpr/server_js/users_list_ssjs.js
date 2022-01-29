@@ -5,7 +5,8 @@ const library = require("./library");
 exports.process = function(context, options) {
     var api = xpr_objects.XprApi;
     let request = xpr_objects.XprRequest();
-
+    let per_page = 8;
+    
     // validate token
     let token = library.checkAuth(request.headers.Auth);
     if (token.error) return token;
@@ -16,8 +17,10 @@ exports.process = function(context, options) {
     let users = api({
         method: "GET",
         uri : "/users/",
+        parseHAL: false,
         params : users_params
     });
 
+    users.Pagination = library.pagination({total: users.Total, per_page: per_page, page: request.urlParams.page});
     return users;
 }

@@ -262,7 +262,7 @@
 .content {
 
 	overflow: visible;
-	padding: 0 $spacer 0 $spacer;
+	padding: 0 $spacer $spacer $spacer;
 	@include transition(all .3s);
 
 	@include media-breakpoint-up(md) {
