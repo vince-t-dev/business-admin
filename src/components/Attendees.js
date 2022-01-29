@@ -16,7 +16,7 @@ function Attendees() {
     const [selectedItems, setSelectedItems] = useState([]);
     const params = useParams();
     const navigate = useNavigate();
-    let page = Number(params.page.split("p")[1]) || 1;
+    let page = Number(params?.page?.split("p")[1] || 1);
 
     // update search value
     const updateSearch = e => {
@@ -31,7 +31,7 @@ function Attendees() {
 
     // fetch page when pagination param changes
     useEffect(() => {
-        page = Number(params.page.split("p")[1]) || 1;
+        page = Number(params?.page?.split("p")[1] || 1);
     },[params.page]);
 
     // fetch items when query changes
