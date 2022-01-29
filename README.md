@@ -1,17 +1,17 @@
 ## Quick start
 
-### Using NPM
+### Using YARN/NPM
 
-1. Make sure you have [Node.js](https://nodejs.org/en/) installed. Make sure the installed Node version is >= 8.10 and of npm >= 5.6
+1. Make sure you have [Node.js](https://nodejs.org/en/) installed. Make sure the installed Node version is >= 8.10.
 
 ```
-npm install
+yarn install
 ```
 
 2. Start the app in development mode by running the following command in terminal:
 
 ```
-npm run start
+yarn start
 ```
 
 3. Open http://localhost:3000 to view it in the browser. Any changes you make to the code will be automatically reflected in the browser.
@@ -22,7 +22,7 @@ npm run start
 ## Putting it on Expresia
 
 ```
-npm run build
+yarn build
 ```
 
 1. Move files in `build` folder to `/xpr/web/` folder.

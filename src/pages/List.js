@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Breadcrumb, Button, Row, Col, InputGroup, Form, Card, Image, Table, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,7 +6,6 @@ import { faLink, faList } from '@fortawesome/free-solid-svg-icons';
 import Footer from "../components/Footer";
 import CustomPagination from "../components/Pagination";
 import { useAuth } from "../context/auth";
-import { useSite } from "../context/site";
 
 function List() {
     const [error, setError] = useState(null);
@@ -19,7 +18,6 @@ function List() {
     const params = useParams();
     const navigate = useNavigate();
     const [page, setPage] = useState(params?.page?.split("p")[1]||1);
-    const site = useSite();
 
     // update search value
     const updateSearch = e => {
