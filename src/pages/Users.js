@@ -1,15 +1,21 @@
 import React,{useEffect,useState} from "react";
-import { Breadcrumb, Button, ButtonGroup, Row, Col, InputGroup, Form, Image, Dropdown, Card, Table } from 'react-bootstrap';
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Breadcrumb, Button, ButtonGroup, Row, Col, InputGroup, Form, Dropdown, Card, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faPlus, faCog, faCheck, faSearch, faSlidersH, faLink, faList } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faCheck, faSearch, faSlidersH } from '@fortawesome/free-solid-svg-icons';
+import CustomPagination from "../components/Pagination";
 import { useAuth } from "../context/auth";
 
 function Users() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [users, setUsers] = useState([]);
+    const [listPagination, setListPagination] = useState({});
     const [search, setSearch] = useState("");
     const [query, setQuery] = useState("");
+    const params = useParams();
+    const navigate = useNavigate();
+    let page = Number(params?.page?.split("p")[1] || 1);
 
     // update search value
     const updateSearch = e => {
@@ -22,11 +28,27 @@ function Users() {
         setQuery(search);
     }
 
+    // fetch page when pagination param changes
+    useEffect(() => {
+        page = Number(params?.page?.split("p")[1] || 1);
+    },[params.page]);
+
+    // fetch items when query changes
+    useEffect(() => {
+        if (query) navigate("/my-business/list/p1");
+        fetchItems(query,page);
+    }, [query,page]);
+
     // fetch results when query changes
     let auth = useAuth();
     useEffect(() => {
-        setIsLoaded(false);
-        fetch(`/__xpr__/pub_engine/business-admin/element/users_json?q=${query}`, {
+        if (query) navigate("/my-business/list/p1");
+        fetchItems(query,page);
+    }, [query,page]);
+
+    // fetch items
+    const fetchItems = (query,page) => {
+        fetch(`/__xpr__/pub_engine/business-admin/element/users_json?q=${query}&page=${page}`, {
             method: "GET",
             headers: {
                 Auth: auth.user.token
@@ -36,14 +58,15 @@ function Users() {
             .then(
             (result) => {
                 setIsLoaded(true);
-                setUsers(result);
+                setUsers(result._embedded?.User);
+                setListPagination(result.Pagination);
             },
             (error) => {
                 setIsLoaded(true);
                 setError(error);
             }
         )
-    }, [query]);
+    };
     
     return (
         <>
@@ -137,7 +160,7 @@ function Users() {
                         </thead>
                         <tbody>
                         
-                        {isLoaded && users.map(u => (
+                        {isLoaded && users?.map(u => (
                             <tr key={u.Id}>
                                 <td>
                                     <span>
@@ -157,26 +180,29 @@ function Users() {
                         ))}
 
                         { error && <div>Fetching users error: {error.message}</div> }
-                        { !users.length && isLoaded && <tr><td colSpan="4"><div className="text-center my-3">No result found.</div></td></tr> }
+                        { !users && isLoaded && <tr><td colSpan="4"><div className="text-center my-3">No result found.</div></td></tr> }
                         </tbody>
 
                         {!isLoaded &&
-                                <tbody>
-                                    <tr>
-                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td>
-                                        <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-50"></div></span></td>
-                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-50"></div></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-75"></div></span></td>
-                                        <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
-                                    </tr>
-                                </tbody> 
-                            }
+                            <tbody>
+                                <tr>
+                                    <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td>
+                                    <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                                    <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                                </tr>
+                                <tr>
+                                    <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-75"></div></span></td>
+                                    <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                                </tr>
+                            </tbody> 
+                        }
                     </Table>
+
+                    {/* pagination */}
+                    <CustomPagination totalPages={listPagination?.totalPages} page={page} href={"/my-business/users/p"}/>
                 </Card.Body>
             </Card>
         </>

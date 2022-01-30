@@ -115,7 +115,7 @@ export default (props = {}) => {
 				</div>
 				<Nav className="flex-column">
 				<NavItem title="Lists" link="/my-business/list/p1" icon={faList} />
-				<NavItem title="Users" link={AllRoutes.Users.path} icon={faUsers} />
+				<NavItem title="Users" link="/my-business/users/p1" icon={faUsers} />
 				<NavItem title="Charts" link={AllRoutes.DashboardOverview.path} icon={faChartPie} />
 				<NavItem title="Settings" icon={faCog} link={AllRoutes.Settings.path} />
 

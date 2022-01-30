@@ -132,7 +132,9 @@ export default () => (
 				<Route path={AllRoutes.Start.path} element={<RouteWithSidebar component={List}/>}/>
 				<Route path={AllRoutes.List.path} element={<RouteWithSidebar component={List}/>}/>
 				<Route path={AllRoutes.ListItem.path} element={<RouteWithSidebar component={ListItem}/>}/>
-				<Route path={AllRoutes.Users.path} element={<RouteWithSidebar component={Users}/>}/>
+				<Route path={AllRoutes.Users.path} element={<RouteWithSidebar component={Users}/>}>
+					<Route path=":page" element={<RouteWithSidebar component={Users}/>}/>
+				</Route>
 
 				{/* other references */}
 				<Route path={AllRoutes.DashboardOverview.path} element={<RouteWithSidebar component={DashboardOverview}/>}/>

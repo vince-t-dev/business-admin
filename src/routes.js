@@ -5,7 +5,7 @@ export const AllRoutes = {
     Start: { path: "/__xpr__/pub_engine/business-admin/web" },
     List: { path: "/my-business/list/:page" },
     ListItem: { path: "/my-business/list/edit/:id" },
-    Users: { path: "/my-business/users" },
+    Users: { path: "/my-business/users/" },
     DashboardOverview: { path: "/my-business/dashboard/overview" },
     Settings: { path: "/my-business/settings" },
     Upgrade: { path: "/my-business/upgrade" },

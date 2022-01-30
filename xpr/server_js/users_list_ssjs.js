@@ -11,7 +11,7 @@ exports.process = function(context, options) {
     let token = library.checkAuth(request.headers.Auth);
     if (token.error) return token;
     
-    let users_params = { per_page: 10 };
+    let users_params = { per_page: per_page };
     if (request.urlParams.q) users_params.q_FirstName_LastName_Email = request.urlParams.q;
     if (request.urlParams.page) users_params.page = request.urlParams.page;
     let users = api({

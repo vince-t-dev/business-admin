@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Row, Col, InputGroup, Form, Card, Table, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink, faList } from '@fortawesome/free-solid-svg-icons';
 import CustomPagination from "../components/Pagination";
 import { useAuth } from "../context/auth";
 
@@ -52,7 +50,7 @@ function Attendees() {
         .then(
             (result) => {
                 setIsLoaded(true);
-                setItems(result._embedded?.Article);
+                setItems(result._embedded?.User);
                 setListPagination(result.Pagination);
             },
             (error) => {
@@ -112,125 +110,123 @@ function Attendees() {
 
     return (
         <>
-            <Card.Body>
-                <Form onSubmit={getSearch}>
-                    <Row className="justify-content-end align-items-center mb-3">
-                        <Col lg={4} className="d-flex justify-content-end">
-                            <InputGroup>
-                                <Form.Control size="lg" type="text" className="rounded-xl px-4" placeholder="Search" value={search} onChange={updateSearch}/>
-                                <InputGroup.Text className="rounded-xl">
-                                    <i className="xpri-search text-primary"></i>
-                                </InputGroup.Text>
-                            </InputGroup>
-                        </Col>
-                    </Row>
-                </Form>
-                <Form>
-                    {/* list table */}
-                    <Table responsive="sm">
-                        <thead>
-                            <tr>
-                                <th><Form.Check inline onChange={toggleAllItems}/></th>
-                                <th className="w-35">Full Name</th>
-                                <th>Type</th>
-                                <th>Bookings</th>
-                                <th>Status</th>
-                                <th>Cost</th>
-                                <th>Payment</th>
-                                <th></th>
-                            </tr>
-                        </thead>
+            <Form onSubmit={getSearch}>
+                <Row className="justify-content-end align-items-center mb-3">
+                    <Col lg={4} className="d-flex justify-content-end">
+                        <InputGroup>
+                            <Form.Control size="lg" type="text" className="rounded-xl px-4" placeholder="Search" value={search} onChange={updateSearch}/>
+                            <InputGroup.Text className="rounded-xl">
+                                <i className="xpri-search text-primary"></i>
+                            </InputGroup.Text>
+                        </InputGroup>
+                    </Col>
+                </Row>
+            </Form>
+            <Form>
+                {/* list table */}
+                <Table responsive="sm">
+                    <thead>
+                        <tr>
+                            <th><Form.Check inline onChange={toggleAllItems}/></th>
+                            <th className="w-35">Full Name</th>
+                            <th className="text-center">Type</th>
+                            <th className="text-center">Bookings</th>
+                            <th className="text-center">Status</th>
+                            <th className="text-center">Cost</th>
+                            <th className="text-center">Payment</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    {isLoaded && items?.map(a => (
+                        <tr key={"list-"+a.Id} className={selectedItems.find(item => item.Id == a.Id) ? "selected" : undefined}>
+                            <td><span className="justify-content-start"><Form.Check inline onChange={getSelectedItems} name="list-check" value={a.Id}/></span></td>
+                            <td><span className="justify-content-start">{ a.FirstName ? a.FirstName+" "+a.LastName : "Name Surname"}</span></td>
+                            <td><span className="justify-content-center">Member</span></td>
+                            <td><span className="justify-content-center">3</span></td>
+                            <td><span className="justify-content-center">Paid</span></td>
+                            <td><span className="justify-content-center">$20.00</span></td>
+                            <td><span className="justify-content-center">Credit Card</span></td>
+                            <td>
+                                <span>
+                                    <div className="btn-group">
+                                        <OverlayTrigger overlay={<Tooltip>Edit</Tooltip>}>
+                                            <Link to={"/my-business/list/edit/"+a.Id} state={{item: a}} className="btn btn-link"><i data-toggle="tooltip" className="xpri-edit"></i></Link>
+                                        </OverlayTrigger>
+                                        <OverlayTrigger overlay={<Tooltip>Preview</Tooltip>}>
+                                            <a href="" className="btn btn-link" target="_blank"><i data-toggle="tooltip" className="xpri-preview"></i></a>
+                                        </OverlayTrigger>
+                                        <OverlayTrigger overlay={<Tooltip>Delete</Tooltip>}>
+                                            <button type="button" className="btn btn-link"><i data-toggle="tooltip" className="xpri-delete"></i></button>
+                                        </OverlayTrigger>
+                                    </div>
+                                </span>
+                            </td>
+                        </tr>
+                    ))}   
+                    { error && <div>Fetching list error: {error.message}</div> }
+                    { !items?.length && isLoaded && <tr><td colSpan="8"><div className="text-center my-3">No result found.</div></td></tr> }
+                    </tbody>
+
+                    {/* skeleton loader */}
+                    { !isLoaded &&
                         <tbody>
+                        <tr>
+                            <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td></td>
+                        </tr>
+                        <tr>
+                            <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td></td>
+                        </tr>
+                        <tr>
+                            <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-75"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td></td>
+                        </tr>
+                        <tr>
+                            <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td></td>
+                        </tr>
+                        <tr>
+                            <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td></td>
+                        </tr>
+                        <tr>
+                            <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-75"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td></td>
+                        </tr>
+                        <tr>
+                            <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td></td>
+                        </tr>
+                        <tr>
+                            <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty w-50"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
+                            <td><span><div className="empty"></div></span></td><td></td>
+                        </tr>
+                    </tbody> 
+                    }
+                </Table>
+            </Form>   
 
-                        {isLoaded && items?.map(a => (
-                            <tr key={"list-"+a.Id} className={selectedItems.find(item => item.Id == a.Id) ? "selected" : undefined}>
-                                <td><span className="justify-content-start"><Form.Check inline onChange={getSelectedItems} name="list-check" value={a.Id}/></span></td>
-                                <td><span className="justify-content-start">{a.ArticleLink ? <FontAwesomeIcon icon={faLink}/> : <FontAwesomeIcon icon={faList}/> }</span></td>
-                                <td><span><div className="text-truncate" dangerouslySetInnerHTML={{__html: a.Title}}></div></span></td>
-                                <td><span>
-                                    {a._embedded.Categories && a._embedded.Categories.map(category => ( 
-                                        <Badge key={category.Id} bg="primary">{category && category.Name}</Badge>
-                                    ))}
-                                    </span></td>
-                                <td><span>{a.CreatedOn}</span></td>
-                                <td>
-                                    <span>
-                                        <Form.Check type="switch" defaultChecked={a.Active} id={"switch-status-"+a.Id}/>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                        <div className="btn-group">
-                                            <OverlayTrigger overlay={<Tooltip>Edit</Tooltip>}>
-                                                <Link to={"/my-business/list/edit/"+a.Id} state={{item: a}} className="btn btn-link"><i data-toggle="tooltip" className="xpri-edit"></i></Link>
-                                            </OverlayTrigger>
-                                            <OverlayTrigger overlay={<Tooltip>Preview</Tooltip>}>
-                                                <a href="" className="btn btn-link" target="_blank"><i data-toggle="tooltip" className="xpri-preview"></i></a>
-                                            </OverlayTrigger>
-                                            <OverlayTrigger overlay={<Tooltip>Delete</Tooltip>}>
-                                                <button type="button" className="btn btn-link"><i data-toggle="tooltip" className="xpri-delete"></i></button>
-                                            </OverlayTrigger>
-                                        </div>
-                                    </span>
-                                </td>
-                            </tr>
-                        ))}   
-                        { error && <div>Fetching list error: {error.message}</div> }
-                        { !items?.length && isLoaded && <tr><td colSpan="8"><div className="text-center my-3">No result found.</div></td></tr> }
-                        </tbody>
-
-                        {/* skeleton loader */}
-                        { !isLoaded &&
-                            <tbody>
-                                <tr>
-                                    <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-25"></div><div className="empty"></div></div></span></td>
-                                    <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
-                                    <td><span></span></td>
-                                </tr>
-                                <tr>
-                                    <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-50"></div><div className="empty"></div></div></span></td>
-                                    <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
-                                    <td><span></span></td>
-                                </tr> 
-                                <tr>
-                                    <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-25"></div><div className="empty"></div></div></span></td>
-                                    <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
-                                    <td><span></span></td>
-                                </tr> 
-                                <tr>
-                                    <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-50"></div><div className="empty"></div></div></span></td>
-                                    <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
-                                    <td><span></span></td>
-                                </tr> 
-                                <tr>
-                                    <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-25"></div><div className="empty"></div></div></span></td>
-                                    <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
-                                    <td><span></span></td>
-                                </tr>
-                                <tr>
-                                    <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-50"></div><div className="empty"></div></div></span></td>
-                                    <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
-                                    <td><span></span></td>
-                                </tr> 
-                                <tr>
-                                    <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-25"></div><div className="empty"></div></div></span></td>
-                                    <td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
-                                    <td><span></span></td>
-                                </tr> 
-                                <tr>
-                                    <td><span></span></td><td><span><div className="empty"></div></span></td><td><span><div className="d-flex w-100 flex-wrap align-items-center"><div className="empty w-50"></div><div className="empty"></div></div></span></td>
-                                    <td><span><div className="empty w-50"></div></span></td><td><span><div className="empty"></div></span></td><td><span><div className="empty"></div></span></td>
-                                    <td><span></span></td>
-                                </tr> 
-                            </tbody> 
-                        }
-                    </Table>
-                </Form>   
-
-                {/* pagination 
-                <CustomPagination totalPages={listPagination?.totalPages} page={page} href={"/my-business/list/p"}/>
-                */}
-            </Card.Body>
+            {/* pagination */}
+            <CustomPagination totalPages={listPagination?.totalPages} page={page} href={"/my-business/list/p"}/>
         </>
     )
 }   
