@@ -33,20 +33,17 @@ function Users() {
         page = Number(params?.page?.split("p")[1] || 1);
     },[params.page]);
 
-    // fetch items when query changes
-    useEffect(() => {
-        if (query) navigate("/my-business/list/p1");
+    // fetch items when query/page changes
+    useEffect(() => { 
         fetchItems(query,page);
-    }, [query,page]);
-
-    // fetch results when query changes
-    let auth = useAuth();
+    }, [page]);
     useEffect(() => {
-        if (query) navigate("/my-business/list/p1");
+        if (query) navigate("/my-business/users/p1");
         fetchItems(query,page);
-    }, [query,page]);
+    },[query]);
 
     // fetch items
+    let auth = useAuth();
     const fetchItems = (query,page) => {
         fetch(`/__xpr__/pub_engine/business-admin/element/users_json?q=${query}&page=${page}`, {
             method: "GET",
@@ -202,7 +199,7 @@ function Users() {
                     </Table>
 
                     {/* pagination */}
-                    <CustomPagination totalPages={listPagination?.totalPages} page={page} href={"/my-business/users/p"}/>
+                    { listPagination.totalPages > 0 && <CustomPagination totalPages={listPagination?.totalPages} page={page} href={"/my-business/users/p"}/> }
                 </Card.Body>
             </Card>
         </>

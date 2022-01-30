@@ -119,7 +119,6 @@ function ListItem(props) {
         }
 	
         formData.data = jsonData;
-        console.log('data to send',jsonData);
         setIsSaved(false);
         
         // save and pub

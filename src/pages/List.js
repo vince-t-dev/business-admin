@@ -36,14 +36,17 @@ function List() {
         page = Number(params?.page?.split("p")[1] || 1);
     },[params.page]);
 
-    // fetch items when query changes
-    let auth = useAuth();
+    // fetch items when query/page changes
+    useEffect(() => { 
+        fetchItems(query,page);
+    }, [page]);
     useEffect(() => {
         if (query) navigate("/my-business/list/p1");
         fetchItems(query,page);
-    }, [query,page]);
+    },[query]);
 
     // fetch items
+    let auth = useAuth();
     const fetchItems = (query,page) => {
         setIsLoaded(false);
         fetch(`/__xpr__/pub_engine/business-admin/element/articles_json?q=${query}&page=${page}`, {
@@ -84,21 +87,21 @@ function List() {
 
     // select/unselect all
     const selectAll = e => {
-        let all_chackboxes = document.getElementsByName("list-check");
-        for (let i = 0;i < all_chackboxes.length;i++) {
-            if (all_chackboxes[i].type == "checkbox") {
-                all_chackboxes[i].checked = true;
-                let selected_item = items.find(a => a.Id == all_chackboxes[i].value);
+        let all_checkboxes = document.getElementsByName("list-check");
+        for (let i = 0;i < all_checkboxes.length;i++) {
+            if (all_checkboxes[i].type == "checkbox") {
+                all_checkboxes[i].checked = true;
+                let selected_item = items.find(a => a.Id == all_checkboxes[i].value);
                 if (!selectedItems.filter(item => item.Id == selected_item.Id).length) 
                     setSelectedItems(arr => [...arr, selected_item]);
             }
         }
     }
     const unSelectAll = e => {
-        let all_chackboxes = document.getElementsByName("list-check");
-        for (let i = 0;i < all_chackboxes.length;i++) {
-            if (all_chackboxes[i].type == "checkbox") {
-                all_chackboxes[i].checked = false;
+        let all_checkboxes = document.getElementsByName("list-check");
+        for (let i = 0;i < all_checkboxes.length;i++) {
+            if (all_checkboxes[i].type == "checkbox") {
+                all_checkboxes[i].checked = false;
                 setSelectedItems([]);
             }
         }
@@ -263,7 +266,7 @@ function List() {
                                 </Form>   
                                 
                                 {/* pagination */}
-                                <CustomPagination totalPages={listPagination?.totalPages} page={page} href={"/my-business/list/p"}/>
+                                { listPagination.totalPages > 0 && <CustomPagination totalPages={listPagination?.totalPages} page={page} href={"/my-business/list/p"}/> }
 
                             </Card.Body>
                         </Tab.Pane>
