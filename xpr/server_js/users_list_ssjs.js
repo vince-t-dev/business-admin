@@ -17,7 +17,7 @@ exports.process = function(context, options) {
         if (request.urlParams.page) users_params.page = request.urlParams.page;
         if (request.urlParams.id) users_params.with = "CustomFields";
     }
-    let user_id = (request.urlParams) ? request.urlParams.id : "";
+    let user_id = (request.urlParams && request.urlParams.id) ? request.urlParams.id : "";
     let uri = "/users/"+user_id 
     let users = api({
         method: "GET",
