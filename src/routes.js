@@ -3,9 +3,10 @@ export const AllRoutes = {
     // pages
     Home: { path: "/my-business/" },
     Start: { path: "/__xpr__/pub_engine/business-admin/web" },
-    List: { path: "/my-business/list/:page" },
+    List: { path: "/my-business/list/*" },
     ListItem: { path: "/my-business/list/edit/:id" },
-    Users: { path: "/my-business/users/" },
+    Attendee: { path: "/my-business/attendees/:id"},
+    Users: { path: "/my-business/users/*" },
     DashboardOverview: { path: "/my-business/dashboard/overview" },
     Settings: { path: "/my-business/settings" },
     Upgrade: { path: "/my-business/upgrade" },

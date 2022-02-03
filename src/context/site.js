@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState } from "react";
+import React, { useContext, createContext, useState, useRef, useEffect } from "react";
 
 // global site settings
 const siteContext = createContext();
@@ -16,8 +16,17 @@ function useSiteContext() {
         showPreloader: false
     }
 	const [siteConfig, setSiteConfig] = useState(site_config);
+    // update config
     const updateSiteConfig = (value) => {
         setSiteConfig(value);
-    }
-    return { siteConfig, updateSiteConfig };
+    };
+    // use prev state
+    const usePrevious = (value) => {
+        const ref = useRef();
+        useEffect(() => {
+          ref.current = value;
+        });
+        return ref.current;
+    };
+    return { siteConfig, updateSiteConfig, usePrevious };
 }

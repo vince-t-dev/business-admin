@@ -11,7 +11,6 @@ import DateTimePicker from "../components/DateTimePicker";
 import { useAuth } from "../context/auth";
 
 function ListItem(props) {
-    //const location = useLocation();
     const navigate = useNavigate();
     const { id } = useParams();
     const isCreateNew = (id == "new");
@@ -325,18 +324,14 @@ function ListItem(props) {
                                                         <div className="empty w-25 mb-2"></div>
                                                         <div><div className="empty w-50"></div></div>
                                                     </Form.Group>
-
                                                     <Form.Group className="mb-4">
                                                         <div className="empty w-25 mb-2"></div>
                                                         <div><div className="empty w-75"></div></div>
                                                     </Form.Group>
-                                                    
-                                                    {/* image editor */}
                                                     <Form.Group className="mb-4">
                                                         <div className="empty w-25 mb-2"></div>
-                                                        <div className="empty fh-250"></div>
+                                                        <div className="empty w-100 fh-250"></div>
                                                     </Form.Group>
-
                                                     <Form.Group className="mb-4">
                                                         <div className="empty w-25 mb-2"></div>
                                                         <div className="empty"></div>

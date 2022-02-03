@@ -5,7 +5,6 @@ import { faEnvelope, faEye, faUnlockAlt } from "@fortawesome/free-solid-svg-icon
 import { Col, Row, Form, Image, Button, Container, InputGroup, Alert, Spinner } from 'react-bootstrap';
 import LogoDark from "../assets/media/xprs-logo-dark.svg";
 import { useAuth } from "../context/auth";
-//import Profile3 from "../../assets/img/team/profile-picture-3.jpg";
 
 function Login(props) {
     const [showPassword, setShowPassword] = useState(false);
@@ -17,7 +16,7 @@ function Login(props) {
     
     let navigate = useNavigate();
     let location = useLocation();
-    let from = (location.state && location.state.from) ? location.state.from.pathname : "/";
+    let from = (location.state && location.state.from) ? location.state.from.pathname : "/my-business/";
     let auth = useAuth();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -46,9 +45,9 @@ function Login(props) {
         });
     };
       
-    // redirect user to home if they are logged in
+    // redirect user if they are logged in
     useEffect(() => {
-        if (localStorage.getItem("user")) navigate("/");
+        if (localStorage.getItem("user")) navigate(from, { replace: true });
     },[]);
 
     return (

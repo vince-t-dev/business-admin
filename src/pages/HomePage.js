@@ -5,9 +5,10 @@ import { useAuth } from "../context/auth";
 import { useSite } from "../context/site";
 
 // pages
-import Users from "./Users";
 import List from "./List";
 import ListItem from "./ListItem";
+import Users from "./Users";
+import Attendee from "./Attendee";
 import Upgrade from "./Upgrade";
 import DashboardOverview from "./dashboard/DashboardOverview";
 import Settings from "./Settings";
@@ -127,14 +128,18 @@ export default () => (
 			{/* pages */}
 			<Route element={<PrivateRoute />}>
 				{/* xpr */}
+				{/* list (events) */}
 				<Route index element={<RouteWithSidebar component={List}/>} />
 				<Route path={AllRoutes.Home.path} element={<RouteWithSidebar component={List}/>}/>
 				<Route path={AllRoutes.Start.path} element={<RouteWithSidebar component={List}/>}/>
 				<Route path={AllRoutes.List.path} element={<RouteWithSidebar component={List}/>}/>
 				<Route path={AllRoutes.ListItem.path} element={<RouteWithSidebar component={ListItem}/>}/>
-				<Route path={AllRoutes.Users.path} element={<RouteWithSidebar component={Users}/>}>
-					<Route path=":page" element={<RouteWithSidebar component={Users}/>}/>
-				</Route>
+				
+				{/* attendee */}
+				<Route path={AllRoutes.Attendee.path} element={<RouteWithSidebar component={Attendee}/>}/>
+
+				{/* users */}
+				<Route path={AllRoutes.Users.path} element={<RouteWithSidebar component={Users}/>}/>
 
 				{/* other references */}
 				<Route path={AllRoutes.DashboardOverview.path} element={<RouteWithSidebar component={DashboardOverview}/>}/>

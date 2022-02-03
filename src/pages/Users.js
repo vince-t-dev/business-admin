@@ -1,5 +1,5 @@
-import React,{useEffect,useState} from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { Breadcrumb, Button, ButtonGroup, Row, Col, InputGroup, Form, Dropdown, Card, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faCheck, faSearch, faSlidersH } from '@fortawesome/free-solid-svg-icons';
@@ -11,41 +11,35 @@ function Users() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [users, setUsers] = useState([]);
     const [listPagination, setListPagination] = useState({});
-    const [search, setSearch] = useState("");
-    const [query, setQuery] = useState("");
+    const [keyword, setKeyword] = useState("");
     const params = useParams();
     const navigate = useNavigate();
-    let page = Number(params?.page?.split("p")[1] || 1);
+    let url = new URL(window.location.href);
+    let page = Number(params["*"]?.split("p")[1] || 1);
 
-    // update search value
-    const updateSearch = e => {
-        setSearch(e.target.value);    
+    // update search keyword
+    const updateKeyword = e => {
+        setKeyword(e.target.value);    
     }
 
-    // get search results
+    // search form submit
     const getSearch = e => {
         e.preventDefault();
-        setQuery(search);
+        // reset page to 1 when doing search
+        (page == 1) ? fetchItems(keyword,1) : navigate("/my-business/users/p1");
     }
 
-    // fetch page when pagination param changes
+    // hooks: fetch data when page changes
     useEffect(() => {
-        page = Number(params?.page?.split("p")[1] || 1);
-    },[params.page]);
+       fetchItems(keyword);
+    },[page]);
 
-    // fetch items when query/page changes
-    useEffect(() => { 
-        fetchItems(query,page);
-    }, [page]);
-    useEffect(() => {
-        if (query) navigate("/my-business/users/p1");
-        fetchItems(query,page);
-    },[query]);
-
-    // fetch items
+    // fetch items function
     let auth = useAuth();
-    const fetchItems = (query,page) => {
-        fetch(`/__xpr__/pub_engine/business-admin/element/users_json?q=${query}&page=${page}`, {
+    const fetchItems = (query,goToPage) => {
+        url.searchParams.append("page", goToPage ? goToPage : page);
+        if (query) url.searchParams.append("q", query);
+        fetch(`/__xpr__/pub_engine/business-admin/element/users_json${url.search}`, {
             method: "GET",
             headers: {
                 Auth: auth.user.token
@@ -98,7 +92,7 @@ function Users() {
                                 <InputGroup.Text>
                                     <FontAwesomeIcon icon={faSearch} />
                                 </InputGroup.Text>
-                                <Form.Control type="text" placeholder="Search" value={search} onChange={updateSearch}/>
+                                <Form.Control type="text" placeholder="Search" value={keyword} onChange={updateKeyword}/>
                             </InputGroup>
                             <Form.Select className="w-25">
                                 <option defaultChecked>All</option>

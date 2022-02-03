@@ -95,7 +95,7 @@ export default (props) => {
 						<Dropdown.Toggle as={Nav.Link} className="p-0 m-0">
 							<div className="media d-flex align-items-center">
 								{ auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage ?
-								<Image src={auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage?.SourcePath} className="user-avatar md-avatar rounded-circle me-3" />
+								<Image src={auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage?.SourcePath} className="user-avatar sm-avatar rounded-circle me-3" />
 								:
 								<div className="user-avatar xs-avatar border rounded-circle me-3"><i className="xpri-members m-0"></i></div>
 								} 

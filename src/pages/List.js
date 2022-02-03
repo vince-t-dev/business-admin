@@ -12,44 +12,38 @@ function List() {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
-    const [listPagination, setListPagination] = useState({});
-    const [search, setSearch] = useState("");
-    const [query, setQuery] = useState("");
     const [selectedItems, setSelectedItems] = useState([]);
+    const [listPagination, setListPagination] = useState({});
+    const [keyword, setKeyword] = useState("");
     const params = useParams();
     const navigate = useNavigate();
-    let page = Number(params?.page?.split("p")[1] || 1);
+    let url = new URL(window.location.href);
+    let page = Number(params["*"]?.split("p")[1] || 1);
 
-    // update search value
-    const updateSearch = e => {
-        setSearch(e.target.value);    
+    // update search keyword
+    const updateKeyword = e => {
+        setKeyword(e.target.value);    
     }
 
-    // get search results
+    // search form submit
     const getSearch = e => {
         e.preventDefault();
-        setQuery(search);
+        // reset page to 1 when doing search
+        (page == 1) ? fetchItems(keyword,1) : navigate("/my-business/list/p1");
     }
 
-    // fetch page when pagination param changes
+    // hooks: fetch data when page changes
     useEffect(() => {
-        page = Number(params?.page?.split("p")[1] || 1);
-    },[params.page]);
-
-    // fetch items when query/page changes
-    useEffect(() => { 
-        fetchItems(query,page);
-    }, [page]);
-    useEffect(() => {
-        if (query) navigate("/my-business/list/p1");
-        fetchItems(query,page);
-    },[query]);
+        fetchItems(keyword);
+    },[page]);
 
     // fetch items
     let auth = useAuth();
-    const fetchItems = (query,page) => {
+    const fetchItems = (query,goToPage) => {
         setIsLoaded(false);
-        fetch(`/__xpr__/pub_engine/business-admin/element/articles_json?q=${query}&page=${page}`, {
+        url.searchParams.append("page", goToPage ? goToPage : page);
+        if (query) url.searchParams.append("q", query);
+        fetch(`/__xpr__/pub_engine/business-admin/element/articles_json${url.search}`, {
             method: "GET",
             headers: { Auth: auth.user.token }
         })
@@ -156,7 +150,7 @@ function List() {
                                     <Row className="justify-content-end align-items-center mb-3">
                                         <Col lg={4} className="d-flex justify-content-end">
                                             <InputGroup>
-                                                <Form.Control size="lg" type="text" className="rounded-xl px-4" placeholder="Search" value={search} onChange={updateSearch}/>
+                                                <Form.Control size="lg" type="text" className="rounded-xl px-4" placeholder="Search" value={keyword} onChange={updateKeyword}/>
                                                 <InputGroup.Text className="rounded-xl">
                                                     <i className="xpri-search text-primary"></i>
                                                 </InputGroup.Text>

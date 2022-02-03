@@ -35,53 +35,72 @@
         border: 1px solid $gray-900 !important; 
     }
     @include border-radius($circle-radius);
-    &.xs-avatar{
+    &.xs-avatar {
         height: $user-avatar-height-xs;
         width:  $user-avatar-width-xs;
         min-height: $user-avatar-height-xs;
         min-width:  $user-avatar-width-xs;
-        img{
+        i { 
+            font-size: 1.063rem;
+            margin: 0;
+        }
+        img {
             height: $user-avatar-height-xs;
-            width:  $user-avatar-width-xs;
+            width: $user-avatar-width-xs;
         }
     }
 
     i { 
-        font-size: 1.063rem !important;
         color: $gray-900;
-        margin: 0 !important;
     }
 
-	.md-avatar{
-		height: 2rem;
-		width:  2rem;
-		min-height: 2rem;
-		min-width:  2rem;
+    &.sm-avatar {
+		height: $user-avatar-height-sm;
+		width: $user-avatar-width-sm;
+		min-height: $user-avatar-height-sm;
+		min-width: $user-avatar-width-sm;
+        i { 
+            font-size: 1.063rem;
+            margin: 0;
+        }
 	}
 
-    &.lg-avatar{
-        height: $user-avatar-height-lg;
-        width:  $user-avatar-width-lg;
-        min-height: $user-avatar-height-lg;
-        min-width:  $user-avatar-width-lg;
-        font-size: $font-size-xs;
+	&.md-avatar {
+		height: $user-avatar-height-md;
+		width: $user-avatar-width-md;
+		min-height: $user-avatar-height-md;
+		min-width: $user-avatar-width-md;
+        i { 
+            font-size: 1.063rem;
+            margin: 0;
+        }
+	}
 
+    &.lg-avatar {
+        height: $user-avatar-height-lg;
+        width: $user-avatar-width-lg;
+        min-height: $user-avatar-height-lg;
+        min-width: $user-avatar-width-lg;
+        font-size: $font-size-xs;
+        i { 
+            font-size: 1.625rem;
+        }
         @include media-breakpoint-down(lg) {
             height: 2rem;
-		    width:  2rem;
+		    width: 2rem;
             min-height: 2rem;
-		    min-width:  2rem;
+		    min-width: 2rem;
         }
     }
 
-    &.xl-avatar{
+    &.xl-avatar {
         height: $user-avatar-height-xl;
-        width:  $user-avatar-width-xl;
+        width: $user-avatar-width-xl;
         min-height: $user-avatar-height-xl;
-        min-width:  $user-avatar-width-xl;
+        min-width: $user-avatar-width-xl;
     }
 
-    &.large-avatar{
+    &.large-avatar {
         border: 2px solid $white;
         height: $user-avatar-height-xxl;
         width:  $user-avatar-width-xxl;

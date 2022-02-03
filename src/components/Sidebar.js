@@ -59,6 +59,7 @@ export default (props = {}) => {
 		return (
 		<Nav.Item onClick={() => setShow(false)}>
 			{/*<Nav.Link {...linkProps} target={target} className={classNames}>*/}
+			{/* // TODO: figure out active state for nested routes */}
 			<NavLink to={link} className={({ isActive }) => ((isActive || setHome) ? 'nav-link active' : 'nav-link')}>
 			<span>
 				{icon ? <span className="sidebar-icon"><FontAwesomeIcon icon={icon} /> </span> : null}
@@ -95,7 +96,7 @@ export default (props = {}) => {
 				<div className="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center">
 				<div className="d-flex align-items-center ">
 					{ auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage ?
-					<Image src={auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage?.SourcePath} className="user-avatar md-avatar rounded-circle mx-3" />
+					<Image src={auth.user?.data?._embedded?.CustomFields?._embedded?.ProfileImage?.SourcePath} className="user-avatar sm-avatar rounded-circle mx-3" />
 					:
 					<div className="user-avatar xs-avatar border rounded-circle mx-3"><i className="xpri-members m-0"></i></div>
 					} 
@@ -114,7 +115,7 @@ export default (props = {}) => {
 				</Nav.Link>
 				</div>
 				<Nav className="flex-column">
-				<NavItem title="Lists" link="/my-business/list/p1" icon={faList} />
+				<NavItem title="Events" link="/my-business/list/p1" icon={faList} />
 				<NavItem title="Users" link="/my-business/users/p1" icon={faUsers} />
 				<NavItem title="Charts" link={AllRoutes.DashboardOverview.path} icon={faChartPie} />
 				<NavItem title="Settings" icon={faCog} link={AllRoutes.Settings.path} />

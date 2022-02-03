@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/__xpr__/pub_engine/business-admin/web/static/css/main.1cd93c02.chunk.css",
-    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.534e203b.chunk.js",
-    "main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.534e203b.chunk.js.map",
+    "main.css": "/__xpr__/pub_engine/business-admin/web/static/css/main.06e19690.chunk.css",
+    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.9f688be3.chunk.js",
+    "main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.9f688be3.chunk.js.map",
     "runtime-main.js": "/__xpr__/pub_engine/business-admin/web/static/js/runtime-main.e70decfa.js",
     "runtime-main.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/runtime-main.e70decfa.js.map",
     "static/css/2.c91538ac.chunk.css": "/__xpr__/pub_engine/business-admin/web/static/css/2.c91538ac.chunk.css",
-    "static/js/2.36248b09.chunk.js": "/__xpr__/pub_engine/business-admin/web/static/js/2.36248b09.chunk.js",
-    "static/js/2.36248b09.chunk.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/2.36248b09.chunk.js.map",
+    "static/js/2.c4c28673.chunk.js": "/__xpr__/pub_engine/business-admin/web/static/js/2.c4c28673.chunk.js",
+    "static/js/2.c4c28673.chunk.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/2.c4c28673.chunk.js.map",
     "index.html": "/__xpr__/pub_engine/business-admin/web/index.html",
     "static/css/2.c91538ac.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/2.c91538ac.chunk.css.map",
-    "static/css/main.1cd93c02.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/main.1cd93c02.chunk.css.map",
-    "static/js/2.36248b09.chunk.js.LICENSE.txt": "/__xpr__/pub_engine/business-admin/web/static/js/2.36248b09.chunk.js.LICENSE.txt",
+    "static/css/main.06e19690.chunk.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/main.06e19690.chunk.css.map",
+    "static/js/2.c4c28673.chunk.js.LICENSE.txt": "/__xpr__/pub_engine/business-admin/web/static/js/2.c4c28673.chunk.js.LICENSE.txt",
     "static/media/404.59d1f9fd.svg": "/__xpr__/pub_engine/business-admin/web/static/media/404.59d1f9fd.svg",
     "static/media/500.d508258f.svg": "/__xpr__/pub_engine/business-admin/web/static/media/500.d508258f.svg",
     "static/media/volt.scss": "/__xpr__/pub_engine/business-admin/web/static/media/dinnextltpro-regular.070e0f7a.otf",
@@ -40,8 +40,8 @@
   "entrypoints": [
     "static/js/runtime-main.e70decfa.js",
     "static/css/2.c91538ac.chunk.css",
-    "static/js/2.36248b09.chunk.js",
-    "static/css/main.1cd93c02.chunk.css",
-    "static/js/main.534e203b.chunk.js"
+    "static/js/2.c4c28673.chunk.js",
+    "static/css/main.06e19690.chunk.css",
+    "static/js/main.9f688be3.chunk.js"
   ]
 }
