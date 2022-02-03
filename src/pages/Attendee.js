@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Breadcrumb, Button, Row, Col, Form, Card, CardGroup, Dropdown, Spinner } from "react-bootstrap";
+import { Breadcrumb, Row, Col, Form, Card, Image } from "react-bootstrap";
 
 import { useAuth } from "../context/auth";
 
@@ -23,7 +23,7 @@ function Attendee(props) {
         .then(
             (result) => { 
                 setIsLoaded(true);
-                setItem(result._embedded?.User);
+                setItem(result);
             },
             (error) => {
                 setError(error);
@@ -43,6 +43,7 @@ function Attendee(props) {
                 </div>
             </div>
 
+            {/* attendee details */}
             {item && 
             <Form className="form-content-update" onSubmit={e => {e.preventDefault()}}>
                 <Row className="mb-5">
@@ -54,12 +55,50 @@ function Attendee(props) {
                                         <div className="mb-4">
                                             <Row className="justify-content-between">
                                                 <Col sm={8} className="mb-3">
-                                                    <h2 className="heading-2">Attendee Details</h2>
+                                                    <h2 className="heading-2 mb-3">Attendee Details</h2>
                                                 </Col>
                                             </Row>
                                             <Row>
                                                 <Col sm={12}>
-                                                    <div className="user-avatar xs-avatar border rounded-circle me-3"><i className="xpri-members m-0"></i></div>
+                                                    <Row>
+                                                        <Col sm="auto">
+                                                            {item._embedded.CustomFields?._embedded?.ProfileImage?.SourcePath ?
+                                                            <Image src={item._embedded.CustomFields?._embedded?.ProfileImage?.SourcePath} className="user-avatar lg-avatar rounded-circle me-3" />
+                                                            :
+                                                            <div className="user-avatar lg-avatar bg-gray-300 rounded-circle me-3">
+                                                                <i className="xpri-members m-0"></i>
+                                                            </div>
+                                                            }
+                                                        </Col>
+                                                        <Col>
+                                                            <h1 className="text-eggplant">{item.FirstName || "Firstname"} {item.LastName || "Lastname"}</h1>
+                                                            <h5 className="mb-2">{item.CompanyName}</h5>
+                                                            <Row>
+                                                                <Col sm={6}>
+                                                                    <Form.Group className="mb-3">
+                                                                        <Form.Label className="d-block text-nowrap text-uppercase">Email</Form.Label>
+                                                                        {item.Email}
+                                                                    </Form.Group>
+                                                                    <Form.Group className="mb-3">
+                                                                        <Form.Label className="d-block text-nowrap text-uppercase">City</Form.Label>
+                                                                        City Name goes here
+                                                                    </Form.Group>
+                                                                </Col>
+                                                                <Col sm={3}>
+                                                                    <Form.Group className="mb-3">
+                                                                        <Form.Label className="d-block text-nowrap text-uppercase">Phone Number</Form.Label>
+                                                                        604-123-1234
+                                                                    </Form.Group>
+                                                                </Col>
+                                                                <Col sm={2}>
+                                                                    <Form.Group className="mb-3">
+                                                                        <Form.Label className="d-block text-nowrap text-uppercase">User Id</Form.Label>
+                                                                        {item.Id}
+                                                                    </Form.Group>
+                                                                </Col>
+                                                            </Row>
+                                                        </Col>
+                                                    </Row>
                                                 </Col>
                                             </Row>
                                         </div>
@@ -71,8 +110,23 @@ function Attendee(props) {
                     <Col sm={4}>
                         <Card border="light" className="shadow-sm">
                             <Card.Body>
-                                <h2 className="heading-2">Member Numbers</h2>
-                                
+                                <h2 className="heading-2 mb-3">Member Numbers</h2>
+                                <Form.Group className="d-flex align-items-center justify-content-between w-100 mb-2">
+                                    <Form.Label className="text-nowrap m-0 me-3 text-uppercase">Total events booked</Form.Label>
+                                    <Form.Text className="h2 text-black fw-bolder">34</Form.Text>
+                                </Form.Group>
+                                <Form.Group className="d-flex align-items-center justify-content-between w-100 mb-2">
+                                    <Form.Label className="text-nowrap m-0 me-3 text-uppercase">Total tickets</Form.Label>
+                                    <Form.Text className="h2 text-black fw-bolder">65</Form.Text>
+                                </Form.Group>
+                                <Form.Group className="d-flex align-items-center justify-content-between w-100 mb-2">
+                                    <Form.Label className="text-nowrap m-0 me-3 text-uppercase">Total cost</Form.Label>
+                                    <Form.Text className="h2 text-primary fw-bolder">$1,934</Form.Text>
+                                </Form.Group>
+                                <Form.Group className="d-flex align-items-center justify-content-between w-100 mb-2">
+                                    <Form.Label className="text-nowrap m-0 me-3 text-uppercase">Average ticket cost</Form.Label>
+                                    <Form.Text className="h2 text-black fw-bolder">$29.75</Form.Text>
+                                </Form.Group>
                             </Card.Body>
                         </Card>
                     </Col>

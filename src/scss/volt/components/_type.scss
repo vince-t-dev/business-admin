@@ -98,7 +98,9 @@ a, .text-action {
 	}
 }
 
+
 // Blockquotes
+
 .blockquote {
 	font-style: italic;
 	&.blockquote-large{
@@ -150,7 +152,7 @@ a, .text-action {
 
 //PrismJs text	
 
-code[class*="language-"], pre[class*="language-"]{
+code[class*="language-"], pre[class*="language-"] {
 	text-shadow: none;
 	font-family: $font-family-base;
 	font-weight: $font-weight-bold;
