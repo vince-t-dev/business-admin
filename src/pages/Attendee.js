@@ -6,7 +6,6 @@ import { useAuth } from "../context/auth";
 
 function Attendee(props) {
     const { id } = useParams();
-// TODO
     // fetch data from api
     const [error, setError] = useState(null);
     const [item, setItem] = useState(null);
@@ -14,7 +13,7 @@ function Attendee(props) {
     let auth = useAuth();
     useEffect(() => { 
         setIsLoaded(false);
-        fetch(`/__xpr__/pub_engine/business-admin/element/user_json?id=`+id, {
+        fetch(`/__xpr__/pub_engine/business-admin/element/users_json?id=`+id, {
             method: "GET",
             headers: {
                 Auth: auth.user.token
@@ -24,7 +23,7 @@ function Attendee(props) {
         .then(
             (result) => { 
                 setIsLoaded(true);
-                setItem(result);
+                setItem(result._embedded?.User);
             },
             (error) => {
                 setError(error);

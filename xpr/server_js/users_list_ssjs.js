@@ -11,12 +11,17 @@ exports.process = function(context, options) {
     let token = library.checkAuth(request.headers.Auth);
     if (token.error) return token;
     
-    let users_params = { per_page: per_page };
-    if (request.urlParams.q) users_params.q_FirstName_LastName_Email = request.urlParams.q;
-    if (request.urlParams.page) users_params.page = request.urlParams.page;
+    let users_params = { _noUnhydrated: 1, per_page: per_page };
+    if (request.urlParams) {
+        if (request.urlParams.q) users_params.q_FirstName_LastName_Email = request.urlParams.q;
+        if (request.urlParams.page) users_params.page = request.urlParams.page;
+        if (request.urlParams.id) users_params.with = "CustomFields";
+    }
+
+    let uri = "/users/" + (request.urlParams) ? request.urlParams.id : "";
     let users = api({
         method: "GET",
-        uri : "/users/",
+        uri : uri,
         parseHAL: false,
         params : users_params
     });
