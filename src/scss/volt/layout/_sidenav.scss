@@ -218,9 +218,9 @@
 	.accordion-button{
 		&::after {
 			background-image: none;
-			content: '\f054';
-			font-family: $font-awesome-5;
-			font-size: $font-size-sm;
+			content: $xpri-arrow-right;
+			font-family: $icomoon-font-family;
+			font-size: $font-size-xs;
 			font-weight: 900;
 			height:1.25rem;
 			width:.5rem;

@@ -22,7 +22,6 @@ import { SiteContext } from "./context/site";
 import "./scss/volt.scss";
 
 // vendor styles
-import "@fortawesome/fontawesome-free/css/all.css"; 
 import "react-datetime/css/react-datetime.css";
  
 // home page

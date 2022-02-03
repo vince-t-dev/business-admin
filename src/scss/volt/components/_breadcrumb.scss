@@ -19,10 +19,12 @@
 
   + .breadcrumb-item {
     &:before{
-      content: "\f101";
-      font-family: $font-awesome-5;
-      font-weight: 900;
+      content: $xpri-arrow-right;
+      font-family: $icomoon-font-family;
+      font-size: 0.5rem;
+      font-weight: 400;
       color: $breadcrumb-divider-color;
+      line-height: 2.5;
     }
   }
   

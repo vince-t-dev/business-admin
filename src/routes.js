@@ -43,7 +43,6 @@ export const AllRoutes = {
     Pagination: { path: "/my-business/components/pagination" },
     Popovers: { path: "/my-business/components/popovers" },
     Progress: { path: "/my-business/components/progress" },
-    Tables: { path: "/my-business/components/tables" },
     Tabs: { path: "/my-business/components/tabs" },
     Tooltips: { path: "/my-business/components/tooltips" },
     Toasts: { path: "/my-business/components/toasts" },

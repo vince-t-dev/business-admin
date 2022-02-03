@@ -135,7 +135,6 @@ export default (props = {}) => {
 					<NavItem title="Pagination" link={AllRoutes.Pagination.path} />
 					<NavItem title="Popovers" link={AllRoutes.Popovers.path} />
 					<NavItem title="Progress" link={AllRoutes.Progress.path} />
-					<NavItem title="Tables" link={AllRoutes.Tables.path} />
 					<NavItem title="Tabs" link={AllRoutes.Tabs.path} />
 					<NavItem title="Toasts" link={AllRoutes.Toasts.path} />
 					<NavItem title="Tooltips" link={AllRoutes.Tooltips.path} />

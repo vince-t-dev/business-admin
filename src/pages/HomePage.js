@@ -46,7 +46,6 @@ import Navbars from "./components/Navbars";
 import Pagination from "./components/Pagination";
 import Popovers from "./components/Popovers";
 import Progress from "./components/Progress";
-import Tables from "./components/Tables";
 import Tabs from "./components/Tabs";
 import Tooltips from "./components/Tooltips";
 import Toasts from "./components/Toasts";
@@ -159,7 +158,6 @@ export default () => (
 				<Route path={AllRoutes.Pagination.path} element={<RouteWithSidebar component={Pagination}/>}/>
 				<Route path={AllRoutes.Popovers.path} element={<RouteWithSidebar component={Popovers}/>}/>
 				<Route path={AllRoutes.Progress.path} element={<RouteWithSidebar component={Progress}/>}/>
-				<Route path={AllRoutes.Tables.path} element={<RouteWithSidebar component={Tables}/>}/>
 				<Route path={AllRoutes.Tabs.path} element={<RouteWithSidebar component={Tabs}/>}/>
 				<Route path={AllRoutes.Tooltips.path} element={<RouteWithSidebar component={Tooltips}/>}/>
 				<Route path={AllRoutes.Toasts.path} element={<RouteWithSidebar component={Toasts}/>}/>
