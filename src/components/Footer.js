@@ -1,7 +1,5 @@
 import React, {useState} from "react";
-import { Row, Col, Stack, Form, Modal, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { AllRoutes } from "../routes";
+import { Stack, Form, Modal, Button } from 'react-bootstrap';
 
 export default (props) => {
   	const showSettings = props.showSettings;
@@ -61,7 +59,7 @@ export default (props) => {
                     <p>Are you sure you want to delete the Article:</p>
                     <ul> {                        
                         props.selectedItems.map((a,index) => (
-                            <li key={"li-"+a.Id}>{a.Title}</li>
+                            <li key={"li-"+a.Id} dangerouslySetInnerHTML={{__html: a.Title}}></li>
                         ))
                     }
                     </ul>
