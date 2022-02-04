@@ -17,7 +17,7 @@
 
 2. Move files in `build` folder to `/xpr/web/` folder.
 
-3. *Temporary workaround until XPR supports rendering files with multiple dots* - Rename css/js/svg, remove all dots in filename and update index.hbs file if necessary.
+3. *Temporary workaround until XPR supports rendering files with multiple dots* - Rename CSS/JS/SVG - remove all extra dots in filename and update index.hbs file if necessary.
 
 4. Navigate to backend `GIT Bundles` and hit `Clone` on your bundle.
 
