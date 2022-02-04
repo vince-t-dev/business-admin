@@ -24,4 +24,4 @@
 
 ## Documentation
 
-Visit `https://www.expresia.com/resources/getting-started/development/my-business-integration/`
+Visit https://www.expresia.com/resources/getting-started/development/my-business-integration/
