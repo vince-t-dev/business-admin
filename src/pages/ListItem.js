@@ -173,38 +173,38 @@ function ListItem(props) {
                                                     {/* ck editor */}
                                                     <Form.Group className="ck-heading mb-4" controlId="title">
                                                         <Form.Label>Title</Form.Label>
-                                                        <TextEditor name="Title" value={item.Title} updateData={updateData}/>
+                                                        <TextEditor name="Title" value={item.Title} onChange={updateData}/>
                                                     </Form.Group>
 
                                                     <Form.Group className="mb-4" controlId="description">
                                                         <Form.Label>Description</Form.Label>
-                                                        <TextEditor name="Description" value={item.Description} rte={true} updateData={updateData}/>
+                                                        <TextEditor name="Description" value={item.Description} rte={true} onChange={updateData}/>
                                                     </Form.Group>
                                                     
                                                     {/* image editor */}
                                                     <Form.Group className="mb-4">
                                                         <Form.Label>Picture</Form.Label>
-                                                        <ImageEditor name="_embedded.Picture" value={item._embedded && item._embedded.Picture ? item._embedded.Picture.SourcePath : null} updateData={updateData}/>
+                                                        <ImageEditor name="_embedded.Picture" value={item._embedded?.Picture?.SourcePath} onChange={updateData}/>
                                                     </Form.Group>
 
                                                     <Form.Group className="mb-4" controlId="html">
                                                         <Form.Label>Html</Form.Label>
-                                                        <TextEditor name="Html" value={item.Html} rte={true} updateData={updateData}/>
+                                                        <TextEditor name="Html" value={item.Html} rte={true} onChange={updateData}/>
                                                     </Form.Group>
                                                  
                                                     {/* date and time */}
                                                     <Row>
                                                         <Col sm={6}>
                                                             <Form.Label>Date</Form.Label>
-                                                            <DateTimePicker name="DisplayDate" value={item.DisplayDate || ""} updateData={updateData}/>
+                                                            <DateTimePicker name="DisplayDate" value={item.DisplayDate || ""} onChange={updateData}/>
                                                         </Col>
                                                         <Col sm={3}>
                                                             <Form.Label>Start Time</Form.Label>
-                                                            <DateTimePicker name="StartTime" value={item.StartTime || ""} viewMode="time" updateData={updateData}/>
+                                                            <DateTimePicker name="StartTime" value={item.StartTime || ""} viewMode="time" onChange={updateData}/>
                                                         </Col>
                                                         <Col sm={3}>
                                                             <Form.Label>End Time</Form.Label>
-                                                            <DateTimePicker name="EndTime" value={item.EndTime || ""} viewMode="time" updateData={updateData}/>
+                                                            <DateTimePicker name="EndTime" value={item.EndTime || ""} viewMode="time" onChange={updateData}/>
                                                         </Col>
                                                     </Row>    
 

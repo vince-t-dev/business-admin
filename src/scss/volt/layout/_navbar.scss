@@ -206,7 +206,7 @@
 
 .navbar-light {
 
-    &:not(.headroom--not-top) {
+    & {
         .btn-outline-soft {
             border-color: $dark;
             color: $dark;
@@ -236,11 +236,11 @@
 // Theme color variants
 // eg. navbar-theme-primary, navbar-theme-secondary
 @each $color, $value in $theme-colors {
-    .navbar-theme-#{$color}:not(.headroom) {
+    .navbar-theme-#{$color} {
         background-color: $value;
     }
 
-    .navbar-theme-#{$color}.navbar-light:not(.headroom) .navbar-nav {
+    .navbar-theme-#{$color}.navbar-light .navbar-nav {
         .dropdown-item,
         .list-group-item {
             &.active, &:hover {
@@ -306,7 +306,7 @@
 
 }
 
-.navbar-theme-primary:not(.headroom) {
+.navbar-theme-primary {
     background: $white;
     box-shadow: 0 0.125rem 0.625rem rgb(0 0 0 / 14%);
     z-index: 100; 

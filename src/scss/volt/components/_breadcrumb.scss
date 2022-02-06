@@ -19,8 +19,8 @@
 
   + .breadcrumb-item {
     &:before{
-      content: $xpri-arrow-right;
-      font-family: $icomoon-font-family;
+      content: "\e915";
+      font-family: "XPRIcons";
       font-size: 0.5rem;
       font-weight: 400;
       color: $breadcrumb-divider-color;

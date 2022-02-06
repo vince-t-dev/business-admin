@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Row, Col, InputGroup, Form, Card, Table, Badge, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Row, Col, InputGroup, Form, Table, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import CustomPagination from "../components/Pagination";
 import { useAuth } from "../context/auth";
 

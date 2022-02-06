@@ -18,6 +18,7 @@ function TextEditor(props) {
             toolbar: ["imageTextAlternative","imageStyle:alignLeft","imageStyle:alignRight"],
             styles: ["full","alignLeft","alignRight"]
         },
+        // TODO upload image - try SimpleUploadAdapter 
         ckfinder: {
             uploadUrl: "/__xpr__/pub_engine/business-admin/element/file_uploader",
             options: {
@@ -41,7 +42,7 @@ function TextEditor(props) {
                     const data = editor.getData();
                     // strip out <p> tags for headings
                     let formatted_data = props.rte ? data : data.replace("<p>","").replace("</p>","");
-                    props.updateData(props.name,formatted_data);
+                    props.onChange(props.name,formatted_data);
                 } }
             />
         </>

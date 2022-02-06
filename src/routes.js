@@ -7,44 +7,13 @@ export const AllRoutes = {
     ListItem: { path: "/my-business/list/edit/:id" },
     Attendee: { path: "/my-business/attendees/:id"},
     Users: { path: "/my-business/users/*" },
-    DashboardOverview: { path: "/my-business/dashboard/overview" },
+    
     Settings: { path: "/my-business/settings" },
-    Upgrade: { path: "/my-business/upgrade" },
-    Billing: { path: "/my-business/examples/billing" },
-    Invoice: { path: "/my-business/examples/invoice" },
     Login: { path: "/my-business/login" },
     Signup: { path: "/my-business/examples/sign-up" },
     ForgotPassword: { path: "/my-business/examples/forgot-password" },
     ResetPassword: { path: "/my-business/examples/reset-password" },
     Lock: { path: "/my-business/examples/lock" },
     NotFound: { path: "/my-business/examples/404" },
-    ServerError: { path: "/my-business/examples/500" },
-
-    // docs
-    DocsOverview: { path: "/my-business/documentation/overview" },
-    DocsDownload: { path: "/my-business/documentation/download" },
-    DocsQuickStart: { path: "/my-business/documentation/quick-start" },
-    DocsLicense: { path: "/my-business/documentation/license" },
-    DocsFolderStructure: { path: "/my-business/documentation/folder-structure" },
-    DocsBuild: { path: "/my-business/documentation/build-tools" },
-    DocsChangelog: { path: "/my-business/documentation/changelog" },
-
-    // components
-    Accordions: { path: "/my-business/components/accordions" },
-    Alerts: { path: "/my-business/components/alerts" },
-    Badges: { path: "/my-business/components/badges" },
-    Widgets: { path: "/my-business/widgets" },
-    Breadcrumbs: { path: "/my-business/components/breadcrumbs" },
-    Buttons: { path: "/my-business/components/buttons" },
-    Forms: { path: "/my-business/components/forms" },
-    Modals: { path: "/my-business/components/modals" },
-    Navs: { path: "/my-business/components/navs" },
-    Navbars: { path: "/my-business/components/navbars" },
-    Pagination: { path: "/my-business/components/pagination" },
-    Popovers: { path: "/my-business/components/popovers" },
-    Progress: { path: "/my-business/components/progress" },
-    Tabs: { path: "/my-business/components/tabs" },
-    Tooltips: { path: "/my-business/components/tooltips" },
-    Toasts: { path: "/my-business/components/toasts" },
-    WidgetsComponent: { path: "/my-business/components/widgets" }
+    ServerError: { path: "/my-business/examples/500" }
 };

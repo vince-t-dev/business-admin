@@ -14,7 +14,7 @@ function DateTimePicker(props) {
     // on value change: format value and update jsondata
     useEffect(() => {
         formatted_value = (!isTimePicker) ? moment(value).format("YYYY-MM-DD") : moment(value).format("HH:mm");
-        props.updateData(props.name, formatted_value);
+        props.onChange(props.name, formatted_value);
     },[value]);
 
     return (

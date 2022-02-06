@@ -3,13 +3,12 @@ import React, { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes, faCalendarAlt, faMapPin, faInbox, faRocket, faUsers, faList } from "@fortawesome/free-solid-svg-icons";
-import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from 'react-bootstrap';
+import { faCog, faFileAlt, faUsers, faList, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { Nav, Badge, Image, Button, Accordion, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from "../context/auth";
 
 import { AllRoutes } from "../routes";
-import ProfilePicture from "../assets/img/team/profile-picture-5.jpg"; 
 import LogoLight from "../assets/media/xprs-logo.svg";
 import LogoDark from "../assets/media/xprs-logo-dark.svg";
 import LogoSmallLight from "../assets/media/xprs-logo-with-red-white.svg";
@@ -117,28 +116,9 @@ export default (props = {}) => {
 				<Nav className="flex-column">
 				<NavItem title="Events" link="/my-business/list/p1" icon={faList} />
 				<NavItem title="Users" link="/my-business/users/p1" icon={faUsers} />
-				<NavItem title="Charts" link={AllRoutes.DashboardOverview.path} icon={faChartPie} />
 				<NavItem title="Settings" icon={faCog} link={AllRoutes.Settings.path} />
 
 				{/*<Dropdown.Divider className="my-3 border-indigo" />*/}
-
-				<CollapsableNavItem eventKey="components/" title="Components" icon={faBoxOpen}>
-					<NavItem title="Accordion" link={AllRoutes.Accordions.path} />
-					<NavItem title="Alerts" link={AllRoutes.Alerts.path} />
-					<NavItem title="Badges" link={AllRoutes.Badges.path} />
-					<NavItem title="Breadcrumbs" link={AllRoutes.Breadcrumbs.path} />
-					<NavItem title="Buttons" link={AllRoutes.Buttons.path} />
-					<NavItem title="Forms" link={AllRoutes.Forms.path} />
-					<NavItem title="Modals" link={AllRoutes.Modals.path} />
-					<NavItem title="Navbars" link={AllRoutes.Navbars.path} />
-					<NavItem title="Navs" link={AllRoutes.Navs.path} />
-					<NavItem title="Pagination" link={AllRoutes.Pagination.path} />
-					<NavItem title="Popovers" link={AllRoutes.Popovers.path} />
-					<NavItem title="Progress" link={AllRoutes.Progress.path} />
-					<NavItem title="Tabs" link={AllRoutes.Tabs.path} />
-					<NavItem title="Toasts" link={AllRoutes.Toasts.path} />
-					<NavItem title="Tooltips" link={AllRoutes.Tooltips.path} />
-				</CollapsableNavItem>
 
 				<CollapsableNavItem eventKey="examples/" title="External Pages" icon={faFileAlt}>
 					<NavItem title="Sign In" link={AllRoutes.Login.path} />

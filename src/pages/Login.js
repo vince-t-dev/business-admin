@@ -55,7 +55,7 @@ function Login(props) {
             <section className="vh-100 bg-soft d-flex align-items-center my-0">
                 <Container>
                     {/*<p className="text-center">
-                        <Card.Link as={Link} to={AllRoutes.DashboardOverview.path} className="text-gray-700">
+                        <Card.Link as={Link} to="/" className="text-gray-700">
                             <FontAwesomeIcon icon={faAngleLeft} className="me-2" /> Back to homepage
                         </Card.Link>
                     </p>*/}

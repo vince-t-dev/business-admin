@@ -218,8 +218,8 @@
 	.accordion-button{
 		&::after {
 			background-image: none;
-			content: $xpri-arrow-right;
-			font-family: $icomoon-font-family;
+			content: "\e915";
+			font-family: "XPRIcons";
 			font-size: $font-size-xs;
 			font-weight: 900;
 			height:1.25rem;

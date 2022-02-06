@@ -18,7 +18,7 @@ export default [
         "id": 1,
         "name": "Overview",
         "image": OverviewImg,
-        "link": AllRoutes.DashboardOverview.path
+        "link": "/"
     },
     {
         "id": 2,

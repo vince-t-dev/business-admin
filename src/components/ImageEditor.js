@@ -84,7 +84,7 @@ function ImageEditor(props) {
             withCredentials: true
         })
         .then(function(response) {
-            props.updateData(props.name, { Id: response.data.Id});
+            props.onChange(props.name, { Id: response.data.Id});
         });
     }
 
