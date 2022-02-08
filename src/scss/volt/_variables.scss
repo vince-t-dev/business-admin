@@ -5,7 +5,7 @@
 
 // Color system
 
-// Shades of grey
+// Shades of gray
 $white:    #ffffff;
 $gray-100: #fbfbfb;
 $gray-200: #f4f4f4;
@@ -20,84 +20,26 @@ $gray-alt: #d4d4d4;
 $dark:     #515253; 
 $black:    #000000;
 
-// fusv-disable
-$grays: (
-  "100": $gray-100,
-  "200": $gray-200,
-  "300": $gray-300,
-  "400": $gray-400,
-  "500": $gray-500,
-  "600": $gray-600,
-  "700": $gray-700,
-  "800": $gray-800,
-  "900": $gray-900
-);
-// fusv-enable
 
 // Generic colors
 $cherry:  #F15254;
 $eggplant:#3A2557;
 $blue:    #4E83EB;
 $blue-alt:#AFC9E9;
-$indigo:  #4c5680;
-$purple:  #8965e0;
-$pink:    #C96480;
 $red:     #F15254;
 $red-alt: #FF0000;
-$orange:  #FF9F89;
-$brown:   #b9a084;
 $yellow:  #FFAB46;
 $yellow-alt:rgba(255, 171, 70, 0.15);
 $green:   #39AD5A;
 $green-alt: rgba(57, 173, 90, 0.15);
-$teal:    #1E90FF;
-$cyan:    #63b1bd;
-$soft-indigo:#f5e8ff;
 
-// scss-docs-start colors-map
-$colors: (
-  "blue":       $blue,
-  "indigo":     $indigo,
-  "purple":     $purple,
-  "pink":       $pink,
-  "red":        $red,
-  "orange":     $orange,
-  "yellow":     $yellow,
-  "green":      $green,
-  "teal":       $teal,
-  "cyan":       $cyan,
-  "white":      $white,
-  "gray":       $gray-600,
-  "gray-dark":  $gray-800
-);
-// scss-docs-end colors-map
 
 // Color scheme
 $default:       #0b1539;
 $primary:       #4E83EB;
 $secondary:     $eggplant;
 $tertiary:      rgba(78, 131, 235, 0.1);
-$quaternary:    $cherry;
-
-// Series names and colors. This can be extended or customized as desired. Just add more series and colors.
-$ct-series-names: (a, b, c, d, e, f, g) !default;
-$ct-series-colors: (
-  #1B998B,
-  #17a5ce,
-  #0b1539,
-  #f5b759,
-  #C96480,
-  #ffffff,
-  #17a5ce,
-
-);
-
-// Mobile landing color scheme
-$primary-app:     #EBF4F6;
-$secondary-app:   #424AA0;
-
 $success:       $green;
-$info:          $blue;
 $warning:       $yellow;
 $danger:        $red;
 $gray:          $gray-900;
@@ -106,26 +48,20 @@ $soft:          $gray-200;
 $dark:          $dark;
 
 
-// Theme colors
+// Theme colors: try to minimize number of themes here to keep things light
 $theme-colors: ();
 $theme-colors: map-merge((
-  "primary":       $primary,
-  "secondary":     $secondary,
-  "tertiary":      $tertiary,
-  "success":       $success,
-  "info":         $info,
-  "warning":      $warning,
-  "danger":       $danger,
-  "white":        $white,
-  "gray":         $gray,
-  "gray-300":     $gray-300,
-  "light":         $light,
-  "dark":         $dark,
-  "black":        $black,
-  "soft":         $soft,
-  "eggplant":     $eggplant,
-  "cherry":       $cherry,
-  "green":        $green
+  "primary":        $primary,
+  "secondary":      $secondary,
+  "gray":           $gray,
+  "gray-300":       $gray-300,
+  "light":          $light,
+  "dark":           $dark,
+  "soft":           $soft,
+  "eggplant":       $eggplant,
+  "success":        $success,
+  "danger":         $danger,
+  "cherry":         $cherry
 ), $theme-colors);
 
 /* TODO: redefine theme colors for dark theme 
@@ -140,7 +76,7 @@ $theme-colors: map-merge((
         "secondary": $secondary,
         "success": $success,
         "danger": $danger,
-        "info": $indigo,
+        "info": $info,
         "dark": $dark,
         "light": #aaa
     );
@@ -158,116 +94,15 @@ $min-contrast-ratio:   3;
 $color-contrast-dark:      $dark;
 $color-contrast-light:     $white;
 
-// fusv-disable
-$blue-100: tint-color($blue, 8);
-$blue-200: tint-color($blue, 6);
-$blue-300: tint-color($blue, 4);
-$blue-400: tint-color($blue, 2);
-$blue-500: $blue;
-$blue-600: shade-color($blue, 2);
-$blue-700: shade-color($blue, 4);
-$blue-800: shade-color($blue, 6);
-$blue-900: shade-color($blue, 8);
-
-$indigo-100: tint-color($indigo, 8);
-$indigo-200: tint-color($indigo, 6);
-$indigo-300: tint-color($indigo, 4);
-$indigo-400: tint-color($indigo, 2);
-$indigo-500: $indigo;
-$indigo-600: shade-color($indigo, 2);
-$indigo-700: shade-color($indigo, 4);
-$indigo-800: shade-color($indigo, 6);
-$indigo-900: shade-color($indigo, 8);
-
-$purple-100: tint-color($purple, 8);
-$purple-200: tint-color($purple, 6);
-$purple-300: tint-color($purple, 4);
-$purple-400: tint-color($purple, 2);
-$purple-500: $purple;
-$purple-600: shade-color($purple, 2);
-$purple-700: shade-color($purple, 4);
-$purple-800: shade-color($purple, 6);
-$purple-900: shade-color($purple, 8);
-
-$pink-100: tint-color($pink, 8);
-$pink-200: tint-color($pink, 6);
-$pink-300: tint-color($pink, 4);
-$pink-400: tint-color($pink, 2);
-$pink-500: $pink;
-$pink-600: shade-color($pink, 2);
-$pink-700: shade-color($pink, 4);
-$pink-800: shade-color($pink, 6);
-$pink-900: shade-color($pink, 8);
-
-$red-100: tint-color($red, 8);
-$red-200: tint-color($red, 6);
-$red-300: tint-color($red, 4);
-$red-400: tint-color($red, 2);
-$red-500: $red;
-$red-600: shade-color($red, 2);
-$red-700: shade-color($red, 4);
-$red-800: shade-color($red, 6);
-$red-900: shade-color($red, 8);
-
-$orange-100: tint-color($orange, 8);
-$orange-200: tint-color($orange, 6);
-$orange-300: tint-color($orange, 4);
-$orange-400: tint-color($orange, 2);
-$orange-500: $orange;
-$orange-600: shade-color($orange, 2);
-$orange-700: shade-color($orange, 4);
-$orange-800: shade-color($orange, 6);
-$orange-900: shade-color($orange, 8);
-
-$yellow-100: tint-color($yellow, 8);
-$yellow-200: tint-color($yellow, 6);
-$yellow-300: tint-color($yellow, 4);
-$yellow-400: tint-color($yellow, 2);
-$yellow-500: $yellow;
-$yellow-600: shade-color($yellow, 2);
-$yellow-700: shade-color($yellow, 4);
-$yellow-800: shade-color($yellow, 6);
-$yellow-900: shade-color($yellow, 8);
-
-$green-100: tint-color($green, 8);
-$green-200: tint-color($green, 6);
-$green-300: tint-color($green, 4);
-$green-400: tint-color($green, 2);
-$green-500: $green;
-$green-600: shade-color($green, 2);
-$green-700: shade-color($green, 4);
-$green-800: shade-color($green, 6);
-$green-900: shade-color($green, 8);
-
-$teal-100: tint-color($teal, 8);
-$teal-200: tint-color($teal, 6);
-$teal-300: tint-color($teal, 4);
-$teal-400: tint-color($teal, 2);
-$teal-500: $teal;
-$teal-600: shade-color($teal, 2);
-$teal-700: shade-color($teal, 4);
-$teal-800: shade-color($teal, 6);
-$teal-900: shade-color($teal, 8);
-
-$cyan-100: tint-color($cyan, 8);
-$cyan-200: tint-color($cyan, 6);
-$cyan-300: tint-color($cyan, 4);
-$cyan-400: tint-color($cyan, 2);
-$cyan-500: $cyan;
-$cyan-600: shade-color($cyan, 2);
-$cyan-700: shade-color($cyan, 4);
-$cyan-800: shade-color($cyan, 6);
-$cyan-900: shade-color($cyan, 8);
-// fusv-enable
 
 // Characters which are escaped by the escape-svg function
-$escaped-characters: (
+/*$escaped-characters: (
   ("<","%3c"),
   (">","%3e"),
   ("#","%23"),
   ("(","%28"),
   (")","%29"),
-);
+);*/
 
 // Options
 //
@@ -359,6 +194,7 @@ $paragraph-margin-bottom:   1rem;
 // adapting to different screen sizes, for use in media queries.
 
 // scss-docs-start grid-breakpoints
+
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -521,7 +357,7 @@ $display-font-sizes: (
   6: 1rem
 );
 
-$font-sizes: (
+/*$font-sizes: (
   1: $h1-font-size,
   2: $h2-font-size,
   3: $h3-font-size,
@@ -529,7 +365,7 @@ $font-sizes: (
   5: $h5-font-size,
   6: $h6-font-size,
   7: .9rem
-);
+);*/
 
 $display-font-weight: $font-weight-bold;
 $display-line-height: $headings-line-height;
@@ -712,6 +548,7 @@ $input-plaintext-color:                 $body-color;
 
 $input-height-border:                   $input-border-width * 2;
 
+/*
 $input-height-inner:                    add($input-line-height * 1em, $input-padding-y * 2);
 $input-height-inner-half:               add($input-line-height * .5em, $input-padding-y);
 $input-height-inner-quarter:            add($input-line-height * .25em, calc($input-padding-y / 2));
@@ -720,7 +557,7 @@ $input-height:                          add($input-line-height * 1em, add($input
 $input-height-sm:                       add($input-line-height * 1em, add($input-padding-y-sm * 2, $input-height-border, false));
 $input-height-lg:                       add($input-line-height * 1em, add($input-padding-y-lg * 2, $input-height-border, false));
 $input-height-xl:                       calc(#{$input-line-height * 1.5em} + #{$input-btn-padding-y-lg * 2} + #{$input-height-border});
-
+*/
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
 // Custom forms
@@ -832,114 +669,13 @@ $input-group-addon-focus-color:               $input-focus-color;
 $input-group-addon-focus-bg:                  $input-focus-bg;
 $input-group-addon-focus-border-color:        $input-border-color;
 
-$form-select-padding-y:             $input-padding-y;
-$form-select-padding-x:             $input-padding-x;          
-$form-select-font-family:           $input-font-family;
-$form-select-font-size:             $input-font-size;
-$form-select-height:                $input-height;
-$form-select-indicator-padding:     1rem; // Extra padding to account for the presence of the background-image based indicator
-$form-select-font-weight:           $input-font-weight;
-$form-select-line-height:           $input-line-height;
-$form-select-color:                 $input-color;
-$form-select-disabled-color:        $gray-600;
-$form-select-bg:                    $input-bg;
-$form-select-disabled-bg:           $gray-200;
-$form-select-disabled-border-color: $input-disabled-border-color;
-$form-select-bg-position:           right $form-select-padding-x center;
-$form-select-bg-size:               16px 12px; // In pixels because image dimensions
-$form-select-indicator-color:       $gray-800;
-$form-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
-
-$form-select-feedback-icon-padding-end: add(1em * .75, (2 * $form-select-padding-y * .75) + $form-select-padding-x + $form-select-indicator-padding);
-$form-select-feedback-icon-position:      center right ($form-select-padding-x + $form-select-indicator-padding);
-$form-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half;
-
-$form-select-border-width:        $input-border-width;
-$form-select-border-color:        $input-border-color;
-$form-select-border-radius:       $border-radius;
-$form-select-box-shadow:          $box-shadow-inset;
-
-$form-select-focus-border-color:  $input-focus-border-color;
-$form-select-focus-width:         $input-focus-width;
-$form-select-focus-box-shadow:    0 0 0 $form-select-focus-width $input-btn-focus-color;
-
-$form-select-padding-y-sm:        $input-padding-y-sm;
-$form-select-padding-x-sm:        $input-padding-x-sm;
-$form-select-font-size-sm:        $input-font-size-sm;
-$form-select-height-sm:           $input-height-sm;
-
-$form-select-padding-y-lg:        $input-padding-y-lg;
-$form-select-padding-x-lg:        $input-padding-x-lg;
-$form-select-font-size-lg:        $input-font-size-lg;
-$form-select-height-lg:           $input-height-lg;
-
-$form-range-track-width:          100%;
-$form-range-track-height:         .5rem;
-$form-range-track-cursor:         pointer;
-$form-range-track-bg:             $gray-300;
-$form-range-track-border-radius:  1rem;
-$form-range-track-box-shadow:     $box-shadow-inset;
-
-$form-range-thumb-width:                   1rem;
-$form-range-thumb-height:                  $form-range-thumb-width;
-$form-range-thumb-bg:                      $component-active-bg;
-$form-range-thumb-border:                  0;
-$form-range-thumb-border-radius:           1rem;
-$form-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1);
-$form-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow;
-$form-range-thumb-focus-box-shadow-width:  $input-focus-width; // For focus box shadow issue in Edge
-$form-range-thumb-active-bg:               lighten($component-active-bg, 35%);
-$form-range-thumb-disabled-bg:             $gray-500;
-$form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-
-$form-file-height:                $input-height;
-$form-file-focus-border-color:    $input-focus-border-color;
-$form-file-focus-box-shadow:      $input-focus-box-shadow;
-$form-file-disabled-bg:           $input-disabled-bg;
-$form-file-disabled-border-color: $input-disabled-border-color;
-
-$form-file-padding-y:             $input-padding-y;
-$form-file-padding-x:             $input-padding-x;
-$form-file-line-height:           $input-line-height;
-$form-file-font-family:           $input-font-family;
-$form-file-font-weight:           $input-font-weight;
-$form-file-color:                 $input-color;
-$form-file-bg:                    $input-bg;
-$form-file-border-width:          $input-border-width;
-$form-file-border-color:          $input-border-color;
-$form-file-border-radius:         $input-border-radius;
-$form-file-box-shadow:            $input-box-shadow;
-$form-file-button-color:          $form-file-color;
-$form-file-button-bg:             $input-group-addon-bg;
-
-$form-file-padding-y-sm:          $input-padding-y-sm;
-$form-file-padding-x-sm:          $input-padding-x-sm;
-$form-file-font-size-sm:          $input-font-size-sm;
-$form-file-height-sm:             $input-height-sm;
-
-$form-file-padding-y-lg:          $input-padding-y-lg;
-$form-file-padding-x-lg:          $input-padding-x-lg;
-$form-file-font-size-lg:          $input-font-size-lg;
-$form-file-height-lg:             $input-height-lg;
-
 $input-muted-bg:                        $gray-100;
 $input-placeholder-color:               $gray-800;
 $input-focus-placeholder-color:         $gray-800;
 
 // Form validation
 
-$form-feedback-margin-top:          $form-text-margin-top;
-$form-feedback-font-size:           $form-text-font-size;
-$form-feedback-font-style:          $form-text-font-style;
-$form-feedback-valid-color:         $success;
-$form-feedback-invalid-color:       $danger;
-
-$form-feedback-icon-valid-color:    $form-feedback-valid-color;
-$form-feedback-icon-valid:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>");
-$form-feedback-icon-invalid-color:  $form-feedback-invalid-color;
-$form-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color}' viewBox='0 0 12 12'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>");
-
-// scss-docs-start form-validation-states
+/*// scss-docs-start form-validation-states
 $form-validation-states: (
   "valid": (
     "color": $form-feedback-valid-color,
@@ -950,7 +686,7 @@ $form-validation-states: (
     "icon": $form-feedback-icon-invalid
   )
 );
-// scss-docs-end form-validation-states
+// scss-docs-end form-validation-states*/
 
 // Z-index master list
 //
@@ -1180,15 +916,6 @@ $tooltip-arrow-width:               .8rem;
 $tooltip-arrow-height:              .4rem;
 $tooltip-arrow-color:               $tooltip-bg;
 
-// Form tooltips must come after regular tooltips
-$form-feedback-tooltip-padding-y:     $tooltip-padding-y;
-$form-feedback-tooltip-padding-x:     $tooltip-padding-x;
-$form-feedback-tooltip-font-size:     $tooltip-font-size;
-$form-feedback-tooltip-line-height:   null;
-$form-feedback-tooltip-opacity:       $tooltip-opacity;
-$form-feedback-tooltip-border-radius: $tooltip-border-radius;
-
-
 
 // Badges
 
@@ -1416,14 +1143,14 @@ $user-avatar-width-xxl: 10rem;
 // Footer
 
 $footer-link-font-size: .85rem;
-$footer-bg: theme-color("secondary");
+$footer-bg: $secondary;
 $footer-color: $gray-600;
 $footer-link-color: $gray-600;
 $footer-link-hover-color: $gray-700;
 $footer-heading-color: $gray-600;
 $footer-heading-font-size: $font-size-sm;
-$padding-footer-sm:       .125rem ;
-$padding-footer:          .375rem ;
-$padding-footer-md:       .625rem ;
+$padding-footer-sm:       .125rem;
+$padding-footer:          .375rem;
+$padding-footer-md:       .625rem;
 $padding-footer-general:  .9375rem;
 $padding-footer-big:      1.5rem;

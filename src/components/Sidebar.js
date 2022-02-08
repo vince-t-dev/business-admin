@@ -118,10 +118,9 @@ export default (props = {}) => {
 				<NavItem title="Users" link="/my-business/users/p1" icon={faUsers} />
 				<NavItem title="Settings" icon={faCog} link={AllRoutes.Settings.path} />
 
-				{/*<Dropdown.Divider className="my-3 border-indigo" />*/}
+				{/*<Dropdown.Divider className="my-3 border-soft" />*/}
 
 				<CollapsableNavItem eventKey="examples/" title="External Pages" icon={faFileAlt}>
-					<NavItem title="Sign In" link={AllRoutes.Login.path} />
 					<NavItem title="Sign Up" link={AllRoutes.Signup.path} />
 					<NavItem title="Forgot password" link={AllRoutes.ForgotPassword.path} />
 					<NavItem title="Reset password" link={AllRoutes.ResetPassword.path} />

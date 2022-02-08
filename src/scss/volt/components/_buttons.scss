@@ -17,7 +17,7 @@
     background-color: transparent;
     border: $btn-border-width solid transparent;
     @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
-    // @include transition($btn-transition);
+    @include transition($btn-transition);
 
     &:hover {
     color: $body-color;
@@ -34,10 +34,10 @@
     .btn-check:active + &,
     &:active,
     &.active {
-    // @include box-shadow($btn-active-box-shadow);
+    @include box-shadow($btn-active-box-shadow);
 
     &:focus {
-        // @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+        @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
     }
     }
 
@@ -103,11 +103,11 @@
 //
 
 .btn-lg {
-    // @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
+    @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-border-radius-lg);
 }
 
 .btn-sm {
-    // @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
+    @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-border-radius-sm);
 }
 
 // Make the div behave like a button
@@ -146,27 +146,27 @@ justify-content: flex-start;
 }
 
 .btn-group {
-// Prevent double borders when buttons are next to each other
-> .btn:not(:first-child),
-> .btn-group:not(:first-child) {
-    margin-left: -$btn-border-width;
-}
+    // Prevent double borders when buttons are next to each other
+    > .btn:not(:first-child),
+    > .btn-group:not(:first-child) {
+        margin-left: -$btn-border-width;
+    }
 
-// Reset rounded corners
-> .btn:not(:last-child):not(.dropdown-toggle),
-> .btn-group:not(:last-child) > .btn {
-    // @include border-end-radius(0);
-}
+    // Reset rounded corners
+    > .btn:not(:last-child):not(.dropdown-toggle),
+    > .btn-group:not(:last-child) > .btn {
+        @include border-end-radius(0);
+    }
 
-// The left radius should be 0 if the button is:
-// - the "third or more" child
-// - the second child and the previous element isn't `.btn-check` (making it the first child visually)
-// - part of a btn-group which isn't the first child
-> .btn:nth-child(n + 3),
-> :not(.btn-check) + .btn,
-> .btn-group:not(:first-child) > .btn {
-    // @include border-start-radius(0);
-}
+    // The left radius should be 0 if the button is:
+    // - the "third or more" child
+    // - the second child and the previous element isn't `.btn-check` (making it the first child visually)
+    // - part of a btn-group which isn't the first child
+    > .btn:nth-child(n + 3),
+    > :not(.btn-check) + .btn,
+    > .btn-group:not(:first-child) > .btn {
+        @include border-start-radius(0);
+    }
 }
 
 // Sizing
@@ -210,11 +210,11 @@ padding-left: $btn-padding-x-lg * .75;
 // The clickable button for toggling the menu
 // Set the same inset shadow as the :active state
 .btn-group.show .dropdown-toggle {
-// @include box-shadow($btn-active-box-shadow);
+@include box-shadow($btn-active-box-shadow);
 
 // Show no shadow for `.btn-link` since it has no other button styles.
 &.btn-link {
-    // @include box-shadow(none);
+    @include box-shadow(none);
 }
 }
 
@@ -241,12 +241,12 @@ justify-content: center;
 // Reset rounded corners
 > .btn:not(:last-child):not(.dropdown-toggle),
 > .btn-group:not(:last-child) > .btn {
-    // @include border-bottom-radius(0);
+    @include border-bottom-radius(0);
 }
 
 > .btn ~ .btn,
 > .btn-group:not(:first-child) > .btn {
-    // @include border-top-radius(0);
+    @include border-top-radius(0);
 }
 }
 
@@ -280,9 +280,9 @@ justify-content: center;
     width  : 2.575rem;
     height : 2.575rem;
     padding: 0;
-    // @include display-flex();
-    // @include justify-content(center);
-    // @include align-items(center);
+    //@include display-flex();
+    //@include justify-content(center);
+    //@include align-items(center);
 
     &.btn-xs {
         width : 1.7rem;
