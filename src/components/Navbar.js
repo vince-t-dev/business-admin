@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faEnvelopeOpen, faSignOutAlt, faUserShield } from "@fortawesome/free-solid-svg-icons";
-import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
+import { faBell, faEnvelopeOpen, faSignOutAlt, faUserShield, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Row, Col, Nav, Image, Navbar, Dropdown, Container, ListGroup, Spinner } from 'react-bootstrap';
 import { useAuth } from "../context/auth";
 import NOTIFICATIONS_DATA from "../data/notifications";

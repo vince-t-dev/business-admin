@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/__xpr__/pub_engine/business-admin/web/static/css/main.fcc1c868.css",
-    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.d1ac9b82.js",
+    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.c64b3ea8.js",
     "static/media/profile-picture-1.jpg": "/__xpr__/pub_engine/business-admin/web/static/media/profile-picture-1.e783b80fc08aa743b526.jpg",
     "static/media/profile-picture-4.jpg": "/__xpr__/pub_engine/business-admin/web/static/media/profile-picture-4.97bdda51efaf61fc8e69.jpg",
     "static/media/profile-picture-5.jpg": "/__xpr__/pub_engine/business-admin/web/static/media/profile-picture-5.fff93226a753730ae1a9.jpg",
@@ -20,10 +20,10 @@
     "static/media/xprs-logo-with-red.svg": "/__xpr__/pub_engine/business-admin/web/static/media/xprs-logo-with-red.dca6633a9eaacc27f4b023306cd36023.svg",
     "index.html": "/__xpr__/pub_engine/business-admin/web/index.html",
     "main.fcc1c868.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/main.fcc1c868.css.map",
-    "main.d1ac9b82.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.d1ac9b82.js.map"
+    "main.c64b3ea8.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.c64b3ea8.js.map"
   },
   "entrypoints": [
     "static/css/main.fcc1c868.css",
-    "static/js/main.d1ac9b82.js"
+    "static/js/main.c64b3ea8.js"
   ]
 }
