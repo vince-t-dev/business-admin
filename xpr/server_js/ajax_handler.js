@@ -36,7 +36,7 @@ exports.process = function(context, options) {
                     Id: user[0].Id,
                     FirstName: user[0].FirstName,
                     LastName: user[0].LastName,
-                    UserLogin: user[0].UserLogin,
+                    Username: user[0].Username,
                     City: user[0].City,
                     _embedded: {
                         CustomFields: { _embedded: { ProfileImage: profile_image } }
