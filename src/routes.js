@@ -10,10 +10,10 @@ export const AllRoutes = {
     
     Settings: { path: "/my-business/settings" },
     Login: { path: "/my-business/login" },
+    Lock: { path: "/my-business/lock" },
     Signup: { path: "/my-business/examples/sign-up" },
     ForgotPassword: { path: "/my-business/examples/forgot-password" },
     ResetPassword: { path: "/my-business/examples/reset-password" },
-    Lock: { path: "/my-business/examples/lock" },
     NotFound: { path: "/my-business/examples/404" },
     ServerError: { path: "/my-business/examples/500" }
 };

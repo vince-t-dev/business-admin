@@ -3,7 +3,7 @@ import axios from "axios";
 
 const authContext = createContext();
 export function AuthProvider({ children }) {
-	const auth = useAuthProvider()
+	const auth = useAuthProvider();
 	return <authContext.Provider value={auth}> { children } </authContext.Provider>
 }
 
@@ -11,7 +11,7 @@ export const useAuth = () => useContext(authContext);
 
 function useAuthProvider() {
 	const [user, setUser] = useState(null);
-	
+
 	// sign in
 	const signin = async (credentials, callback) => {
 		let jsonData = credentials;
@@ -32,6 +32,7 @@ function useAuthProvider() {
 		let userData = {"token": result.token, "xsrf_token": xsrf_token, "data": response.data?.user};
 		if (!result.error) {
 			setUser(userData);
+			localStorage.removeItem("invalid_token");
 			localStorage.setItem("user",JSON.stringify(userData));
 		}
 		if (callback) callback(result);
@@ -55,11 +56,11 @@ function useAuthProvider() {
 		if (callback) callback(response);
 	}
 
-	//check authentication
+	// check authentication
 	useEffect(() => {
 		// validate access token on page load
-		if (localStorage.getItem("user")) {
-			let user_data = JSON.parse(localStorage.getItem("user"));
+		let user_data = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
+		if (user_data && !localStorage.getItem("invalid_token")) {
 			let token = user_data.token;
 			let jsonData = { action: "checkAuth" };
 			axios.post("/__xpr__/pub_engine/business-admin/element/ajax_handler",JSON.stringify(jsonData), {
@@ -72,10 +73,11 @@ function useAuthProvider() {
 			.then(function(response) {
 				// invalid/expired token
 				if (response.data?.error) {
-					// clear user data and redirect user to login screen
-					setUser(null);
+					// clear user data and redirect user to lock screen
 					localStorage.clear();
-					window.location.replace("/my-business/login");
+					let token_data = { error: response.data?.error, user_info: user_data.data, from: window.location.pathname };		
+					localStorage.setItem("invalid_token", JSON.stringify(token_data));
+					window.location.replace("/my-business/lock");
 				}
 			});
 		}

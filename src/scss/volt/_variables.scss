@@ -49,8 +49,7 @@ $dark:          $dark;
 
 
 // Theme colors: try to minimize number of themes here to keep things light
-$theme-colors: ();
-$theme-colors: map-merge((
+$theme-colors: (
   "primary":        $primary,
   "secondary":      $secondary,
   "gray":           $gray,
@@ -62,7 +61,7 @@ $theme-colors: map-merge((
   "success":        $success,
   "danger":         $danger,
   "cherry":         $cherry
-), $theme-colors);
+);
 
 /* TODO: redefine theme colors for dark theme 
 .dark {
@@ -312,7 +311,7 @@ $font-size-sm:                ($font-size-base * .875);
 $font-size-md:                ($font-size-base * 1);
 $font-size-lg:                ($font-size-base * 1.25);
 $font-size-xl:                ($font-size-base * 1.5);
-$font-size-xxl:               ($font-size-base * 2);
+$font-size-xxl:               ($font-size-base * 2.5);
 
 $font-weight-light:           300;
 $font-weight-normal:          400;

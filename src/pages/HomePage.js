@@ -14,7 +14,7 @@ import Login from "./Login";
 import Signup from "./examples/Signup";
 import ForgotPassword from "./examples/ForgotPassword";
 import ResetPassword from "./examples/ResetPassword";
-import Lock from "./examples/Lock";
+import Lock from "./Lock";
 import NotFoundPage from "./examples/NotFound";
 import ServerError from "./examples/ServerError";
 
@@ -81,19 +81,20 @@ function PrivateRoute({ children, ...rest }) {
 	const location = useLocation();
 	let userData = (localStorage.getItem("user")) ? JSON.parse(localStorage.getItem("user")) : ""; 
 	auth.user = userData;
+	let redirect_url = (localStorage.getItem("invalid_token")) ? "/my-business/lock" : "/my-business/login";
 	return (
         auth.user ? <Outlet {...rest} location={location}/> :
-        (<Navigate to="/my-business/login" state={{ from: location }} replace />)
+        (<Navigate to={redirect_url} state={{ from: location }} replace />)
 	)
 }
 
 export default () => (
 		<Routes>
 			<Route path={AllRoutes.Login.path} element={<RouteWithLoader component={Login}/>}/>
+			<Route path={AllRoutes.Lock.path} element={<RouteWithLoader component={Lock}/>}/>
 			<Route path={AllRoutes.Signup.path} element={<RouteWithLoader component={Signup}/>}/>
 			<Route path={AllRoutes.ForgotPassword.path} element={<RouteWithLoader component={ForgotPassword}/>}/>
 			<Route path={AllRoutes.ResetPassword.path} element={<RouteWithLoader component={ResetPassword}/>}/>
-			<Route path={AllRoutes.Lock.path} element={<RouteWithLoader component={Lock}/>}/>
 			<Route path={AllRoutes.NotFound.path} element={<RouteWithLoader component={NotFoundPage}/>}/>
 			<Route path={AllRoutes.ServerError.path} element={<RouteWithLoader component={ServerError}/>}/>
 

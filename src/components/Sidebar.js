@@ -124,7 +124,6 @@ export default (props = {}) => {
 					<NavItem title="Sign Up" link={AllRoutes.Signup.path} />
 					<NavItem title="Forgot password" link={AllRoutes.ForgotPassword.path} />
 					<NavItem title="Reset password" link={AllRoutes.ResetPassword.path} />
-					<NavItem title="Lock" link={AllRoutes.Lock.path} />
 					<NavItem title="404 Not Found" link={AllRoutes.NotFound.path} />
 					<NavItem title="500 Server Error" link={AllRoutes.ServerError.path} />
 				</CollapsableNavItem>

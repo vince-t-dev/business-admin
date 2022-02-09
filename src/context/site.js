@@ -15,6 +15,7 @@ function useSiteContext() {
     let site_config = {
         showPreloader: false
     }
+    
 	const [siteConfig, setSiteConfig] = useState(site_config);
     // update config
     const updateSiteConfig = (value) => {
