@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/__xpr__/pub_engine/business-admin/web/static/css/main.50fb4424.css",
-    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.1d28f0e1.js",
+    "main.css": "/__xpr__/pub_engine/business-admin/web/static/css/main.8d8f417b.css",
+    "main.js": "/__xpr__/pub_engine/business-admin/web/static/js/main.12d26b5d.js",
     "static/media/profile-picture-1.jpg": "/__xpr__/pub_engine/business-admin/web/static/media/profile-picture-1.e783b80fc08aa743b526.jpg",
     "static/media/profile-picture-4.jpg": "/__xpr__/pub_engine/business-admin/web/static/media/profile-picture-4.97bdda51efaf61fc8e69.jpg",
     "static/media/profile-picture-5.jpg": "/__xpr__/pub_engine/business-admin/web/static/media/profile-picture-5.fff93226a753730ae1a9.jpg",
@@ -13,17 +13,17 @@
     "static/media/dinnextltpro-bold.otf": "/__xpr__/pub_engine/business-admin/web/static/media/dinnextltpro-bold.005cbaa254ca9ca02199.otf",
     "static/media/profile-picture-3.jpg": "/__xpr__/pub_engine/business-admin/web/static/media/profile-picture-3.5eb120b246b797756a74.jpg",
     "static/media/profile-picture-2.jpg": "/__xpr__/pub_engine/business-admin/web/static/media/profile-picture-2.6d657a5c6d7687026fb4.jpg",
-    "static/media/XPRIcons.ttf": "/__xpr__/pub_engine/business-admin/web/static/media/XPRIcons.b4b60295bc28ce4ed14d.ttf",
+    "static/media/XPRIcons.ttf": "/__xpr__/pub_engine/business-admin/web/static/media/XPRIcons.9ccbf006a4a67b548fc4.ttf",
     "static/media/xprs-logo-dark.svg": "/__xpr__/pub_engine/business-admin/web/static/media/xprs-logo-dark.41764f016691b9e1c999d337423fb4e2.svg",
     "static/media/xprs-logo.svg": "/__xpr__/pub_engine/business-admin/web/static/media/xprs-logo.5a5060a48af778535452cb28e4746e5c.svg",
     "static/media/xprs-logo-with-red-white.svg": "/__xpr__/pub_engine/business-admin/web/static/media/xprs-logo-with-red-white.731d26984b30d6c32d0c1e14339cd589.svg",
     "static/media/xprs-logo-with-red.svg": "/__xpr__/pub_engine/business-admin/web/static/media/xprs-logo-with-red.dca6633a9eaacc27f4b023306cd36023.svg",
     "index.html": "/__xpr__/pub_engine/business-admin/web/index.html",
-    "main.50fb4424.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/main.50fb4424.css.map",
-    "main.1d28f0e1.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.1d28f0e1.js.map"
+    "main.8d8f417b.css.map": "/__xpr__/pub_engine/business-admin/web/static/css/main.8d8f417b.css.map",
+    "main.12d26b5d.js.map": "/__xpr__/pub_engine/business-admin/web/static/js/main.12d26b5d.js.map"
   },
   "entrypoints": [
-    "static/css/main.50fb4424.css",
-    "static/js/main.1d28f0e1.js"
+    "static/css/main.8d8f417b.css",
+    "static/js/main.12d26b5d.js"
   ]
 }

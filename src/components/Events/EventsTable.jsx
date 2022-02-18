@@ -28,7 +28,7 @@ function EventsTable() {
     const getSearch = e => {
         e.preventDefault();
         // reset page to 1 when doing search
-        (page == 1) ? fetchItems(keyword,1) : navigate("/my-business/list/p1");
+        (page == 1) ? fetchItems(keyword,1) : navigate("/my-business/list");
     }
 
     // hooks: fetch data when page changes
@@ -92,7 +92,7 @@ function EventsTable() {
             <Row className="justify-content-end align-items-center mb-3">
                 <Col lg={4} className="d-flex justify-content-end">
                     <InputGroup>
-                        <Form.Control size="lg" type="text" className="rounded-xl px-4" placeholder="Search" value={keyword} onChange={updateKeyword}/>
+                        <Form.Control size="lg" type="text" className="rounded-xl px-3" placeholder="Search" value={keyword} onChange={updateKeyword}/>
                         <InputGroup.Text className="rounded-xl">
                             <i className="xpri-search text-primary"></i>
                         </InputGroup.Text>

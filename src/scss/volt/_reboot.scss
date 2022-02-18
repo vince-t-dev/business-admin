@@ -407,6 +407,7 @@ button {
 
 button:focus:not(:focus-visible) {
   outline: 0;
+  box-shadow: none;
 }
 
 // 1. Remove the margin in Firefox and Safari
@@ -660,7 +661,7 @@ img {
     max-width: 100%;
 }
 
-strong{
+strong {
     font-weight: $font-weight-bold;
 }
 

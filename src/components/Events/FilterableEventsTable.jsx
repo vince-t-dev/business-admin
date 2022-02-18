@@ -64,8 +64,8 @@ function FilterableEventsTable(props) {
                         <td>
                             <span>
                                 <div className="btn-group">
-                                    <OverlayTrigger overlay={<Tooltip>Edit</Tooltip>}>
-                                        <Link to={"/my-business/list/edit/"+a.Id} state={{item: a}} className="btn btn-link"><i data-toggle="tooltip" className="xpri-edit"></i></Link>
+                                    <OverlayTrigger overlay={<Tooltip>Transfer</Tooltip>}>
+                                        <button type="button" className="btn btn-link" onClick={e => {props.openModalTransferEvent(e,a)}}><i data-toggle="tooltip" className="xpri-transfer"></i></button>
                                     </OverlayTrigger>
                                     <OverlayTrigger overlay={<Tooltip>Preview</Tooltip>}>
                                         <a href="" className="btn btn-link" target="_blank"><i data-toggle="tooltip" className="xpri-preview"></i></a>

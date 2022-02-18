@@ -215,10 +215,12 @@
 	}
 	/* Handle on hover */
 	&::-webkit-scrollbar-thumb:hover {}
+	
 	.accordion-button{
 		&::after {
 			background-image: none;
-			content: "\e915";
+			/* arrow-right */
+			content: "\e91f";
 			font-family: "XPRIcons";
 			font-size: $font-size-xs;
 			font-weight: 900;

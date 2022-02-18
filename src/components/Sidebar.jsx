@@ -51,15 +51,9 @@ export default (props = {}) => {
 		const { title, link, external, target, icon, image, badgeText, badgeBg = "secondary", badgeColor = "primary" } = props;
 		const classNames = badgeText ? "d-flex justify-content-start align-items-center justify-content-between" : "";
 		
-		// set active state for home page
-		const setHome = ((pathname == "/" || pathname.indexOf("/my-business/list")>-1) && link.indexOf("/my-business/list")>-1);
-		const linkProps = external ? { href: link } : { as: Link, to: link };
-		
 		return (
 		<Nav.Item onClick={() => setShow(false)}>
-			{/*<Nav.Link {...linkProps} target={target} className={classNames}>*/}
-			{/* // TODO: figure out active state for nested routes */}
-			<NavLink to={link} className={({ isActive }) => ((isActive || setHome) ? 'nav-link active' : 'nav-link')}>
+			<NavLink to={link} className={({ isActive }) => ((isActive) ? 'nav-link active' : 'nav-link')}>
 			<span>
 				{icon ? <span className="sidebar-icon"><FontAwesomeIcon icon={icon} /> </span> : null}
 				{image ? <Image src={image} width={20} height={20} className="sidebar-icon svg-icon" /> : null}
@@ -70,7 +64,6 @@ export default (props = {}) => {
 				<Badge pill bg={badgeBg} text={badgeColor} className="badge-md notification-count ms-2">{badgeText}</Badge>
 			) : null}
 			</NavLink>
-			{/*</Nav.Link>*/}
 		</Nav.Item>
 		);
 	};
@@ -114,8 +107,8 @@ export default (props = {}) => {
 				</Nav.Link>
 				</div>
 				<Nav className="flex-column">
-				<NavItem title="Events" link="/my-business/list/p1" icon={faList} />
-				<NavItem title="Users" link="/my-business/users/p1" icon={faUsers} />
+				<NavItem title="Events" link="/my-business/list" icon={faList} />
+				<NavItem title="Users" link="/my-business/users" icon={faUsers} />
 				<NavItem title="Settings" icon={faCog} link={AllRoutes.Settings.path} />
 
 				{/*<Dropdown.Divider className="my-3 border-soft" />*/}

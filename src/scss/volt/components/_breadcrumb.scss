@@ -51,7 +51,8 @@
 
   + .breadcrumb-item {
     &:before{
-      content: "\e915";
+      /* arrow-right */
+      content: "\e91f";
       font-family: "XPRIcons";
       font-size: 0.5rem;
       font-weight: 400;

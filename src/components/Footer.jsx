@@ -46,7 +46,7 @@ export default (props) => {
                 </Form.Group>
             </Stack>
             {/* modal: confirm delete items */}
-            <Modal centered show={modalDeleteItems} onHide={handleClose}>
+            <Modal centered show={modalDeleteItems} onHide={handleClose} size="md">
                 <Modal.Header closeButton closeVariant="white"> 
                     <Modal.Title>Confirm Delete</Modal.Title>
                 </Modal.Header>
