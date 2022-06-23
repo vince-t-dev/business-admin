@@ -11,7 +11,7 @@ function List() {
         <div className="d-lg-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4">
             <div className="mb-4 mb-lg-0">
                 <Breadcrumb className="d-none d-md-inline-block" listProps={{ className: "breadcrumb-dark breadcrumb-transparent" }}>
-                    <Breadcrumb.Item active>Dashboard</Breadcrumb.Item>
+                    <Breadcrumb.Item active>Main Dashboard</Breadcrumb.Item>
                 </Breadcrumb>
             </div>
         </div>
